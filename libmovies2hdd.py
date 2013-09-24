@@ -47,6 +47,7 @@ def getPositionOfEpisode(series, episode):
 #	dom = dom.getElementsByTagName("Data")[0]
 	dom = parseString(urllib.urlopen("http://thetvdb.com/api/FE84E205C6E3D916/series/"+str(sid)+"/all/"+lang+".xml").read()).getElementsByTagName("Data")[0]
 	episodes = dom.getElementsByTagName("Episode")
+	season = 0
 	for x in episodes:
 		if x.getElementsByTagName("EpisodeName")[0].firstChild.data == episode:
 			episode = x.getElementsByTagName("Combined_episodenumber")[0].firstChild.data
@@ -57,7 +58,7 @@ def getPositionOfEpisode(series, episode):
 
 def downloadMovie(conn, movie):
 	file = open("/tmp/"+movie+".ts", "wb")
-	conn.retrbinary("RETR "+movie+".ts", file.write, 8*1024) #perhaps implement threading ;-)
+	print(conn.retrbinary("RETR "+movie+".ts", file.write, 8*1024)) #perhaps implement threading ;-)
 	file.close()
 
 def convertMovie(movie, path):
@@ -65,8 +66,15 @@ def convertMovie(movie, path):
 	files = os.listdir("/tmp")
 	contents = list()
 	for x in files:
+		print "There is "+x+"."
 		if x.find(movie) != -1:
-			contents.append(x[x.index("."):x.count("")-1])
+			print "It's a movie! "+x
+			if x.find("[") == -1 and x.find("_log") == -1:
+				contents.append(x[x.index("."):x.count("")-1])
+				print x+" is in."
+			else:
+				os.remove("/tmp/"+x)
+				print x+" removed."
 	if contents.count(".m2v") != 0:
 		if contents.count(".ac3") != 0:
 			subprocess.Popen(["mplex","-f","3","-o",path+".mpg",movie+".ac3",movie+".m2v"]).wait() #threading?
@@ -78,6 +86,6 @@ def convertMovie(movie, path):
 	else:
 		print "No video in here."
 		return False
-	os.remove("/tmp/"+movie+".ts")
 	for x in contents:
+		print "deleting "+movie+x+"..."
 		os.remove("/tmp/"+movie+x)
