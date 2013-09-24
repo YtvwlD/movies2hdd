@@ -2,6 +2,8 @@
 import ftplib
 import urllib
 from xml.dom.minidom import parseString
+import subprocess
+import os
 
 def connect(host, user, pwd):
 	conn = ftplib.FTP()
@@ -52,3 +54,30 @@ def getPositionOfEpisode(series, episode):
 			if episode.find(".") != -1:
 				episode = episode[0:episode.find(".")]
 	return [int(season), int(episode)]
+
+def downloadMovie(conn, movie):
+	file = open("/tmp/"+movie+".ts", "wb")
+	conn.retrbinary("RETR "+movie+".ts", file.write, 8*1024) #perhaps implement threading ;-)
+	file.close()
+
+def convertMovie(movie, path):
+	subprocess.Popen(["projectx", "/tmp/"+movie+".ts"]).wait() #threading?
+	files = os.listdir("/tmp")
+	contents = list()
+	for x in files:
+		if x.find(movie) != -1:
+			contents.append(x[x.index("."):x.count("")-1])
+	if contents.count(".m2v") != 0:
+		if contents.count(".ac3") != 0:
+			subprocess.Popen(["mplex","-f","3","-o",path+".mpg",movie+".ac3",movie+".m2v"]).wait() #threading?
+		elif contents.count(".mp2") != 0:
+			subprocess.Popen(["mplex","-f","3","-o",path+".mpg",movie+".mp2",movie+".m2v"]).wait() #threading?
+		else:
+			print "No audio in here."
+			return False
+	else:
+		print "No video in here."
+		return False
+	os.remove("/tmp/"+movie+".ts")
+	for x in contents:
+		os.remove("/tmp/"+movie+x)
