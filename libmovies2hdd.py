@@ -58,18 +58,25 @@ def getPositionOfEpisode(series, episode):
 
 def downloadMovie(conn, movie):
 	file = open("/tmp/"+movie+".ts", "wb")
-	print(conn.retrbinary("RETR "+movie+".ts", file.write, 8*1024)) #perhaps implement threading ;-)
+	result = conn.retrbinary("RETR "+movie+".ts", file.write, 8*1024) #perhaps implement threading ;-)
+	print result
 	file.close()
+	if result.startswith("2") == False:
+		raise BaseException
+	else:
+		print "TODO"
+		#print(conn.delete(movie)) #TODO
 
 def convertMovie(movie, path):
-	subprocess.Popen(["projectx", "/tmp/"+movie+".ts"]).wait() #threading?
+	if subprocess.Popen(["projectx", "/tmp/"+movie+".ts"]).wait() != 0: #threading?
+		raise BaseException
 	files = os.listdir("/tmp")
 	contents = list()
 	for x in files:
 		print "There is "+x+"."
 		if x.find(movie) != -1:
 			print "It's a movie! "+x
-			if x.find("[") == -1 and x.find("_log") == -1:
+			if x.find("[") == -1 and x.find("_log") == -1: # and x.find(".ts") == -1:
 				contents.append(x[x.index("."):x.count("")-1])
 				print x+" is in."
 			else:
@@ -77,15 +84,19 @@ def convertMovie(movie, path):
 				print x+" removed."
 	if contents.count(".m2v") != 0:
 		if contents.count(".ac3") != 0:
-			subprocess.Popen(["mplex","-f","3","-o",path+".mpg",movie+".ac3",movie+".m2v"]).wait() #threading?
+			if subprocess.Popen(["mplex","-f","3","-o",path+"/"+movie+".mpg","/tmp/"+movie+".ac3","/tmp/"+movie+".m2v"]).wait() != 0: #threading?
+				raise BaseException
 		elif contents.count(".mp2") != 0:
-			subprocess.Popen(["mplex","-f","3","-o",path+".mpg",movie+".mp2",movie+".m2v"]).wait() #threading?
+			if subprocess.Popen(["mplex","-f","3","-o",path+"/"+movie+".mpg","/tmp/"+movie+".mp2","/tmp/"+movie+".m2v"]).wait() != 0: #threading?
+				raise BaseException
 		else:
 			print "No audio in here."
-			return False
+			#return False
+			raise BaseException
 	else:
 		print "No video in here."
-		return False
+		#return False
+		raise BaseException
 	for x in contents:
 		print "deleting "+movie+x+"..."
 		os.remove("/tmp/"+movie+x)
