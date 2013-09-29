@@ -67,7 +67,7 @@ def downloadMovie(conn, movie):
 		print "TODO"
 		#print(conn.delete(movie)) #TODO
 
-def convertMovie(movie, path):
+def convertMovie(movie):
 	if subprocess.Popen(["projectx", "/tmp/"+movie+".ts"]).wait() != 0: #threading?
 		raise BaseException
 	files = os.listdir("/tmp")
@@ -84,10 +84,10 @@ def convertMovie(movie, path):
 				print x+" removed."
 	if contents.count(".m2v") != 0:
 		if contents.count(".ac3") != 0:
-			if subprocess.Popen(["mplex","-f","3","-o",path+"/"+movie+".mpg","/tmp/"+movie+".ac3","/tmp/"+movie+".m2v"]).wait() != 0: #threading?
+			if subprocess.Popen(["mplex","-f","3","-o","/tmp/"+movie+".mpg","/tmp/"+movie+".ac3","/tmp/"+movie+".m2v"]).wait() != 0: #threading?
 				raise BaseException
 		elif contents.count(".mp2") != 0:
-			if subprocess.Popen(["mplex","-f","3","-o",path+"/"+movie+".mpg","/tmp/"+movie+".mp2","/tmp/"+movie+".m2v"]).wait() != 0: #threading?
+			if subprocess.Popen(["mplex","-f","3","-o","/tmp/"+movie+".mpg","/tmp/"+movie+".mp2","/tmp/"+movie+".m2v"]).wait() != 0: #threading?
 				raise BaseException
 		else:
 			print "No audio in here."
