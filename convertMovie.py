@@ -1,8 +1,13 @@
 #! /usr/bin/env python
+print "Loading libraries..."
 import libmovies2hdd
 import sys
 import shutil
-movie = sys.argv[0]
+movie = sys.argv[1]
+print "Moving "+movie+" to /tmp ..."
 shutil.move(movie, "/tmp/")
-libmovies2hdd.convertMovie(movie.strip(".ts"))
-shutil.move("/tmp/"+movie+".mpg" + ".")
+print "Converting it..."
+movie = movie.replace(".ts", "")
+libmovies2hdd.convertMovie(movie)
+print "Moving "+movie+".mpg back..."
+shutil.move("/tmp/"+movie+".mpg", ".")
