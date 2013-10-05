@@ -81,7 +81,7 @@ def convertMovie(movie):
 			if x.endswith(".ac3"):
 				contents.append(".ac3")
 				print x+" is in."
-			elif x.endswith(".mp2"):
+			elif x.endswith(".mp2") and x.find("[") == -1:
 				contents.append(".mp2")
 				print x+" is in."
 			elif x.endswith(".m2v"):
