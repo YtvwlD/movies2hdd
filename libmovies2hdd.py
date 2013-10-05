@@ -74,14 +74,24 @@ def convertMovie(movie):
 	contents = list()
 	for x in files:
 		print "There is "+x+"."
-		if x.find(movie) != -1:
-			print "It's a movie! "+x
-			if x.find("[") == -1 and x.find("_log") == -1: # and x.find(".ts") == -1:
-				contents.append(x[x.index("."):x.count("")-1])
+		if x.startswith(movie):
+			print "It belongs to us! "+x
+			#if x.find("[") == -1 and x.find("_log") == -1 and x.find(".ts") == -1:
+				#contents.append(x[x.index("."):x.count("")-1])
+			if x.endswith(".ac3"):
+				contents.append(".ac3")
+				print x+" is in."
+			elif x.endswith(".mp2"):
+				contents.append(".mp2")
+				print x+" is in."
+			elif x.endswith(".m2v"):
+				contents.append(".m2v")
 				print x+" is in."
 			else:
 				os.remove("/tmp/"+x)
 				print x+" removed."
+	print "We have got the following files:"
+	print contents
 	if contents.count(".m2v") != 0:
 		if contents.count(".ac3") != 0:
 			if subprocess.Popen(["mplex","-f","3","-o","/tmp/"+movie+".mpg","/tmp/"+movie+".ac3","/tmp/"+movie+".m2v"]).wait() != 0: #threading?
