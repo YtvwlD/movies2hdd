@@ -87,6 +87,9 @@ def convertMovie(movie):
 			elif x.endswith(".m2v"):
 				contents.append(".m2v")
 				print x+" is in."
+			elif x.endswith(".ts"):
+				contents.append(".ts")
+				print x+" will not be deleted for now."
 			else:
 				os.remove("/tmp/"+x)
 				print x+" removed."
