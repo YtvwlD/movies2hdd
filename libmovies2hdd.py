@@ -29,7 +29,7 @@ class Movies2HDD:
 		movies = list()
 		for each in newlist:
 			if each.endswith(".ts"):
-				movies.append(each.rstrip(".ts"))
+				movies.append(each.replace(".ts", ""))
 		return movies
 	
 	def getTitleOfEpisode(self, movie):
