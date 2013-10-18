@@ -40,7 +40,7 @@ class Movies2HDD:
 		else:
 			return meta[2]
 	
-	def getPositionOfEpisode(series, episode):
+	def getPositionOfEpisode(self, series, episode):
 		lang = "de" #german
 		#search doesn't always work
 		sid = parseString(urllib.urlopen("http://thetvdb.com/api/GetSeries.php?seriesname="+series).read()).getElementsByTagName("Data")[0].getElementsByTagName("Series")[0].getElementsByTagName("seriesid")[0].firstChild.data #seriesid
@@ -71,7 +71,7 @@ class Movies2HDD:
 			print "TODO"
 			#print(self.conn.delete(movie)) #TODO
 
-	def convertMovie(movie):
+	def convertMovie(self, movie):
 		if subprocess.Popen(["projectx", "/tmp/"+movie+".ts"]).wait() != 0: #threading?
 			raise BaseException
 		files = os.listdir("/tmp")
