@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 print "Loading libraries..."
-from libmovies2hdd import Movies2HDD
+from movies2hdd import Movies2HDD
 import sys
 import shutil
 movie = sys.argv[1]
