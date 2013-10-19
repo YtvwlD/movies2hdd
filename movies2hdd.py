@@ -58,7 +58,10 @@ class Movies2HDD:
 				season = x.getElementsByTagName("Combined_season")[0].firstChild.data
 				if episode.find(".") != -1:
 					episode = episode[0:episode.find(".")]
-		return [int(season), int(episode)]
+		if (episode.isdigit()):
+			return [int(season), int(episode)]
+		else:
+			return False
 
 	def downloadMovie(self, movie):
 		file = open("/tmp/"+movie+".ts", "wb")
