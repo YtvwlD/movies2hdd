@@ -1,5 +1,5 @@
 #! /usr/bin/env python
-'''A simple script to convert a movie. It uses the movies2hdd library.'''
+"""A simple script to convert a movie. It uses the movies2hdd library."""
 print("Loading libraries...")
 from movies2hdd import Movies2HDD
 import sys
