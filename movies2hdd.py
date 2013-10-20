@@ -11,16 +11,16 @@ import subprocess
 import os
 
 class Movies2HDD:
-#"""A simple set of python scripts and libraries to work with movies. I use it with my DreamBox."""
+	"""A simple set of python scripts and libraries to work with movies. I use it with my DreamBox."""
 
 	def __init__(self):
 	#"""Bla"""
 	#"""A simple set of python scripts and libraries to work with movies. I use it with my DreamBox."""
-	#"""The __init__. What else?"""
+		"""The __init__. What else?"""
 		pass
 
 	def connect(self, host, user, pwd):
-	#"""Connect to a DreamBox using the given host and credentials."""
+		"""Connect to a DreamBox using the given host and credentials."""
 		self.conn = ftplib.FTP()
 		print((self.conn.connect(host)))
 		print((self.conn.login(user, pwd)))
@@ -28,12 +28,12 @@ class Movies2HDD:
 		#return conn
 
 	def disconnect(self):
-	#"""Close the connection."""
+		"""Close the connection."""
 		print((self.conn.quit()))
 		return
 
 	def getAviableMovies(self,search):
-	#"""List movies aviable on your DreamBox."""
+		"""List movies aviable on your DreamBox."""
 		allfiles = self.conn.nlst()
 		newlist = list()
 		for each in allfiles:
@@ -46,7 +46,7 @@ class Movies2HDD:
 		return movies
 	
 	def getTitleOfEpisode(self, movie):
-	#"""Get the title of an episode. It uses the .ts.meta file that are automatically stored with your recordings."""
+		"""Get the title of an episode. It uses the .ts.meta file that are automatically stored with your recordings."""
 		meta = list()
 		self.conn.retrlines("RETR "+movie+".ts.meta", meta.append)
 		if meta[1] == meta[2]:
@@ -55,7 +55,7 @@ class Movies2HDD:
 			return meta[2]
 	
 	def getPositionOfEpisode(self, series, episode):
-	#"""Get the season and episode number of an episode."""
+		"""Get the season and episode number of an episode."""
 		lang = "de" #german #or perhaps as a parameter
 		#search doesn't always work
 		try:
@@ -87,7 +87,7 @@ class Movies2HDD:
 			return False
 
 	def downloadMovie(self, movie):
-	#"""Download a video from your DreamBox."""
+		"""Download a video from your DreamBox."""
 		file = open("/tmp/"+movie+".ts", "wb")
 		result = self.conn.retrbinary("RETR "+movie+".ts", file.write, 8*1024) #perhaps implement threading ;-)
 		print(result)
@@ -99,7 +99,7 @@ class Movies2HDD:
 			#print(self.conn.delete(movie)) #TODO
 
 	def convertMovie(self, movie):
-	#"""Convert a movie. It will remove additional audio tracks!"""
+		"""Convert a movie. It will remove additional audio tracks!"""
 		if subprocess.Popen(["projectx", "/tmp/"+movie+".ts"]).wait() != 0: #threading?
 			raise BaseException
 		files = os.listdir("/tmp")
