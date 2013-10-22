@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """A CLI to Movies2HDD"""
 print("Loading libraries...")
 from movies2hdd import Movies2HDD
