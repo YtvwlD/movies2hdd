@@ -9,21 +9,21 @@ A simple set of python scripts and libraries to work with movies. I use it with 
 
 Why should I use it?
 
-	* It is written entirely in Python.
-	* It supports both 2.7 _and_ 3 _at the same time_. (!)
-	* It is a class.
-	* It is not finished.
+* It is written entirely in Python.
+* It supports both 2.7 _and_ 3 _at the same time_. (!)
+* It is a class.
+* It is not finished.
 
 ----------------------------------------------------------------------------
 
 Features:
 
-	* a CLI
-	* a simple movie converter (.ts to .mpg, will delete additional audio tracks!)
-	* a library:
-		* connects to a DreamBox via FTP
-		* searches for movies
-		* downloads movies
-		* filters meta data
-		* queries thetvdb.com
-		* converts the movies
+* a CLI
+* a simple movie converter (.ts to .mpg, will delete additional audio tracks!)
+* a library:
+	* connects to a DreamBox via FTP
+	* searches for movies
+	* downloads movies
+	* filters meta data
+	* queries thetvdb.com
+	* converts the movies
