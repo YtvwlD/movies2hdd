@@ -61,12 +61,32 @@ class MainWindow(PySide.QtGui.QDialog):
 		self.left.step1.addLayout(self.left.step1.pwd.layout)
 		self.left.step1.button = PySide.QtGui.QPushButton("Connect")
 		self.left.step1.addWidget(self.left.step1.button)
+		self.left.step1.button.clicked.connect(self.connecttodream)
+		self.left.step2 = PySide.QtGui.QVBoxLayout()
+		self.left.step2.headline = PySide.QtGui.QLabel("2. Search for movies")
+		self.left.step2.addWidget(self.left.step2.headline)
+		self.left.step2.search = PySide.QtGui.QLineEdit()
+		self.left.step2.search.layout = PySide.QtGui.QHBoxLayout()
+		self.left.step2.search.label = PySide.QtGui.QLabel("Search for: ")
+		self.left.step2.search.layout.addWidget(self.left.step2.search.label)
+		self.left.step2.search.layout.addWidget(self.left.step2.search)
+		self.left.step2.search.button = PySide.QtGui.QPushButton("Search")
+		self.left.step2.search.layout.addWidget(self.left.step2.search.button)
+		self.left.step2.addLayout(self.left.step2.search.layout)
 		#...
 		self.left.addLayout(self.left.step1)
+		#self.left.step1.show()
+		#self.left.addLayout(self.left.step2)
+		#self.left.step2.hide()
 		self.layout.addLayout(self.left)
 		self.layout.addLayout(self.right)
 		self.setLayout(self.layout)
 
+	def connecttodream(self):
+		Movies2HDD.connect(self.left.step1.host.text(), self.left.step1.user.text(), self.left.step1.pwd.text())
+		
+
 mainwindow = MainWindow()
 mainwindow.show()
 app.exec_()
+Movies2HDD.disconnect()
