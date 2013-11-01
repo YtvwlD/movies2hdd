@@ -76,7 +76,8 @@ class MainWindow(PySide.QtGui.QDialog):
 		#...
 		self.left.addLayout(self.left.step1)
 		#self.left.step1.show()
-		#self.left.addLayout(self.left.step2)
+		self.left.addLayout(self.left.step2)
+		self.left.step2.setEnabled(False)
 		#self.left.step2.hide()
 		self.layout.addLayout(self.left)
 		self.layout.addLayout(self.right)
@@ -84,7 +85,8 @@ class MainWindow(PySide.QtGui.QDialog):
 
 	def connecttodream(self):
 		Movies2HDD.connect(self.left.step1.host.text(), self.left.step1.user.text(), self.left.step1.pwd.text())
-		
+		self.left.step1.setEnabled(False)
+		self.left.step2.setEnabled(True)
 
 mainwindow = MainWindow()
 mainwindow.show()
