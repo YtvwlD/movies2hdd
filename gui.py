@@ -25,6 +25,22 @@ if __name__ == "__main__":
 
 class MainWindow(PySide.QtGui.QDialog):
 
+	def _hideLayout(self, layout):
+		for i in range(layout.count()):
+			x = layout.itemAt(i)
+			if x.widget() != None:
+				x.widget().hide()
+			else:
+				self._hideLayout(x)
+
+	def _showLayout(self, layout):
+		for i in range(layout.count()):
+			x = layout.itemAt(i)
+			if x.widget() != None:
+				x.widget().show()
+			else:
+				self._showLayout(x)
+
 	def __init__(self, parent=None):
 		super(MainWindow, self).__init__(parent)
 		self.setWindowTitle("Movies2HDD")
@@ -35,6 +51,8 @@ class MainWindow(PySide.QtGui.QDialog):
 		self.right.addWidget(self.right.headline)
 		self.right.step1 = PySide.QtGui.QLabel("1. Connect to your DreamBox")
 		self.right.addWidget(self.right.step1)
+		self.right.step2 = PySide.QtGui.QLabel("2. Search for movies")
+		self.right.addWidget(self.right.step2)
 		#left
 		self.left = PySide.QtGui.QHBoxLayout()
 		#Step 1
@@ -75,18 +93,17 @@ class MainWindow(PySide.QtGui.QDialog):
 		self.left.step2.addLayout(self.left.step2.search.layout)
 		#...
 		self.left.addLayout(self.left.step1)
-		#self.left.step1.show()
+		self._showLayout(self.left.step1)
+		self._hideLayout(self.left.step2)
 		self.left.addLayout(self.left.step2)
-		self.left.step2.setEnabled(False)
-		#self.left.step2.hide()
 		self.layout.addLayout(self.left)
 		self.layout.addLayout(self.right)
 		self.setLayout(self.layout)
 
 	def connecttodream(self):
 		Movies2HDD.connect(self.left.step1.host.text(), self.left.step1.user.text(), self.left.step1.pwd.text())
-		self.left.step1.setEnabled(False)
-		self.left.step2.setEnabled(True)
+		self._hideLayout(self.left.step1)
+		self._showLayout(self.left.step2)
 
 mainwindow = MainWindow()
 mainwindow.show()
