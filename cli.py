@@ -16,6 +16,14 @@
 #	You should have received a copy of the GNU General Public License
 #	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+print ("Movies2HDD's command line interface Copyright (C) 2013 Niklas Sombert")
+print ("This program comes with ABSOLUTELY NO WARRANTY.")
+print ("This is free software, and you are welcome to redistribute it")
+print ("under certain conditions.")
+
+
+print ("")
+
 print("Loading libraries...")
 from movies2hdd import Movies2HDD
 movies2hdd = Movies2HDD()
