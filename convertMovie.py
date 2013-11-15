@@ -1,5 +1,17 @@
 #! /usr/bin/env python3
 """A simple script to convert a movie. It uses the movies2hdd library."""
+
+print ("Movies2HDD's convertMovie tool Copyright (C) 2013 Niklas Sombert")
+print ("This program comes with ABSOLUTELY NO WARRANTY.")
+print ("This is free software, and you are welcome to redistribute it")
+print ("under certain conditions.")
+
+print ("")
+
+print ("This is _deprecated_! It will be removed when other components are ready to be used...")
+
+print ("")
+
 print("Loading libraries...")
 from movies2hdd import Movies2HDD
 import sys
