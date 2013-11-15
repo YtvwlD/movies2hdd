@@ -16,24 +16,31 @@
 #	You should have received a copy of the GNU General Public License
 #	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-if __name__ == "__main__":
-	import sys
-	sys.stdout.write("Loading...")
-	sys.stdout.flush()
-	sys.stdout.write("	PySide")
-	sys.stdout.flush()
-	import PySide
-	import PySide.QtCore
-	import PySide.QtGui
-	app = PySide.QtGui.QApplication(sys.argv)
-	sys.stdout.write("	Movies2HDD")
-	sys.stdout.flush()
-	import movies2hdd
-	Movies2HDD = movies2hdd.Movies2HDD()
-	sys.stdout.write("	...done.")
-	sys.stdout.flush()
-	sys.stdout.write("\n")
-	sys.stdout.flush()
+print ("Movies2HDD's graphical user interface Copyright (C) 2013 Niklas Sombert")
+print ("This program comes with ABSOLUTELY NO WARRANTY.")
+print ("This is free software, and you are welcome to redistribute it")
+print ("under certain conditions.")
+
+print ("")
+
+import sys
+sys.stdout.write("Loading...")
+sys.stdout.flush()
+sys.stdout.write("	PySide")
+sys.stdout.flush()
+import PySide
+import PySide.QtCore
+import PySide.QtGui
+app = PySide.QtGui.QApplication(sys.argv)
+sys.stdout.write("	Movies2HDD")
+sys.stdout.flush()
+import movies2hdd
+Movies2HDD = movies2hdd.Movies2HDD()
+sys.stdout.write("	...done.")
+sys.stdout.flush()
+sys.stdout.write("\n")
+sys.stdout.flush()
+print ("")
 
 class MainWindow(PySide.QtGui.QDialog):
 
