@@ -37,9 +37,14 @@ args = parser.parse_args()
 #print (args.command)
 
 if args.command == "help":
-	print("The aviable commands are:")
-	print(" * convert [path to movie]	Converts the movie from .ts to .mpg. It removes additional audio tracks!")
-	print(" * ")
+	print ("The aviable commands are:")
+	print (" * lbi	Starts movies2hdd's line-based interface.")
+	print (" * gui	Starts movies2hdd's graphical user interface.")
+	print ("")
+	print (" * convert [path to movie]	Converts the movie from .ts to .mpg. It removes additional audio tracks!")
+	print (" * ")
+
+
 
 if args.command == "convert":
 	import sys
