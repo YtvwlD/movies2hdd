@@ -24,7 +24,7 @@ Features:
 	* a GUI
 	* a simple movie converter (.ts to .mpg, will delete additional audio tracks!)
 
-* a library:
+* a library
 	* connects to a DreamBox via FTP
 	* searches for movies
 	* downloads movies
