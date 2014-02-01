@@ -1,0 +1,265 @@
+\hypertarget{namespacemovies2hdd_1_1lbi}{\section{movies2hdd.\-lbi Namespace Reference}
+\label{namespacemovies2hdd_1_1lbi}\index{movies2hdd.\-lbi@{movies2hdd.\-lbi}}
+}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespacemovies2hdd_1_1lbi_aa411fd2536c5b5990b10eefa5013632a}{connect}
+\item 
+def \hyperlink{namespacemovies2hdd_1_1lbi_af95b673a57b5470449d62aaf07b91cde}{disconnect}
+\item 
+def \hyperlink{namespacemovies2hdd_1_1lbi_a8a952cc0a80b1f4ab0bb4d1eaf8f1cfd}{search}
+\item 
+def \hyperlink{namespacemovies2hdd_1_1lbi_a68a02cd4a9f9c827984c06b24947f42a}{select}
+\item 
+def \hyperlink{namespacemovies2hdd_1_1lbi_a7cffc384bf2cf29f12ea83b2c59800d0}{save}
+\item 
+def \hyperlink{namespacemovies2hdd_1_1lbi_a613308653e921ffefd9d15bd912d45f6}{download}
+\item 
+def \hyperlink{namespacemovies2hdd_1_1lbi_a575a370ef89b527cbda766ff0341e3b4}{rename}
+\item 
+def \hyperlink{namespacemovies2hdd_1_1lbi_af82814dc0312f2a2a8de4672e6f79c6e}{convert}
+\item 
+def \hyperlink{namespacemovies2hdd_1_1lbi_a57f4964811a71e55d727484d464ea6e2}{quit}
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+tuple \hyperlink{namespacemovies2hdd_1_1lbi_a0a37f11b0348a8fcc9af17541471fbd8}{Movies2\-H\-D\-D} = \hyperlink{classmovies2hdd_1_1_movies2_h_d_d}{movies2hdd.\-Movies2\-H\-D\-D}()
+\item 
+\hyperlink{namespacemovies2hdd_1_1lbi_a4bc534737690c0a51a760418d39e3753}{ask} = raw\-\_\-input
+\item 
+tuple \hyperlink{namespacemovies2hdd_1_1lbi_ab0bb9564b6047c61086071bdae2ba4ce}{answer} = int(\hyperlink{namespacemovies2hdd_1_1lbi_a4bc534737690c0a51a760418d39e3753}{ask}(\char`\"{}$>$ \char`\"{}))
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{namespacemovies2hdd_1_1lbi_aa411fd2536c5b5990b10eefa5013632a}{\index{movies2hdd\-::lbi@{movies2hdd\-::lbi}!connect@{connect}}
+\index{connect@{connect}!movies2hdd::lbi@{movies2hdd\-::lbi}}
+\subsubsection[{connect}]{\setlength{\rightskip}{0pt plus 5cm}def movies2hdd.\-lbi.\-connect (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{namespacemovies2hdd_1_1lbi_aa411fd2536c5b5990b10eefa5013632a}
+
+
+Definition at line 26 of file lbi.\-py.
+
+
+\begin{DoxyCode}
+26 
+27 \textcolor{keyword}{def }\hyperlink{namespacemovies2hdd_1_1lbi_aa411fd2536c5b5990b10eefa5013632a}{connect}():
+28     \textcolor{keywordflow}{print} (\textcolor{stringliteral}{"Connect to your DreamBox"})
+29     host = \hyperlink{namespacemovies2hdd_1_1lbi_a4bc534737690c0a51a760418d39e3753}{ask}(\textcolor{stringliteral}{"Host: "})
+30     user = \hyperlink{namespacemovies2hdd_1_1lbi_a4bc534737690c0a51a760418d39e3753}{ask}(\textcolor{stringliteral}{"User: "})
+31     \textcolor{keywordflow}{print} (\textcolor{stringliteral}{"Your password will be sent unencryptedly!!!"})
+32     \textcolor{keywordflow}{print} (\textcolor{stringliteral}{"Don't do this if you don't trust this network."})
+33     \textcolor{keywordflow}{print} (\textcolor{stringliteral}{"Otherwise, please tunnel this connection via SSH."})
+34     pwd = getpass(\textcolor{stringliteral}{"Password: "})
+35     \textcolor{keywordflow}{print} (\textcolor{stringliteral}{"Connecting..."})
+36     Movies2HDD.connect(host, user, pwd)
+\textcolor{comment}{#}
+\end{DoxyCode}
+\hypertarget{namespacemovies2hdd_1_1lbi_af82814dc0312f2a2a8de4672e6f79c6e}{\index{movies2hdd\-::lbi@{movies2hdd\-::lbi}!convert@{convert}}
+\index{convert@{convert}!movies2hdd::lbi@{movies2hdd\-::lbi}}
+\subsubsection[{convert}]{\setlength{\rightskip}{0pt plus 5cm}def movies2hdd.\-lbi.\-convert (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{namespacemovies2hdd_1_1lbi_af82814dc0312f2a2a8de4672e6f79c6e}
+
+
+Definition at line 81 of file lbi.\-py.
+
+
+\begin{DoxyCode}
+81 
+82 \textcolor{keyword}{def }\hyperlink{namespacemovies2hdd_1_1lbi_af82814dc0312f2a2a8de4672e6f79c6e}{convert}():
+83     \textcolor{keywordflow}{if} filetype == \textcolor{stringliteral}{"ts"}:
+84         \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} movies:
+85             Movies2HDD.convertMovie(x)
+86     \textcolor{keywordflow}{elif} filetype == \textcolor{stringliteral}{"mpg"}:
+87         \textcolor{keywordflow}{print} (\textcolor{stringliteral}{"The files are already .mpg."})
+88     \textcolor{keywordflow}{else}:
+89         \textcolor{keywordflow}{print} (\textcolor{stringliteral}{"What?!"})
+90         \textcolor{keywordflow}{print} (\textcolor{stringliteral}{"... file type are you using?"})
+91         \hyperlink{namespacemovies2hdd_1_1lbi_a57f4964811a71e55d727484d464ea6e2}{quit}()
+\textcolor{comment}{#}
+\end{DoxyCode}
+\hypertarget{namespacemovies2hdd_1_1lbi_af95b673a57b5470449d62aaf07b91cde}{\index{movies2hdd\-::lbi@{movies2hdd\-::lbi}!disconnect@{disconnect}}
+\index{disconnect@{disconnect}!movies2hdd::lbi@{movies2hdd\-::lbi}}
+\subsubsection[{disconnect}]{\setlength{\rightskip}{0pt plus 5cm}def movies2hdd.\-lbi.\-disconnect (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{namespacemovies2hdd_1_1lbi_af95b673a57b5470449d62aaf07b91cde}
+
+
+Definition at line 37 of file lbi.\-py.
+
+
+\begin{DoxyCode}
+37 
+38 \textcolor{keyword}{def }\hyperlink{namespacemovies2hdd_1_1lbi_af95b673a57b5470449d62aaf07b91cde}{disconnect}():
+39     \textcolor{keywordflow}{print} (\textcolor{stringliteral}{"Disconnecting..."})
+40     Movies2HDD.disconnect()
+\textcolor{comment}{#}
+\end{DoxyCode}
+\hypertarget{namespacemovies2hdd_1_1lbi_a613308653e921ffefd9d15bd912d45f6}{\index{movies2hdd\-::lbi@{movies2hdd\-::lbi}!download@{download}}
+\index{download@{download}!movies2hdd::lbi@{movies2hdd\-::lbi}}
+\subsubsection[{download}]{\setlength{\rightskip}{0pt plus 5cm}def movies2hdd.\-lbi.\-download (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{namespacemovies2hdd_1_1lbi_a613308653e921ffefd9d15bd912d45f6}
+
+
+Definition at line 74 of file lbi.\-py.
+
+
+\begin{DoxyCode}
+74 
+75 \textcolor{keyword}{def }\hyperlink{namespacemovies2hdd_1_1lbi_a613308653e921ffefd9d15bd912d45f6}{download}():
+76     \textcolor{keywordflow}{pass}
+77     \textcolor{comment}{#filetype = "ts"}
+\textcolor{comment}{#}
+\end{DoxyCode}
+\hypertarget{namespacemovies2hdd_1_1lbi_a57f4964811a71e55d727484d464ea6e2}{\index{movies2hdd\-::lbi@{movies2hdd\-::lbi}!quit@{quit}}
+\index{quit@{quit}!movies2hdd::lbi@{movies2hdd\-::lbi}}
+\subsubsection[{quit}]{\setlength{\rightskip}{0pt plus 5cm}def movies2hdd.\-lbi.\-quit (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{namespacemovies2hdd_1_1lbi_a57f4964811a71e55d727484d464ea6e2}
+
+
+Definition at line 92 of file lbi.\-py.
+
+
+\begin{DoxyCode}
+92 
+93 \textcolor{keyword}{def }\hyperlink{namespacemovies2hdd_1_1lbi_a57f4964811a71e55d727484d464ea6e2}{quit}():
+94     \textcolor{keywordflow}{print} (\textcolor{stringliteral}{"Exiting..."})
+95     sys.exit()
+\textcolor{comment}{#}
+\end{DoxyCode}
+\hypertarget{namespacemovies2hdd_1_1lbi_a575a370ef89b527cbda766ff0341e3b4}{\index{movies2hdd\-::lbi@{movies2hdd\-::lbi}!rename@{rename}}
+\index{rename@{rename}!movies2hdd::lbi@{movies2hdd\-::lbi}}
+\subsubsection[{rename}]{\setlength{\rightskip}{0pt plus 5cm}def movies2hdd.\-lbi.\-rename (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{namespacemovies2hdd_1_1lbi_a575a370ef89b527cbda766ff0341e3b4}
+
+
+Definition at line 78 of file lbi.\-py.
+
+
+\begin{DoxyCode}
+78 
+79 \textcolor{keyword}{def }\hyperlink{namespacemovies2hdd_1_1lbi_a575a370ef89b527cbda766ff0341e3b4}{rename}():
+80     \textcolor{keywordflow}{pass}
+\textcolor{comment}{#}
+\end{DoxyCode}
+\hypertarget{namespacemovies2hdd_1_1lbi_a7cffc384bf2cf29f12ea83b2c59800d0}{\index{movies2hdd\-::lbi@{movies2hdd\-::lbi}!save@{save}}
+\index{save@{save}!movies2hdd::lbi@{movies2hdd\-::lbi}}
+\subsubsection[{save}]{\setlength{\rightskip}{0pt plus 5cm}def movies2hdd.\-lbi.\-save (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{namespacemovies2hdd_1_1lbi_a7cffc384bf2cf29f12ea83b2c59800d0}
+
+
+Definition at line 69 of file lbi.\-py.
+
+
+\begin{DoxyCode}
+69 
+70 \textcolor{keyword}{def }\hyperlink{namespacemovies2hdd_1_1lbi_a7cffc384bf2cf29f12ea83b2c59800d0}{save}():
+71     \textcolor{keywordflow}{print} (\textcolor{stringliteral}{"Where do you want to save the movies?"})
+72     path = \hyperlink{namespacemovies2hdd_1_1lbi_a4bc534737690c0a51a760418d39e3753}{ask}(\textcolor{stringliteral}{"> "})
+73     \textcolor{comment}{#do something}
+\textcolor{comment}{#}
+\end{DoxyCode}
+\hypertarget{namespacemovies2hdd_1_1lbi_a8a952cc0a80b1f4ab0bb4d1eaf8f1cfd}{\index{movies2hdd\-::lbi@{movies2hdd\-::lbi}!search@{search}}
+\index{search@{search}!movies2hdd::lbi@{movies2hdd\-::lbi}}
+\subsubsection[{search}]{\setlength{\rightskip}{0pt plus 5cm}def movies2hdd.\-lbi.\-search (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{namespacemovies2hdd_1_1lbi_a8a952cc0a80b1f4ab0bb4d1eaf8f1cfd}
+
+
+Definition at line 41 of file lbi.\-py.
+
+
+\begin{DoxyCode}
+41 
+42 \textcolor{keyword}{def }\hyperlink{namespacemovies2hdd_1_1lbi_a8a952cc0a80b1f4ab0bb4d1eaf8f1cfd}{search}():
+43     \textcolor{keywordflow}{print} (\textcolor{stringliteral}{"Search for movies"})
+44     search = \hyperlink{namespacemovies2hdd_1_1lbi_a4bc534737690c0a51a760418d39e3753}{ask}(\textcolor{stringliteral}{"Search for: "})
+45     \textcolor{keywordflow}{print} (\textcolor{stringliteral}{""})
+46     result = Movies2HDD.getAviableMovies(search)
+47     \textcolor{keywordflow}{print} (\textcolor{stringliteral}{"The following movies were found:"})
+48     i = 0
+49     \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} result:
+50         i += 1
+51         \textcolor{keywordflow}{print} (\textcolor{stringliteral}{"    ["} + str(i) + \textcolor{stringliteral}{"] "} + x)
+52     \textcolor{keywordflow}{print} (\textcolor{stringliteral}{""})
+53     \textcolor{keywordflow}{print} (\textcolor{stringliteral}{"Which of them do you want to download?"})
+54     \textcolor{keywordflow}{print} (\textcolor{stringliteral}{"Please type in the numbers and seperate them with a ',' (e.g. '1,5,7,42,1234')."})
+55     selection\_input = \hyperlink{namespacemovies2hdd_1_1lbi_a4bc534737690c0a51a760418d39e3753}{ask}(\textcolor{stringliteral}{"> "})
+56     movies\_to\_get = []
+57     \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} selection\_input.split(\textcolor{stringliteral}{","}):
+58         x = int(x)-1
+59         movies\_to\_get.append(result[x])
+60     \textcolor{keywordflow}{print} (\textcolor{stringliteral}{""})
+61     \textcolor{keywordflow}{print} (\textcolor{stringliteral}{"The following movies are selected to be downloaded:"})
+62     \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} movies\_to\_get:
+63         \textcolor{keywordflow}{print} (\textcolor{stringliteral}{"    * "} + x)
+64     movies = movies\_to\_get
+\textcolor{comment}{#}
+\end{DoxyCode}
+\hypertarget{namespacemovies2hdd_1_1lbi_a68a02cd4a9f9c827984c06b24947f42a}{\index{movies2hdd\-::lbi@{movies2hdd\-::lbi}!select@{select}}
+\index{select@{select}!movies2hdd::lbi@{movies2hdd\-::lbi}}
+\subsubsection[{select}]{\setlength{\rightskip}{0pt plus 5cm}def movies2hdd.\-lbi.\-select (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{namespacemovies2hdd_1_1lbi_a68a02cd4a9f9c827984c06b24947f42a}
+
+
+Definition at line 65 of file lbi.\-py.
+
+
+\begin{DoxyCode}
+65 
+66 \textcolor{keyword}{def }\hyperlink{namespacemovies2hdd_1_1lbi_a68a02cd4a9f9c827984c06b24947f42a}{select}():
+67     \textcolor{keywordflow}{pass}
+68     \textcolor{comment}{#filetype = ?}
+\textcolor{comment}{#}
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\hypertarget{namespacemovies2hdd_1_1lbi_ab0bb9564b6047c61086071bdae2ba4ce}{\index{movies2hdd\-::lbi@{movies2hdd\-::lbi}!answer@{answer}}
+\index{answer@{answer}!movies2hdd::lbi@{movies2hdd\-::lbi}}
+\subsubsection[{answer}]{\setlength{\rightskip}{0pt plus 5cm}tuple movies2hdd.\-lbi.\-answer = int({\bf ask}(\char`\"{}$>$ \char`\"{}))}}\label{namespacemovies2hdd_1_1lbi_ab0bb9564b6047c61086071bdae2ba4ce}
+
+
+Definition at line 109 of file lbi.\-py.
+
+\hypertarget{namespacemovies2hdd_1_1lbi_a4bc534737690c0a51a760418d39e3753}{\index{movies2hdd\-::lbi@{movies2hdd\-::lbi}!ask@{ask}}
+\index{ask@{ask}!movies2hdd::lbi@{movies2hdd\-::lbi}}
+\subsubsection[{ask}]{\setlength{\rightskip}{0pt plus 5cm}movies2hdd.\-lbi.\-ask = raw\-\_\-input}}\label{namespacemovies2hdd_1_1lbi_a4bc534737690c0a51a760418d39e3753}
+
+
+Definition at line 17 of file lbi.\-py.
+
+\hypertarget{namespacemovies2hdd_1_1lbi_a0a37f11b0348a8fcc9af17541471fbd8}{\index{movies2hdd\-::lbi@{movies2hdd\-::lbi}!Movies2\-H\-D\-D@{Movies2\-H\-D\-D}}
+\index{Movies2\-H\-D\-D@{Movies2\-H\-D\-D}!movies2hdd::lbi@{movies2hdd\-::lbi}}
+\subsubsection[{Movies2\-H\-D\-D}]{\setlength{\rightskip}{0pt plus 5cm}tuple movies2hdd.\-lbi.\-Movies2\-H\-D\-D = {\bf movies2hdd.\-Movies2\-H\-D\-D}()}}\label{namespacemovies2hdd_1_1lbi_a0a37f11b0348a8fcc9af17541471fbd8}
+
+
+Definition at line 13 of file lbi.\-py.
+

@@ -1,0 +1,340 @@
+.TH "movies2hdd.Movies2HDD" 3 "Sat Feb 1 2014" "Movies2HDD" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+movies2hdd.Movies2HDD \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fB__init__\fP"
+.br
+.ti -1c
+.RI "def \fBconnect\fP"
+.br
+.ti -1c
+.RI "def \fBdisconnect\fP"
+.br
+.ti -1c
+.RI "def \fBgetAviableMovies\fP"
+.br
+.ti -1c
+.RI "def \fBgetTitleOfEpisode\fP"
+.br
+.ti -1c
+.RI "def \fBgetPositionOfEpisode\fP"
+.br
+.ti -1c
+.RI "def \fBdownloadMovie\fP"
+.br
+.ti -1c
+.RI "def \fBconvertMovie\fP"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBconn\fP"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "tuple \fBdom\fP = parseString(apianswer)"
+.br
+.ti -1c
+.RI "tuple \fBepisodes\fP = dom\&.getElementsByTagName('Episode')"
+.br
+.ti -1c
+.RI "int \fBseason\fP = 0"
+.br
+.ti -1c
+.RI "tuple \fBepisode\fP = x\&.getElementsByTagName('Combined_episodenumber')"
+.br
+.ti -1c
+.RI "tuple \fBseason\fP = x\&.getElementsByTagName('Combined_season')"
+.br
+.ti -1c
+.RI "list \fBepisode\fP = episode[0:episode\&.find('\&.')]"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.PP
+.nf
+A simple set of python scripts and libraries to work with movies. I use it with my DreamBox.
+.fi
+.PP
+ 
+.PP
+Definition at line 29 of file __init__\&.py\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "def movies2hdd\&.Movies2HDD\&.__init__ (self)"
+
+.PP
+.nf
+The __init__. What else?
+.fi
+.PP
+ 
+.PP
+Definition at line 32 of file __init__\&.py\&.
+.PP
+.nf
+32 
+33     def __init__(self):
+34         """The __init__\&. What else?"""
+35         pass
+
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "def movies2hdd\&.Movies2HDD\&.connect (self, host, user, pwd)"
+
+.PP
+.nf
+Connect to a DreamBox using the given host and credentials.
+.fi
+.PP
+ 
+.PP
+Definition at line 36 of file __init__\&.py\&.
+.PP
+.nf
+36 
+37     def connect(self, host, user, pwd):
+38         """Connect to a DreamBox using the given host and credentials\&."""
+39         self\&.conn = ftplib\&.FTP()
+40         print((self\&.conn\&.connect(host)))
+41         print((self\&.conn\&.login(user, pwd)))
+42         print((self\&.conn\&.cwd("/media/hdd/movie")))
+43         #return conn
+
+.fi
+.SS "def movies2hdd\&.Movies2HDD\&.convertMovie (self, movie)"
+
+.PP
+.nf
+Convert a movie. It will remove additional audio tracks!
+.fi
+.PP
+ 
+.PP
+Definition at line 115 of file __init__\&.py\&.
+.PP
+.nf
+115 
+116     def convertMovie(self, movie):
+117         """Convert a movie\&. It will remove additional audio tracks!"""
+118         if subprocess\&.Popen(["projectx", "/tmp/"+movie+"\&.ts"])\&.wait() != 0: #threading?
+119             raise BaseException
+120         files = os\&.listdir("/tmp")
+121         contents = list()
+122         for x in files:
+123             print("There is "+x+"\&.")
+124             if x\&.startswith(movie):
+125                 print("It belongs to us! "+x)
+126                 #if x\&.find("[") == -1 and x\&.find("_log") == -1 and x\&.find("\&.ts") == -1:
+127                     #contents\&.append(x[x\&.index("\&."):x\&.count("")-1])
+128                 if x\&.endswith("\&.ac3"):
+129                     contents\&.append("\&.ac3")
+130                     print(x+" is in\&.")
+131                 elif x\&.endswith("\&.mp2") and x\&.find("[") == -1:
+132                     contents\&.append("\&.mp2")
+133                     print(x+" is in\&.")
+134                 elif x\&.endswith("\&.m2v"):
+135                     contents\&.append("\&.m2v")
+136                     print(x+" is in\&.")
+137                 elif x\&.endswith("\&.ts"):
+138                     contents\&.append("\&.ts")
+139                     print(x+" will not be deleted for now\&.")
+140                 else:
+141                     os\&.remove("/tmp/"+x)
+142                     print(x+" removed\&.")
+143         print("We have got the following files:")
+144         print(contents)
+145         if contents\&.count("\&.m2v") != 0:
+146             if contents\&.count("\&.ac3") != 0:
+147                 if subprocess\&.Popen(["mplex","-f","3","-o","/tmp/"+movie+"\&.mpg","/tmp/"+movie+"\&.ac3","/tmp/"+movie+"\&.m2v"])\&.wait() != 0: #threading?
+148                     raise BaseException
+149             elif contents\&.count("\&.mp2") != 0:
+150                 if subprocess\&.Popen(["mplex","-f","3","-o","/tmp/"+movie+"\&.mpg","/tmp/"+movie+"\&.mp2","/tmp/"+movie+"\&.m2v"])\&.wait() != 0: #threading?
+151                     raise BaseException
+152             else:
+153                 print("No audio in here\&.")
+154                 #return False
+155                 raise BaseException
+156         else:
+157             print("No video in here\&.")
+158             #return False
+159             raise BaseException
+160         for x in contents:
+161             print("deleting "+movie+x+"\&.\&.\&.")
+162             os\&.remove("/tmp/"+movie+x)
+.fi
+.SS "def movies2hdd\&.Movies2HDD\&.disconnect (self)"
+
+.PP
+.nf
+Close the connection.
+.fi
+.PP
+ 
+.PP
+Definition at line 44 of file __init__\&.py\&.
+.PP
+.nf
+44 
+45     def disconnect(self):
+46         """Close the connection\&."""
+47         print((self\&.conn\&.quit()))
+48         return
+
+.fi
+.SS "def movies2hdd\&.Movies2HDD\&.downloadMovie (self, movie)"
+
+.PP
+.nf
+Download a video from your DreamBox.
+.fi
+.PP
+ 
+.PP
+Definition at line 103 of file __init__\&.py\&.
+.PP
+.nf
+103 
+104     def downloadMovie(self, movie):
+105         """Download a video from your DreamBox\&."""
+106         file = open("/tmp/"+movie+"\&.ts", "wb")
+107         result = self\&.conn\&.retrbinary("RETR "+movie+"\&.ts", file\&.write, 8*1024) #perhaps implement threading ;-)
+108         print(result)
+109         file\&.close()
+110         if result\&.startswith("2") == False:
+111             raise BaseException
+112         else:
+113             print("TODO")
+114             #print(self\&.conn\&.delete(movie)) #TODO
+
+.fi
+.SS "def movies2hdd\&.Movies2HDD\&.getAviableMovies (self, search)"
+
+.PP
+.nf
+List movies aviable on your DreamBox.
+.fi
+.PP
+ 
+.PP
+Definition at line 49 of file __init__\&.py\&.
+.PP
+.nf
+49 
+50     def getAviableMovies(self,search):
+51         """List movies aviable on your DreamBox\&."""
+52         allfiles = self\&.conn\&.nlst()
+53         newlist = list()
+54         for each in allfiles:
+55             if each\&.find(search) != -1:
+56                 newlist\&.append(each)
+57         movies = list()
+58         for each in newlist:
+59             if each\&.endswith("\&.ts"):
+60                 movies\&.append(each\&.replace("\&.ts", ""))
+61         return movies
+    
+.fi
+.SS "def movies2hdd\&.Movies2HDD\&.getPositionOfEpisode (self, series, episode)"
+
+.PP
+.nf
+Get the season and episode number of an episode.
+.fi
+.PP
+ 
+.PP
+Definition at line 71 of file __init__\&.py\&.
+.PP
+.nf
+71 
+72     def getPositionOfEpisode(self, series, episode):
+73         """Get the season and episode number of an episode\&."""
+74         lang = "de" #german #or perhaps as a parameter
+75         #search doesn't always work
+76         try:
+77             apianswer = urllib\&.urlopen("http://thetvdb\&.com/api/GetSeries\&.php?seriesname="+series)\&.read()
+78         except AttributeError:
+79             apianswer = urllib\&.request\&.urlopen("http://thetvdb\&.com/api/GetSeries\&.php?seriesname="+series)\&.read()
+80 
+81         sid = parseString(apianswer)\&.getElementsByTagName("Data")[0]\&.getElementsByTagName("Series")[0]\&.getElementsByTagName("seriesid")[0]\&.firstChild\&.data #seriesid
+82         if series == "Castle":
+83             sid = 83462
+84         try:
+85             apianswer = urllib\&.urlopen("http://thetvdb\&.com/api/FE84E205C6E3D916/series/"+str(sid)+"/all/"+lang+"\&.xml")\&.read()
+86         except AttributeError:
+            apianswer = urllib\&.request\&.urlopen("http://thetvdb\&.com/api/FE84E205C6E3D916/series/"+str(sid)+"/all/"+lang+"\&.xml")\&.read()
+.fi
+.SS "def movies2hdd\&.Movies2HDD\&.getTitleOfEpisode (self, movie)"
+
+.PP
+.nf
+Get the title of an episode. It uses the .ts.meta file that are automatically stored with your recordings.
+.fi
+.PP
+ 
+.PP
+Definition at line 62 of file __init__\&.py\&.
+.PP
+.nf
+62 
+63     def getTitleOfEpisode(self, movie):
+64         """Get the title of an episode\&. It uses the \&.ts\&.meta file that are automatically stored with your recordings\&."""
+65         meta = list()
+66         self\&.conn\&.retrlines("RETR "+movie+"\&.ts\&.meta", meta\&.append)
+67         if meta[1] == meta[2]:
+68             return False #Titel wurde nicht bei der Aufnahme gespeichert
+69         else:
+70             return meta[2]
+    
+.fi
+.SH "Member Data Documentation"
+.PP 
+.SS "movies2hdd\&.Movies2HDD\&.conn"
+
+.PP
+Definition at line 38 of file __init__\&.py\&.
+.SS "tuple movies2hdd\&.Movies2HDD\&.dom = parseString(apianswer)\fC [static]\fP"
+
+.PP
+Definition at line 89 of file __init__\&.py\&.
+.SS "tuple movies2hdd\&.Movies2HDD\&.episode = x\&.getElementsByTagName('Combined_episodenumber')\fC [static]\fP"
+
+.PP
+Definition at line 94 of file __init__\&.py\&.
+.SS "list movies2hdd\&.Movies2HDD\&.episode = episode[0:episode\&.find('\&.')]\fC [static]\fP"
+
+.PP
+Definition at line 97 of file __init__\&.py\&.
+.SS "tuple movies2hdd\&.Movies2HDD\&.episodes = dom\&.getElementsByTagName('Episode')\fC [static]\fP"
+
+.PP
+Definition at line 90 of file __init__\&.py\&.
+.SS "int movies2hdd\&.Movies2HDD\&.season = 0\fC [static]\fP"
+
+.PP
+Definition at line 91 of file __init__\&.py\&.
+.SS "tuple movies2hdd\&.Movies2HDD\&.season = x\&.getElementsByTagName('Combined_season')\fC [static]\fP"
+
+.PP
+Definition at line 95 of file __init__\&.py\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Movies2HDD from the source code\&.

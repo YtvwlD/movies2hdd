@@ -1,0 +1,75 @@
+.TH "movies2hdd.gui.MainWindow" 3 "Sat Feb 1 2014" "Movies2HDD" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+movies2hdd.gui.MainWindow \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits QDialog\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fB__init__\fP"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBlayout\fP"
+.br
+.ti -1c
+.RI "\fBintroduction\fP"
+.br
+.ti -1c
+.RI "\fBcommontasks\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 45 of file gui\&.py\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "def movies2hdd\&.gui\&.MainWindow\&.__init__ (self, parent = \fCNone\fP)"
+
+.PP
+Definition at line 63 of file gui\&.py\&.
+.PP
+.nf
+63 
+64     def __init__(self, parent=None):
+65         super(MainWindow, self)\&.__init__(parent)
+66         self\&.setWindowTitle("Movies2HDD")
+67         self\&.layout = PySide\&.QtGui\&.QVBoxLayout()
+68         self\&.introduction = PySide\&.QtGui\&.QLabel("There are a few common tasks\&. These are listed below\&.\nIf you think that something is missing feel free to create an issue or a pull request\&.\nYou may want to take a look at the existing tasks\&.")
+69         self\&.layout\&.addWidget(self\&.introduction)
+70         self\&.commontasks = PySide\&.QtGui\&.QHBoxLayout()
+71         self\&.commontasks\&.downloadrenameconvert = PySide\&.QtGui\&.QPushButton("Download, rename and convert\n(You can choose which of them you want but the order is fixed\&.)")
+72         self\&.commontasks\&.addWidget(self\&.commontasks\&.downloadrenameconvert)
+73         self\&.commontasks\&.renameexisting = PySide\&.QtGui\&.QPushButton("Rename existing movies (needs the *\&.meta files)")
+74         self\&.commontasks\&.addWidget(self\&.commontasks\&.renameexisting)
+75         self\&.layout\&.addLayout(self\&.commontasks)
+76         self\&.setLayout(self\&.layout)
+
+.fi
+.SH "Member Data Documentation"
+.PP 
+.SS "movies2hdd\&.gui\&.MainWindow\&.commontasks"
+
+.PP
+Definition at line 69 of file gui\&.py\&.
+.SS "movies2hdd\&.gui\&.MainWindow\&.introduction"
+
+.PP
+Definition at line 67 of file gui\&.py\&.
+.SS "movies2hdd\&.gui\&.MainWindow\&.layout"
+
+.PP
+Definition at line 66 of file gui\&.py\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Movies2HDD from the source code\&.

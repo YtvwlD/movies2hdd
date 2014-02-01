@@ -1,0 +1,213 @@
+.TH "movies2hdd.lbi" 3 "Sat Feb 1 2014" "Movies2HDD" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+movies2hdd.lbi \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fBconnect\fP"
+.br
+.ti -1c
+.RI "def \fBdisconnect\fP"
+.br
+.ti -1c
+.RI "def \fBsearch\fP"
+.br
+.ti -1c
+.RI "def \fBselect\fP"
+.br
+.ti -1c
+.RI "def \fBsave\fP"
+.br
+.ti -1c
+.RI "def \fBdownload\fP"
+.br
+.ti -1c
+.RI "def \fBrename\fP"
+.br
+.ti -1c
+.RI "def \fBconvert\fP"
+.br
+.ti -1c
+.RI "def \fBquit\fP"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "tuple \fBMovies2HDD\fP = \fBmovies2hdd\&.Movies2HDD\fP()"
+.br
+.ti -1c
+.RI "\fBask\fP = raw_input"
+.br
+.ti -1c
+.RI "tuple \fBanswer\fP = int(\fBask\fP('> '))"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "def movies2hdd\&.lbi\&.connect ()"
+
+.PP
+Definition at line 26 of file lbi\&.py\&.
+.PP
+.nf
+26 
+27 def connect():
+28     print ("Connect to your DreamBox")
+29     host = ask("Host: ")
+30     user = ask("User: ")
+31     print ("Your password will be sent unencryptedly!!!")
+32     print ("Don't do this if you don't trust this network\&.")
+33     print ("Otherwise, please tunnel this connection via SSH\&.")
+34     pwd = getpass("Password: ")
+35     print ("Connecting\&.\&.\&.")
+36     Movies2HDD\&.connect(host, user, pwd)
+#
+.fi
+.SS "def movies2hdd\&.lbi\&.convert ()"
+
+.PP
+Definition at line 81 of file lbi\&.py\&.
+.PP
+.nf
+81 
+82 def convert():
+83     if filetype == "ts":
+84         for x in movies:
+85             Movies2HDD\&.convertMovie(x)
+86     elif filetype == "mpg":
+87         print ("The files are already \&.mpg\&.")
+88     else:
+89         print ("What?!")
+90         print ("\&.\&.\&. file type are you using?")
+91         quit()
+#
+.fi
+.SS "def movies2hdd\&.lbi\&.disconnect ()"
+
+.PP
+Definition at line 37 of file lbi\&.py\&.
+.PP
+.nf
+37 
+38 def disconnect():
+39     print ("Disconnecting\&.\&.\&.")
+40     Movies2HDD\&.disconnect()
+#
+.fi
+.SS "def movies2hdd\&.lbi\&.download ()"
+
+.PP
+Definition at line 74 of file lbi\&.py\&.
+.PP
+.nf
+74 
+75 def download():
+76     pass
+77     #filetype = "ts"
+#
+.fi
+.SS "def movies2hdd\&.lbi\&.quit ()"
+
+.PP
+Definition at line 92 of file lbi\&.py\&.
+.PP
+.nf
+92 
+93 def quit():
+94     print ("Exiting\&.\&.\&.")
+95     sys\&.exit()
+#
+.fi
+.SS "def movies2hdd\&.lbi\&.rename ()"
+
+.PP
+Definition at line 78 of file lbi\&.py\&.
+.PP
+.nf
+78 
+79 def rename():
+80     pass
+#
+.fi
+.SS "def movies2hdd\&.lbi\&.save ()"
+
+.PP
+Definition at line 69 of file lbi\&.py\&.
+.PP
+.nf
+69 
+70 def save():
+71     print ("Where do you want to save the movies?")
+72     path = ask("> ")
+73     #do something
+#
+.fi
+.SS "def movies2hdd\&.lbi\&.search ()"
+
+.PP
+Definition at line 41 of file lbi\&.py\&.
+.PP
+.nf
+41 
+42 def search():
+43     print ("Search for movies")
+44     search = ask("Search for: ")
+45     print ("")
+46     result = Movies2HDD\&.getAviableMovies(search)
+47     print ("The following movies were found:")
+48     i = 0
+49     for x in result:
+50         i += 1
+51         print ("    [" + str(i) + "] " + x)
+52     print ("")
+53     print ("Which of them do you want to download?")
+54     print ("Please type in the numbers and seperate them with a ',' (e\&.g\&. '1,5,7,42,1234')\&.")
+55     selection_input = ask("> ")
+56     movies_to_get = []
+57     for x in selection_input\&.split(","):
+58         x = int(x)-1
+59         movies_to_get\&.append(result[x])
+60     print ("")
+61     print ("The following movies are selected to be downloaded:")
+62     for x in movies_to_get:
+63         print ("    * " + x)
+64     movies = movies_to_get
+#
+.fi
+.SS "def movies2hdd\&.lbi\&.select ()"
+
+.PP
+Definition at line 65 of file lbi\&.py\&.
+.PP
+.nf
+65 
+66 def select():
+67     pass
+68     #filetype = ?
+#
+.fi
+.SH "Variable Documentation"
+.PP 
+.SS "tuple movies2hdd\&.lbi\&.answer = int(\fBask\fP('> '))"
+
+.PP
+Definition at line 109 of file lbi\&.py\&.
+.SS "movies2hdd\&.lbi\&.ask = raw_input"
+
+.PP
+Definition at line 17 of file lbi\&.py\&.
+.SS "tuple movies2hdd\&.lbi\&.Movies2HDD = \fBmovies2hdd\&.Movies2HDD\fP()"
+
+.PP
+Definition at line 13 of file lbi\&.py\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Movies2HDD from the source code\&.

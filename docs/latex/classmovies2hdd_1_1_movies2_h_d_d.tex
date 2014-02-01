@@ -46,7 +46,7 @@ list \hyperlink{classmovies2hdd_1_1_movies2_h_d_d_ae6cedc0a37fc3d9c391cc0f6bcf87
 \begin{DoxyVerb}A simple set of python scripts and libraries to work with movies. I use it with my DreamBox.\end{DoxyVerb}
  
 
-Definition at line 13 of file movies2hdd.\-py.
+Definition at line 29 of file \-\_\-\-\_\-init\-\_\-\-\_\-.\-py.
 
 
 
@@ -58,14 +58,18 @@ Definition at line 13 of file movies2hdd.\-py.
 \item[{}]{self}
 \end{DoxyParamCaption}
 )}}\label{classmovies2hdd_1_1_movies2_h_d_d_a6652371462723d08b714c32324f5a80f}
+\begin{DoxyVerb}The __init__. What else?\end{DoxyVerb}
+ 
 
-
-Definition at line 16 of file movies2hdd.\-py.
+Definition at line 32 of file \-\_\-\-\_\-init\-\_\-\-\_\-.\-py.
 
 
 \begin{DoxyCode}
-16 
-    \textcolor{keyword}{def }\hyperlink{classmovies2hdd_1_1_movies2_h_d_d_a6652371462723d08b714c32324f5a80f}{\_\_init\_\_}(self):
+32 
+33     \textcolor{keyword}{def }\hyperlink{classmovies2hdd_1_1_movies2_h_d_d_a6652371462723d08b714c32324f5a80f}{\_\_init\_\_}(self):
+34         \textcolor{stringliteral}{"""The \_\_init\_\_. What else?"""}
+35         \textcolor{keywordflow}{pass}
+
 \end{DoxyCode}
 
 
@@ -80,22 +84,21 @@ Definition at line 16 of file movies2hdd.\-py.
 \item[{}]{pwd}
 \end{DoxyParamCaption}
 )}}\label{classmovies2hdd_1_1_movies2_h_d_d_af1ae63dd9190690575b5b288a52af8a5}
-\begin{DoxyVerb}The __init__. What else?\end{DoxyVerb}
 \begin{DoxyVerb}Connect to a DreamBox using the given host and credentials.\end{DoxyVerb}
  
 
-Definition at line 22 of file movies2hdd.\-py.
+Definition at line 36 of file \-\_\-\-\_\-init\-\_\-\-\_\-.\-py.
 
 
 \begin{DoxyCode}
-22 
-23     \textcolor{keyword}{def }\hyperlink{classmovies2hdd_1_1_movies2_h_d_d_af1ae63dd9190690575b5b288a52af8a5}{connect}(self, host, user, pwd):
-24         \textcolor{stringliteral}{"""Connect to a DreamBox using the given host and credentials."""}
-25         self.\hyperlink{classmovies2hdd_1_1_movies2_h_d_d_a0b93dbfa80fc06d13d8cdad9ea7bae0b}{conn} = ftplib.FTP()
-26         print((self.conn.connect(host)))
-27         print((self.conn.login(user, pwd)))
-28         print((self.conn.cwd(\textcolor{stringliteral}{"/media/hdd/movie"})))
-29         \textcolor{comment}{#return conn}
+36 
+37     \textcolor{keyword}{def }\hyperlink{classmovies2hdd_1_1_movies2_h_d_d_af1ae63dd9190690575b5b288a52af8a5}{connect}(self, host, user, pwd):
+38         \textcolor{stringliteral}{"""Connect to a DreamBox using the given host and credentials."""}
+39         self.\hyperlink{classmovies2hdd_1_1_movies2_h_d_d_a0b93dbfa80fc06d13d8cdad9ea7bae0b}{conn} = ftplib.FTP()
+40         print((self.conn.connect(host)))
+41         print((self.conn.login(user, pwd)))
+42         print((self.conn.cwd(\textcolor{stringliteral}{"/media/hdd/movie"})))
+43         \textcolor{comment}{#return conn}
 
 \end{DoxyCode}
 \hypertarget{classmovies2hdd_1_1_movies2_h_d_d_afafc16b9fc0e83485db9b47d7ba7e386}{\index{movies2hdd\-::\-Movies2\-H\-D\-D@{movies2hdd\-::\-Movies2\-H\-D\-D}!convert\-Movie@{convert\-Movie}}
@@ -109,61 +112,60 @@ Definition at line 22 of file movies2hdd.\-py.
 \begin{DoxyVerb}Convert a movie. It will remove additional audio tracks!\end{DoxyVerb}
  
 
-Definition at line 101 of file movies2hdd.\-py.
+Definition at line 115 of file \-\_\-\-\_\-init\-\_\-\-\_\-.\-py.
 
 
 \begin{DoxyCode}
-101 
-102     \textcolor{keyword}{def }\hyperlink{classmovies2hdd_1_1_movies2_h_d_d_afafc16b9fc0e83485db9b47d7ba7e386}{convertMovie}(self, movie):
-103         \textcolor{stringliteral}{"""Convert a movie. It will remove additional audio tracks!"""}
-104         \textcolor{keywordflow}{if} subprocess.Popen([\textcolor{stringliteral}{"projectx"}, \textcolor{stringliteral}{"/tmp/"}+movie+\textcolor{stringliteral}{".ts"}]).wait() != 0: \textcolor{comment}{#threading?}
-105             \textcolor{keywordflow}{raise} BaseException
-106         files = os.listdir(\textcolor{stringliteral}{"/tmp"})
-107         contents = list()
-108         \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} files:
-109             print(\textcolor{stringliteral}{"There is "}+x+\textcolor{stringliteral}{"."})
-110             \textcolor{keywordflow}{if} x.startswith(movie):
-111                 print(\textcolor{stringliteral}{"It belongs to us! "}+x)
-112                 \textcolor{comment}{#if x.find("[") == -1 and x.find("\_log") == -1 and x.find(".ts") == -1:}
-113                     \textcolor{comment}{#contents.append(x[x.index("."):x.count("")-1])}
-114                 \textcolor{keywordflow}{if} x.endswith(\textcolor{stringliteral}{".ac3"}):
-115                     contents.append(\textcolor{stringliteral}{".ac3"})
-116                     print(x+\textcolor{stringliteral}{" is in."})
-117                 \textcolor{keywordflow}{elif} x.endswith(\textcolor{stringliteral}{".mp2"}) \textcolor{keywordflow}{and} x.find(\textcolor{stringliteral}{"["}) == -1:
-118                     contents.append(\textcolor{stringliteral}{".mp2"})
-119                     print(x+\textcolor{stringliteral}{" is in."})
-120                 \textcolor{keywordflow}{elif} x.endswith(\textcolor{stringliteral}{".m2v"}):
-121                     contents.append(\textcolor{stringliteral}{".m2v"})
-122                     print(x+\textcolor{stringliteral}{" is in."})
-123                 \textcolor{keywordflow}{elif} x.endswith(\textcolor{stringliteral}{".ts"}):
-124                     contents.append(\textcolor{stringliteral}{".ts"})
-125                     print(x+\textcolor{stringliteral}{" will not be deleted for now."})
-126                 \textcolor{keywordflow}{else}:
-127                     os.remove(\textcolor{stringliteral}{"/tmp/"}+x)
-128                     print(x+\textcolor{stringliteral}{" removed."})
-129         print(\textcolor{stringliteral}{"We have got the following files:"})
-130         print(contents)
-131         \textcolor{keywordflow}{if} contents.count(\textcolor{stringliteral}{".m2v"}) != 0:
-132             \textcolor{keywordflow}{if} contents.count(\textcolor{stringliteral}{".ac3"}) != 0:
-133                 \textcolor{keywordflow}{if} subprocess.Popen([\textcolor{stringliteral}{"mplex"},\textcolor{stringliteral}{"-f"},\textcolor{stringliteral}{"3"},\textcolor{stringliteral}{"-o"},\textcolor{stringliteral}{"/tmp/"}+movie+\textcolor{stringliteral}{".mpg"},\textcolor{stringliteral}{"/tmp/"}+movie+\textcolor{stringliteral}{".ac3"},\textcolor{stringliteral}{"/tmp/
+115 
+116     \textcolor{keyword}{def }\hyperlink{classmovies2hdd_1_1_movies2_h_d_d_afafc16b9fc0e83485db9b47d7ba7e386}{convertMovie}(self, movie):
+117         \textcolor{stringliteral}{"""Convert a movie. It will remove additional audio tracks!"""}
+118         \textcolor{keywordflow}{if} subprocess.Popen([\textcolor{stringliteral}{"projectx"}, \textcolor{stringliteral}{"/tmp/"}+movie+\textcolor{stringliteral}{".ts"}]).wait() != 0: \textcolor{comment}{#threading?}
+119             \textcolor{keywordflow}{raise} BaseException
+120         files = os.listdir(\textcolor{stringliteral}{"/tmp"})
+121         contents = list()
+122         \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} files:
+123             print(\textcolor{stringliteral}{"There is "}+x+\textcolor{stringliteral}{"."})
+124             \textcolor{keywordflow}{if} x.startswith(movie):
+125                 print(\textcolor{stringliteral}{"It belongs to us! "}+x)
+126                 \textcolor{comment}{#if x.find("[") == -1 and x.find("\_log") == -1 and x.find(".ts") == -1:}
+127                     \textcolor{comment}{#contents.append(x[x.index("."):x.count("")-1])}
+128                 \textcolor{keywordflow}{if} x.endswith(\textcolor{stringliteral}{".ac3"}):
+129                     contents.append(\textcolor{stringliteral}{".ac3"})
+130                     print(x+\textcolor{stringliteral}{" is in."})
+131                 \textcolor{keywordflow}{elif} x.endswith(\textcolor{stringliteral}{".mp2"}) \textcolor{keywordflow}{and} x.find(\textcolor{stringliteral}{"["}) == -1:
+132                     contents.append(\textcolor{stringliteral}{".mp2"})
+133                     print(x+\textcolor{stringliteral}{" is in."})
+134                 \textcolor{keywordflow}{elif} x.endswith(\textcolor{stringliteral}{".m2v"}):
+135                     contents.append(\textcolor{stringliteral}{".m2v"})
+136                     print(x+\textcolor{stringliteral}{" is in."})
+137                 \textcolor{keywordflow}{elif} x.endswith(\textcolor{stringliteral}{".ts"}):
+138                     contents.append(\textcolor{stringliteral}{".ts"})
+139                     print(x+\textcolor{stringliteral}{" will not be deleted for now."})
+140                 \textcolor{keywordflow}{else}:
+141                     os.remove(\textcolor{stringliteral}{"/tmp/"}+x)
+142                     print(x+\textcolor{stringliteral}{" removed."})
+143         print(\textcolor{stringliteral}{"We have got the following files:"})
+144         print(contents)
+145         \textcolor{keywordflow}{if} contents.count(\textcolor{stringliteral}{".m2v"}) != 0:
+146             \textcolor{keywordflow}{if} contents.count(\textcolor{stringliteral}{".ac3"}) != 0:
+147                 \textcolor{keywordflow}{if} subprocess.Popen([\textcolor{stringliteral}{"mplex"},\textcolor{stringliteral}{"-f"},\textcolor{stringliteral}{"3"},\textcolor{stringliteral}{"-o"},\textcolor{stringliteral}{"/tmp/"}+movie+\textcolor{stringliteral}{".mpg"},\textcolor{stringliteral}{"/tmp/"}+movie+\textcolor{stringliteral}{".ac3"},\textcolor{stringliteral}{"/tmp/
       "}+movie+\textcolor{stringliteral}{".m2v"}]).wait() != 0: \textcolor{comment}{#threading?}
-134                     \textcolor{keywordflow}{raise} BaseException
-135             \textcolor{keywordflow}{elif} contents.count(\textcolor{stringliteral}{".mp2"}) != 0:
-136                 \textcolor{keywordflow}{if} subprocess.Popen([\textcolor{stringliteral}{"mplex"},\textcolor{stringliteral}{"-f"},\textcolor{stringliteral}{"3"},\textcolor{stringliteral}{"-o"},\textcolor{stringliteral}{"/tmp/"}+movie+\textcolor{stringliteral}{".mpg"},\textcolor{stringliteral}{"/tmp/"}+movie+\textcolor{stringliteral}{".mp2"},\textcolor{stringliteral}{"/tmp/
+148                     \textcolor{keywordflow}{raise} BaseException
+149             \textcolor{keywordflow}{elif} contents.count(\textcolor{stringliteral}{".mp2"}) != 0:
+150                 \textcolor{keywordflow}{if} subprocess.Popen([\textcolor{stringliteral}{"mplex"},\textcolor{stringliteral}{"-f"},\textcolor{stringliteral}{"3"},\textcolor{stringliteral}{"-o"},\textcolor{stringliteral}{"/tmp/"}+movie+\textcolor{stringliteral}{".mpg"},\textcolor{stringliteral}{"/tmp/"}+movie+\textcolor{stringliteral}{".mp2"},\textcolor{stringliteral}{"/tmp/
       "}+movie+\textcolor{stringliteral}{".m2v"}]).wait() != 0: \textcolor{comment}{#threading?}
-137                     \textcolor{keywordflow}{raise} BaseException
-138             \textcolor{keywordflow}{else}:
-139                 print(\textcolor{stringliteral}{"No audio in here."})
-140                 \textcolor{comment}{#return False}
-141                 \textcolor{keywordflow}{raise} BaseException
-142         \textcolor{keywordflow}{else}:
-143             print(\textcolor{stringliteral}{"No video in here."})
-144             \textcolor{comment}{#return False}
-145             \textcolor{keywordflow}{raise} BaseException
-146         \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} contents:
-147             print(\textcolor{stringliteral}{"deleting "}+movie+x+\textcolor{stringliteral}{"..."})
-148             os.remove(\textcolor{stringliteral}{"/tmp/"}+movie+x)
-149 
+151                     \textcolor{keywordflow}{raise} BaseException
+152             \textcolor{keywordflow}{else}:
+153                 print(\textcolor{stringliteral}{"No audio in here."})
+154                 \textcolor{comment}{#return False}
+155                 \textcolor{keywordflow}{raise} BaseException
+156         \textcolor{keywordflow}{else}:
+157             print(\textcolor{stringliteral}{"No video in here."})
+158             \textcolor{comment}{#return False}
+159             \textcolor{keywordflow}{raise} BaseException
+160         \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} contents:
+161             print(\textcolor{stringliteral}{"deleting "}+movie+x+\textcolor{stringliteral}{"..."})
+162             os.remove(\textcolor{stringliteral}{"/tmp/"}+movie+x)
 \end{DoxyCode}
 \hypertarget{classmovies2hdd_1_1_movies2_h_d_d_a37549cf56f3067c26f46dabe91178fb5}{\index{movies2hdd\-::\-Movies2\-H\-D\-D@{movies2hdd\-::\-Movies2\-H\-D\-D}!disconnect@{disconnect}}
 \index{disconnect@{disconnect}!movies2hdd::Movies2HDD@{movies2hdd\-::\-Movies2\-H\-D\-D}}
@@ -175,15 +177,15 @@ Definition at line 101 of file movies2hdd.\-py.
 \begin{DoxyVerb}Close the connection.\end{DoxyVerb}
  
 
-Definition at line 30 of file movies2hdd.\-py.
+Definition at line 44 of file \-\_\-\-\_\-init\-\_\-\-\_\-.\-py.
 
 
 \begin{DoxyCode}
-30 
-31     \textcolor{keyword}{def }\hyperlink{classmovies2hdd_1_1_movies2_h_d_d_a37549cf56f3067c26f46dabe91178fb5}{disconnect}(self):
-32         \textcolor{stringliteral}{"""Close the connection."""}
-33         print((self.conn.quit()))
-34         \textcolor{keywordflow}{return}
+44 
+45     \textcolor{keyword}{def }\hyperlink{classmovies2hdd_1_1_movies2_h_d_d_a37549cf56f3067c26f46dabe91178fb5}{disconnect}(self):
+46         \textcolor{stringliteral}{"""Close the connection."""}
+47         print((self.conn.quit()))
+48         \textcolor{keywordflow}{return}
 
 \end{DoxyCode}
 \hypertarget{classmovies2hdd_1_1_movies2_h_d_d_a5f7d4ca7f7c30de9cfa305282ac63fbf}{\index{movies2hdd\-::\-Movies2\-H\-D\-D@{movies2hdd\-::\-Movies2\-H\-D\-D}!download\-Movie@{download\-Movie}}
@@ -197,23 +199,23 @@ Definition at line 30 of file movies2hdd.\-py.
 \begin{DoxyVerb}Download a video from your DreamBox.\end{DoxyVerb}
  
 
-Definition at line 89 of file movies2hdd.\-py.
+Definition at line 103 of file \-\_\-\-\_\-init\-\_\-\-\_\-.\-py.
 
 
 \begin{DoxyCode}
-89 
-90     \textcolor{keyword}{def }\hyperlink{classmovies2hdd_1_1_movies2_h_d_d_a5f7d4ca7f7c30de9cfa305282ac63fbf}{downloadMovie}(self, movie):
-91         \textcolor{stringliteral}{"""Download a video from your DreamBox."""}
-92         file = open(\textcolor{stringliteral}{"/tmp/"}+movie+\textcolor{stringliteral}{".ts"}, \textcolor{stringliteral}{"wb"})
-93         result = self.conn.retrbinary(\textcolor{stringliteral}{"RETR "}+movie+\textcolor{stringliteral}{".ts"}, file.write, 8*1024) \textcolor{comment}{#perhaps implement threading
+103 
+104     \textcolor{keyword}{def }\hyperlink{classmovies2hdd_1_1_movies2_h_d_d_a5f7d4ca7f7c30de9cfa305282ac63fbf}{downloadMovie}(self, movie):
+105         \textcolor{stringliteral}{"""Download a video from your DreamBox."""}
+106         file = open(\textcolor{stringliteral}{"/tmp/"}+movie+\textcolor{stringliteral}{".ts"}, \textcolor{stringliteral}{"wb"})
+107         result = self.conn.retrbinary(\textcolor{stringliteral}{"RETR "}+movie+\textcolor{stringliteral}{".ts"}, file.write, 8*1024) \textcolor{comment}{#perhaps implement threading
        ;-)}
-94         print(result)
-95         file.close()
-96         \textcolor{keywordflow}{if} result.startswith(\textcolor{stringliteral}{"2"}) == \textcolor{keyword}{False}:
-97             \textcolor{keywordflow}{raise} BaseException
-98         \textcolor{keywordflow}{else}:
-99             print(\textcolor{stringliteral}{"TODO"})
-100             \textcolor{comment}{#print(self.conn.delete(movie)) #TODO}
+108         print(result)
+109         file.close()
+110         \textcolor{keywordflow}{if} result.startswith(\textcolor{stringliteral}{"2"}) == \textcolor{keyword}{False}:
+111             \textcolor{keywordflow}{raise} BaseException
+112         \textcolor{keywordflow}{else}:
+113             print(\textcolor{stringliteral}{"TODO"})
+114             \textcolor{comment}{#print(self.conn.delete(movie)) #TODO}
 
 \end{DoxyCode}
 \hypertarget{classmovies2hdd_1_1_movies2_h_d_d_a2675dbf00e8e9ddbc463e802d98d6f57}{\index{movies2hdd\-::\-Movies2\-H\-D\-D@{movies2hdd\-::\-Movies2\-H\-D\-D}!get\-Aviable\-Movies@{get\-Aviable\-Movies}}
@@ -227,23 +229,23 @@ Definition at line 89 of file movies2hdd.\-py.
 \begin{DoxyVerb}List movies aviable on your DreamBox.\end{DoxyVerb}
  
 
-Definition at line 35 of file movies2hdd.\-py.
+Definition at line 49 of file \-\_\-\-\_\-init\-\_\-\-\_\-.\-py.
 
 
 \begin{DoxyCode}
-35 
-36     \textcolor{keyword}{def }\hyperlink{classmovies2hdd_1_1_movies2_h_d_d_a2675dbf00e8e9ddbc463e802d98d6f57}{getAviableMovies}(self,search):
-37         \textcolor{stringliteral}{"""List movies aviable on your DreamBox."""}
-38         allfiles = self.conn.nlst()
-39         newlist = list()
-40         \textcolor{keywordflow}{for} each \textcolor{keywordflow}{in} allfiles:
-41             \textcolor{keywordflow}{if} each.find(search) != -1:
-42                 newlist.append(each)
-43         movies = list()
-44         \textcolor{keywordflow}{for} each \textcolor{keywordflow}{in} newlist:
-45             \textcolor{keywordflow}{if} each.endswith(\textcolor{stringliteral}{".ts"}):
-46                 movies.append(each.replace(\textcolor{stringliteral}{".ts"}, \textcolor{stringliteral}{""}))
-47         \textcolor{keywordflow}{return} movies
+49 
+50     \textcolor{keyword}{def }\hyperlink{classmovies2hdd_1_1_movies2_h_d_d_a2675dbf00e8e9ddbc463e802d98d6f57}{getAviableMovies}(self,search):
+51         \textcolor{stringliteral}{"""List movies aviable on your DreamBox."""}
+52         allfiles = self.conn.nlst()
+53         newlist = list()
+54         \textcolor{keywordflow}{for} each \textcolor{keywordflow}{in} allfiles:
+55             \textcolor{keywordflow}{if} each.find(search) != -1:
+56                 newlist.append(each)
+57         movies = list()
+58         \textcolor{keywordflow}{for} each \textcolor{keywordflow}{in} newlist:
+59             \textcolor{keywordflow}{if} each.endswith(\textcolor{stringliteral}{".ts"}):
+60                 movies.append(each.replace(\textcolor{stringliteral}{".ts"}, \textcolor{stringliteral}{""}))
+61         \textcolor{keywordflow}{return} movies
     
 \end{DoxyCode}
 \hypertarget{classmovies2hdd_1_1_movies2_h_d_d_a9624d2e28e7a965f3385ac27ae8ad380}{\index{movies2hdd\-::\-Movies2\-H\-D\-D@{movies2hdd\-::\-Movies2\-H\-D\-D}!get\-Position\-Of\-Episode@{get\-Position\-Of\-Episode}}
@@ -258,29 +260,29 @@ Definition at line 35 of file movies2hdd.\-py.
 \begin{DoxyVerb}Get the season and episode number of an episode.\end{DoxyVerb}
  
 
-Definition at line 57 of file movies2hdd.\-py.
+Definition at line 71 of file \-\_\-\-\_\-init\-\_\-\-\_\-.\-py.
 
 
 \begin{DoxyCode}
-57 
-58     \textcolor{keyword}{def }\hyperlink{classmovies2hdd_1_1_movies2_h_d_d_a9624d2e28e7a965f3385ac27ae8ad380}{getPositionOfEpisode}(self, series, episode):
-59         \textcolor{stringliteral}{"""Get the season and episode number of an episode."""}
-60         lang = \textcolor{stringliteral}{"de"} \textcolor{comment}{#german #or perhaps as a parameter}
-61         \textcolor{comment}{#search doesn't always work}
-62         \textcolor{keywordflow}{try}:
-63             apianswer = urllib.urlopen(\textcolor{stringliteral}{"http://thetvdb.com/api/GetSeries.php?seriesname="}+series).read()
-64         \textcolor{keywordflow}{except} AttributeError:
-65             apianswer = urllib.request.urlopen(\textcolor{stringliteral}{"http://thetvdb.com/api/GetSeries.php?seriesname="}+series).
+71 
+72     \textcolor{keyword}{def }\hyperlink{classmovies2hdd_1_1_movies2_h_d_d_a9624d2e28e7a965f3385ac27ae8ad380}{getPositionOfEpisode}(self, series, episode):
+73         \textcolor{stringliteral}{"""Get the season and episode number of an episode."""}
+74         lang = \textcolor{stringliteral}{"de"} \textcolor{comment}{#german #or perhaps as a parameter}
+75         \textcolor{comment}{#search doesn't always work}
+76         \textcolor{keywordflow}{try}:
+77             apianswer = urllib.urlopen(\textcolor{stringliteral}{"http://thetvdb.com/api/GetSeries.php?seriesname="}+series).read()
+78         \textcolor{keywordflow}{except} AttributeError:
+79             apianswer = urllib.request.urlopen(\textcolor{stringliteral}{"http://thetvdb.com/api/GetSeries.php?seriesname="}+series).
       read()
-66 
-67         sid = parseString(apianswer).getElementsByTagName(\textcolor{stringliteral}{"Data"})[0].getElementsByTagName(\textcolor{stringliteral}{"Series"})[0].
+80 
+81         sid = parseString(apianswer).getElementsByTagName(\textcolor{stringliteral}{"Data"})[0].getElementsByTagName(\textcolor{stringliteral}{"Series"})[0].
       getElementsByTagName(\textcolor{stringliteral}{"seriesid"})[0].firstChild.data \textcolor{comment}{#seriesid}
-68         \textcolor{keywordflow}{if} series == \textcolor{stringliteral}{"Castle"}:
-69             sid = 83462
-70         \textcolor{keywordflow}{try}:
-71             apianswer = urllib.urlopen(\textcolor{stringliteral}{"http://thetvdb.com/api/FE84E205C6E3D916/series/"}+str(sid)+\textcolor{stringliteral}{"/all/"}+
+82         \textcolor{keywordflow}{if} series == \textcolor{stringliteral}{"Castle"}:
+83             sid = 83462
+84         \textcolor{keywordflow}{try}:
+85             apianswer = urllib.urlopen(\textcolor{stringliteral}{"http://thetvdb.com/api/FE84E205C6E3D916/series/"}+str(sid)+\textcolor{stringliteral}{"/all/"}+
       lang+\textcolor{stringliteral}{".xml"}).read()
-72         \textcolor{keywordflow}{except} AttributeError:
+86         \textcolor{keywordflow}{except} AttributeError:
             apianswer = urllib.request.urlopen(\textcolor{stringliteral}{"http://thetvdb.com/api/FE84E205C6E3D916/series/"}+str(sid)+\textcolor{stringliteral}{"
       /all/"}+lang+\textcolor{stringliteral}{".xml"}).read()
 \end{DoxyCode}
@@ -295,20 +297,20 @@ Definition at line 57 of file movies2hdd.\-py.
 \begin{DoxyVerb}Get the title of an episode. It uses the .ts.meta file that are automatically stored with your recordings.\end{DoxyVerb}
  
 
-Definition at line 48 of file movies2hdd.\-py.
+Definition at line 62 of file \-\_\-\-\_\-init\-\_\-\-\_\-.\-py.
 
 
 \begin{DoxyCode}
-48 
-49     \textcolor{keyword}{def }\hyperlink{classmovies2hdd_1_1_movies2_h_d_d_af70b18fab503d288570e9c97e3e0cc46}{getTitleOfEpisode}(self, movie):
-50         \textcolor{stringliteral}{"""Get the title of an episode. It uses the .ts.meta file that are automatically stored with your
+62 
+63     \textcolor{keyword}{def }\hyperlink{classmovies2hdd_1_1_movies2_h_d_d_af70b18fab503d288570e9c97e3e0cc46}{getTitleOfEpisode}(self, movie):
+64         \textcolor{stringliteral}{"""Get the title of an episode. It uses the .ts.meta file that are automatically stored with your
        recordings."""}
-51         meta = list()
-52         self.conn.retrlines(\textcolor{stringliteral}{"RETR "}+movie+\textcolor{stringliteral}{".ts.meta"}, meta.append)
-53         \textcolor{keywordflow}{if} meta[1] == meta[2]:
-54             \textcolor{keywordflow}{return} \textcolor{keyword}{False} \textcolor{comment}{#Titel wurde nicht bei der Aufnahme gespeichert}
-55         \textcolor{keywordflow}{else}:
-56             \textcolor{keywordflow}{return} meta[2]
+65         meta = list()
+66         self.conn.retrlines(\textcolor{stringliteral}{"RETR "}+movie+\textcolor{stringliteral}{".ts.meta"}, meta.append)
+67         \textcolor{keywordflow}{if} meta[1] == meta[2]:
+68             \textcolor{keywordflow}{return} \textcolor{keyword}{False} \textcolor{comment}{#Titel wurde nicht bei der Aufnahme gespeichert}
+69         \textcolor{keywordflow}{else}:
+70             \textcolor{keywordflow}{return} meta[2]
     
 \end{DoxyCode}
 
@@ -319,52 +321,52 @@ Definition at line 48 of file movies2hdd.\-py.
 \subsubsection[{conn}]{\setlength{\rightskip}{0pt plus 5cm}movies2hdd.\-Movies2\-H\-D\-D.\-conn}}\label{classmovies2hdd_1_1_movies2_h_d_d_a0b93dbfa80fc06d13d8cdad9ea7bae0b}
 
 
-Definition at line 24 of file movies2hdd.\-py.
+Definition at line 38 of file \-\_\-\-\_\-init\-\_\-\-\_\-.\-py.
 
 \hypertarget{classmovies2hdd_1_1_movies2_h_d_d_a23cc104177423d3145c753fb423fbf7f}{\index{movies2hdd\-::\-Movies2\-H\-D\-D@{movies2hdd\-::\-Movies2\-H\-D\-D}!dom@{dom}}
 \index{dom@{dom}!movies2hdd::Movies2HDD@{movies2hdd\-::\-Movies2\-H\-D\-D}}
 \subsubsection[{dom}]{\setlength{\rightskip}{0pt plus 5cm}tuple movies2hdd.\-Movies2\-H\-D\-D.\-dom = parse\-String(apianswer)\hspace{0.3cm}{\ttfamily [static]}}}\label{classmovies2hdd_1_1_movies2_h_d_d_a23cc104177423d3145c753fb423fbf7f}
 
 
-Definition at line 75 of file movies2hdd.\-py.
+Definition at line 89 of file \-\_\-\-\_\-init\-\_\-\-\_\-.\-py.
 
 \hypertarget{classmovies2hdd_1_1_movies2_h_d_d_af69365988574fd1f1f66bfd372bd526c}{\index{movies2hdd\-::\-Movies2\-H\-D\-D@{movies2hdd\-::\-Movies2\-H\-D\-D}!episode@{episode}}
 \index{episode@{episode}!movies2hdd::Movies2HDD@{movies2hdd\-::\-Movies2\-H\-D\-D}}
 \subsubsection[{episode}]{\setlength{\rightskip}{0pt plus 5cm}tuple movies2hdd.\-Movies2\-H\-D\-D.\-episode = x.\-get\-Elements\-By\-Tag\-Name(\char`\"{}Combined\-\_\-episodenumber\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}}\label{classmovies2hdd_1_1_movies2_h_d_d_af69365988574fd1f1f66bfd372bd526c}
 
 
-Definition at line 80 of file movies2hdd.\-py.
+Definition at line 94 of file \-\_\-\-\_\-init\-\_\-\-\_\-.\-py.
 
 \hypertarget{classmovies2hdd_1_1_movies2_h_d_d_ae6cedc0a37fc3d9c391cc0f6bcf872da}{\index{movies2hdd\-::\-Movies2\-H\-D\-D@{movies2hdd\-::\-Movies2\-H\-D\-D}!episode@{episode}}
 \index{episode@{episode}!movies2hdd::Movies2HDD@{movies2hdd\-::\-Movies2\-H\-D\-D}}
 \subsubsection[{episode}]{\setlength{\rightskip}{0pt plus 5cm}list movies2hdd.\-Movies2\-H\-D\-D.\-episode = episode\mbox{[}0\-:episode.\-find(\char`\"{}.\char`\"{})\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}}\label{classmovies2hdd_1_1_movies2_h_d_d_ae6cedc0a37fc3d9c391cc0f6bcf872da}
 
 
-Definition at line 83 of file movies2hdd.\-py.
+Definition at line 97 of file \-\_\-\-\_\-init\-\_\-\-\_\-.\-py.
 
 \hypertarget{classmovies2hdd_1_1_movies2_h_d_d_adebd8de5fde82e9d8b512a03892442d1}{\index{movies2hdd\-::\-Movies2\-H\-D\-D@{movies2hdd\-::\-Movies2\-H\-D\-D}!episodes@{episodes}}
 \index{episodes@{episodes}!movies2hdd::Movies2HDD@{movies2hdd\-::\-Movies2\-H\-D\-D}}
 \subsubsection[{episodes}]{\setlength{\rightskip}{0pt plus 5cm}tuple movies2hdd.\-Movies2\-H\-D\-D.\-episodes = dom.\-get\-Elements\-By\-Tag\-Name(\char`\"{}Episode\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}}\label{classmovies2hdd_1_1_movies2_h_d_d_adebd8de5fde82e9d8b512a03892442d1}
 
 
-Definition at line 76 of file movies2hdd.\-py.
+Definition at line 90 of file \-\_\-\-\_\-init\-\_\-\-\_\-.\-py.
 
 \hypertarget{classmovies2hdd_1_1_movies2_h_d_d_a948397c62c191d15a109f9867b1a83ec}{\index{movies2hdd\-::\-Movies2\-H\-D\-D@{movies2hdd\-::\-Movies2\-H\-D\-D}!season@{season}}
 \index{season@{season}!movies2hdd::Movies2HDD@{movies2hdd\-::\-Movies2\-H\-D\-D}}
 \subsubsection[{season}]{\setlength{\rightskip}{0pt plus 5cm}int movies2hdd.\-Movies2\-H\-D\-D.\-season = 0\hspace{0.3cm}{\ttfamily [static]}}}\label{classmovies2hdd_1_1_movies2_h_d_d_a948397c62c191d15a109f9867b1a83ec}
 
 
-Definition at line 77 of file movies2hdd.\-py.
+Definition at line 91 of file \-\_\-\-\_\-init\-\_\-\-\_\-.\-py.
 
 \hypertarget{classmovies2hdd_1_1_movies2_h_d_d_a60b03ffa3e3f0b0afbaea6b3a3351dc1}{\index{movies2hdd\-::\-Movies2\-H\-D\-D@{movies2hdd\-::\-Movies2\-H\-D\-D}!season@{season}}
 \index{season@{season}!movies2hdd::Movies2HDD@{movies2hdd\-::\-Movies2\-H\-D\-D}}
 \subsubsection[{season}]{\setlength{\rightskip}{0pt plus 5cm}tuple movies2hdd.\-Movies2\-H\-D\-D.\-season = x.\-get\-Elements\-By\-Tag\-Name(\char`\"{}Combined\-\_\-season\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}}\label{classmovies2hdd_1_1_movies2_h_d_d_a60b03ffa3e3f0b0afbaea6b3a3351dc1}
 
 
-Definition at line 81 of file movies2hdd.\-py.
+Definition at line 95 of file \-\_\-\-\_\-init\-\_\-\-\_\-.\-py.
 
 
 
 The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
 \item 
-\hyperlink{movies2hdd_8py}{movies2hdd.\-py}\end{DoxyCompactItemize}
+movies2hdd/\hyperlink{____init_____8py}{\-\_\-\-\_\-init\-\_\-\-\_\-.\-py}\end{DoxyCompactItemize}
