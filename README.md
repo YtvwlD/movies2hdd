@@ -20,7 +20,10 @@ Why should I use it?
 Features:
 
 * a CLI
-* a simple movie converter (.ts to .mpg, will delete additional audio tracks!)
+	* a line-based interface
+	* a GUI
+	* a simple movie converter (.ts to .mpg, will delete additional audio tracks!)
+
 * a library:
 	* connects to a DreamBox via FTP
 	* searches for movies
