@@ -77,4 +77,7 @@ class MainWindow(PySide.QtGui.QDialog):
 mainwindow = MainWindow()
 mainwindow.show()
 app.exec_()
-Movies2HDD.disconnect()
+try:
+	Movies2HDD.disconnect()
+except:
+	pass
