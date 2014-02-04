@@ -17,6 +17,15 @@ Why should I use it?
 
 ----------------------------------------------------------------------------
 
+How do I install it?
+
+Just simply type `make install`.
+You can run it via `movies2hdd`.
+
+I'll try to provide a debian package for the next release.
+
+----------------------------------------------------------------------------
+
 Features:
 
 * a CLI
