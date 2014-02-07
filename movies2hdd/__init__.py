@@ -67,6 +67,26 @@ class Movies2HDD:
 			return False #Titel wurde nicht bei der Aufnahme gespeichert
 		else:
 			return meta[2]
+
+	def getSeries(self, series):
+		"""Get the id of the series."""
+		try:
+			api = urllib.urlopen("http://thetvdb.com/api/GetSeries.php?seriesname="+series)
+		except AttributeError:
+			api = urllib.request.urlopen("http://thetvdb.com/api/GetSeries.php?seriesname="+series)
+		apianswer = api.read()
+		api.close()
+
+		series = []
+		seriesdom = parseString(apianswer).getElementsByTagName("Data")[0].getElementsByTagName("Series")
+		for x in seriesdom:
+			series.append({
+				'seriesid': x.getElementsByTagName("seriesid")[0].firstChild.data,
+				'SeriesName': x.getElementsByTagName("SeriesName")[0].firstChild.data,
+				'Overview': x.getElementsByTagName("Overview")[0].firstChild.data
+			})
+		
+		return(series)
 	
 	def getPositionOfEpisode(self, series, episode):
 		"""Get the season and episode number of an episode."""
