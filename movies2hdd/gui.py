@@ -180,13 +180,9 @@ class SeriesSelection(QDialog):
 			self.layout.addWidget(self.searchButton)
 			self.searchButton.clicked.connect(self.searchForSeries)
 
-			self.table = QTableView()
-			self.table.themodel = QStandardItemModel()
-			self.table.themodel.setHorizontalHeaderItem(0, QStandardItem("ID"))
-			self.table.themodel.setHorizontalHeaderItem(1, QStandardItem("Title"))
-			self.table.themodel.setHorizontalHeaderItem(2, QStandardItem("Overview"))
-			self.table.setModel(self.table.themodel)
-			self.table.horizontalHeader().stretchLastSection() #TODO: Does not work.
+			self.table = QTableWidget()
+			self.table.setColumnCount(3)
+			self.table.setHorizontalHeaderLabels(["ID", "Series", "Overview"])
 			self.layout.addWidget(self.table)
 			
 			self.setLayout(self.layout)
@@ -194,10 +190,21 @@ class SeriesSelection(QDialog):
 		def searchForSeries(self):
 			series = Movies2HDD.getSeries(self.form.series.text())
 			print (series)
-			model = self.table.model()
-			model.clear()
+			self.table.clear()
+			self.table.setRowCount(0)
+			self.table.setHorizontalHeaderLabels(["ID", "Series", "Overview"])
 			for x in series:
-				model.appendRow(list([x['seriesid'], x['SeriesName'], x['Overview']]))
+				flags = int(Qt.ItemIsEnabled) + int(Qt.ItemIsSelectable)
+				self.table.setRowCount(self.table.rowCount() + 1)
+				sidItem = QTableWidgetItem(x['seriesid'])
+				sidItem.setFlags(flags)
+				self.table.setItem(self.table.rowCount() - 1, 0, sidItem)
+				SeriesNameItem = QTableWidgetItem(x['SeriesName'])
+				SeriesNameItem.setFlags(flags)
+				self.table.setItem(self.table.rowCount() - 1, 1, SeriesNameItem)
+				OverviewItem = QTableWidgetItem(x['Overview'].replace("\n", "   "))
+				OverviewItem.setFlags(flags)
+				self.table.setItem(self.table.rowCount() - 1, 2, OverviewItem)
 			
 
 mainwindow = MainWindow()
