@@ -68,7 +68,10 @@ class Step1(QWizardPage):
 		seriesselection.show()
 
 	def nextId(self):
-		return(0)
+		if self.folder_selection.text() != "Select" and self.series_selection != "Select":
+			return(1)
+		else:
+			return(0)
 
 class SeriesSelection(QDialog):
 		def __init__(self, parent):
