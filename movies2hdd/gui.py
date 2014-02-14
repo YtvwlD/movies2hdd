@@ -176,7 +176,7 @@ class SeriesSelection(QDialog):
 			self.form.lang = QLineEdit()
 			self.form.addRow(self.tr("&Language code:"), self.form.lang)
 			self.layout.addLayout(self.form)
-			self.searchButton = QPushButton("&Search")
+			self.searchButton = QPushButton("Se&arch")
 			self.layout.addWidget(self.searchButton)
 			self.searchButton.clicked.connect(self.searchForSeries)
 
@@ -184,6 +184,10 @@ class SeriesSelection(QDialog):
 			self.table.setColumnCount(3)
 			self.table.setHorizontalHeaderLabels(["ID", "Series", "Overview"])
 			self.layout.addWidget(self.table)
+
+			self.button = QPushButton("Se&lect")
+			self.layout.addWidget(self.button)
+			self.button.clicked.connect(self.select)
 			
 			self.setLayout(self.layout)
 
@@ -193,7 +197,7 @@ class SeriesSelection(QDialog):
 			self.table.setRowCount(0)
 			self.table.setHorizontalHeaderLabels(["ID", "Series", "Overview"])
 			for x in series:
-				flags = int(Qt.ItemIsEnabled) + int(Qt.ItemIsSelectable)
+				flags = int(Qt.ItemIsEnabled) #+ int(Qt.ItemIsSelectable)
 				self.table.setRowCount(self.table.rowCount() + 1)
 				sidItem = QTableWidgetItem(x['seriesid'])
 				sidItem.setFlags(flags)
@@ -204,6 +208,13 @@ class SeriesSelection(QDialog):
 				OverviewItem = QTableWidgetItem(x['Overview'].replace("\n", "   "))
 				OverviewItem.setFlags(flags)
 				self.table.setItem(self.table.rowCount() - 1, 2, OverviewItem)
+
+		def select(self):
+			item = self.table.item(self.table.currentRow(), 0)
+			#The conversion str->int->str is not really needed. And it is nothing that the user can change. But it could prevent future issues.
+			sid = int(item.text())
+			self.parent().right.step1.series_selection.setText(str(sid))
+			self.close()
 			
 
 mainwindow = MainWindow()
