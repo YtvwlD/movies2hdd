@@ -41,126 +41,34 @@ sys.stdout.write("\n")
 sys.stdout.flush()
 print ("")
 
-class MainWindow(QDialog):
-
-	def _hideLayout(self, layout):
-		for i in range(layout.count()):
-			x = layout.itemAt(i)
-			if x.widget() != None:
-				x.widget().hide()
-			else:
-				self._hideLayout(x)
-
-	def _showLayout(self, layout):
-		for i in range(layout.count()):
-			x = layout.itemAt(i)
-			if x.widget() != None:
-				x.widget().show()
-			else:
-				self._showLayout(x)
-
-	def _makeBold(self, label):
-		label.setText("<b>" + label.text() + "</b>")
-
-	def _removeBold(self, label):
-		label.setText(label.text()[3:-4])
-
+class Step1(QWizardPage):
 	def __init__(self, parent=None):
-		super(MainWindow, self).__init__(parent)
-		self.setWindowTitle("Movies2HDD")
-		self.layout = QHBoxLayout()
-		#left
-		self.left = QVBoxLayout()
-		self.left.headline = QLabel("Movies2HDD")
-		self._makeBold(self.left.headline)
-		self.left.addWidget(self.left.headline)
-		self.left.step1 = QLabel(" * Select folder and series")
-		self._makeBold(self.left.step1)
-		self.left.addWidget(self.left.step1)
-		self.left.step2 =  QLabel("")
-		self.left.addWidget(self.left.step2)
-		#right
-		self.right =  QVBoxLayout()
-		#Step 1
-		self.right.step1 =  QVBoxLayout()
-		self.right.step1.headline = QLabel("<b>Select the folder and the series</b>")
-		self.right.step1.addWidget(self.right.step1.headline)
-		self.right.step1.introduction = QLabel("First, you need to select the folder where the movies are or should be placed. The name of the series is needed, too.")
-		self.right.step1.introduction.setWordWrap(True)
-		self.right.step1.addWidget(self.right.step1.introduction)
-		self.right.step1.form = QFormLayout()
-		self.right.step1.folder_selection = QPushButton("Select")
-		self.right.step1.folder_selection.clicked.connect(self.func_step1_folder_selection)
-		self.right.step1.form.addRow(self.tr("Select &folder:"), self.right.step1.folder_selection)
-		self.right.step1.series_selection = QPushButton("Select")
-		self.right.step1.series_selection.clicked.connect(self.func_step1_series_selection)
-		self.right.step1.form.addRow(self.tr("Select &series:"), self.right.step1.series_selection)
-		self.right.step1.addLayout(self.right.step1.form)
-		#TODO Connect the buttons to some functions
-
-
-		#self.right.step1.host = ""QLineEdit()
-		#self.right.step1.host.layout =  QHBoxLayout()
-		#self.right.step1.host.label =  QLabel("Host: ")
-		#self.right.step1.host.layout.addWidget(self.right.step1.host.label)
-		#self.right.step1.host.layout.addWidget(self.right.step1.host)
-		#self.right.step1.addLayout(self.right.step1.host.layout)
-		#self.right.step1.user =  QLineEdit()
-		#self.right.step1.user.layout =  QHBoxLayout()
-		#self.right.step1.user.label =  QLabel("User: ")
-		#self.right.step1.user.layout.addWidget(self.right.step1.user.label)
-		#self.right.step1.user.layout.addWidget(self.right.step1.user)
-		#self.right.step1.addLayout(self.right.step1.user.layout)
-		#self.right.step1.pwd =  QLineEdit()
-		#self.right.step1.pwd.layout =  QHBoxLayout()
-		#self.right.step1.pwd.label =  QLabel("Password: ")
-		#self.right.step1.pwd.layout.addWidget(self.right.step1.pwd.label)
-		#self.right.step1.pwd.layout.addWidget(self.right.step1.pwd)
-		#self.right.step1.addLayout(self.right.step1.pwd.layout)
-		#self.right.step1.button =  QPushButton("Connect")
-		#self.right.step1.addWidget(self.right.step1.button)
-		#self.right.step1.button.clicked.connect(self.connecttodream)
-		#self.right.step2 =  QVBoxLayout()
-		#self.right.step2.headline =  QLabel("2 Search for movies")
-		#self.right.step2.addWidget(self.right.step2.headline)
-		#self.right.step2.search =  QLineEdit()
-		#self.right.step2.search.layout =  QHBoxLayout()
-		#self.right.step2.search.label =  QLabel("Search for: ")
-		#self.right.step2.search.layout.addWidget(self.right.step2.search.label)
-		#self.right.step2.search.layout.addWidget(self.right.step2.search)
-		#self.right.step2.search.button =  QPushButton("Search")
-		#self.right.step2.search.layout.addWidget(self.right.step2.search.button)
-		#self.right.step2.addLayout(self.right.step2.search.layout)
-		#...
-		self.right.addLayout(self.right.step1)
-		self._showLayout(self.right.step1)
-		#self._hideLayout(self.right.step2)
-		#self.right.addLayout(self.right.step2)
-		self.right.buttons = QHBoxLayout()
-		self.right.buttons.cancel = QPushButton("&Cancel")
-		self.right.buttons.cancel.layout = QHBoxLayout()
-		self.right.buttons.cancel.layout.setAlignment(Qt.AlignLeft)
-		self.right.buttons.cancel.layout.addWidget(self.right.buttons.cancel)
-		self.right.buttons.addLayout(self.right.buttons.cancel.layout)
-		self.right.buttons.backandnext = QHBoxLayout()
-		self.right.buttons.backandnext.setAlignment(Qt.AlignRight)
-		self.right.buttons.backandnext.back = QPushButton("&Back")
-		self.right.buttons.backandnext.addWidget(self.right.buttons.backandnext.back)
-		self.right.buttons.backandnext.next = QPushButton("&Next")
-		self.right.buttons.backandnext.addWidget(self.right.buttons.backandnext.next)
-		self.right.buttons.addLayout(self.right.buttons.backandnext)
-		self.right.addLayout(self.right.buttons)
-		self.layout.addLayout(self.left)
-		self.layout.addLayout(self.right)
+		super(Step1, self).__init__(parent)
+		self.setTitle("Select the folder and the series")
+		self.layout = QVBoxLayout()
+		self.introduction = QLabel("First, you need to select the folder where the movies are or should be placed. The name of the series is needed, too.")
+		self.introduction.setWordWrap(True)
+		self.layout.addWidget(self.introduction)
+		self.form = QFormLayout()
+		self.folder_selection = QPushButton("Select")
+		self.folder_selection.clicked.connect(self.func_folder_selection)
+		self.form.addRow(self.tr("Select &folder:"), self.folder_selection)
+		self.series_selection = QPushButton("Select")
+		self.series_selection.clicked.connect(self.func_series_selection)
+		self.form.addRow(self.tr("Select &series:"), self.series_selection)
+		self.layout.addLayout(self.form)
 		self.setLayout(self.layout)
 
-	def func_step1_folder_selection(self):
+	def func_folder_selection(self):
 		folder = QFileDialog.getExistingDirectory()
-		self.right.step1.folder_selection.setText(folder)
+		self.folder_selection.setText(folder)
 
-	def func_step1_series_selection(self):
+	def func_series_selection(self):
 		seriesselection = SeriesSelection(self)
 		seriesselection.show()
+
+	def nextId(self):
+		return(0)
 
 class SeriesSelection(QDialog):
 		def __init__(self, parent):
@@ -213,11 +121,14 @@ class SeriesSelection(QDialog):
 			item = self.table.item(self.table.currentRow(), 0)
 			#The conversion str->int->str is not really needed. And it is nothing that the user can change. But it could prevent future issues.
 			sid = int(item.text())
-			self.parent().right.step1.series_selection.setText(str(sid))
+			self.parent().series_selection.setText(str(sid))
 			self.close()
 			
 
-mainwindow = MainWindow()
+mainwindow = QWizard()
+mainwindow.setWindowTitle("Movies2HDD")
+mainwindow.step1 = Step1()
+mainwindow.addPage(mainwindow.step1)
 mainwindow.show()
 app.exec_()
 try:
