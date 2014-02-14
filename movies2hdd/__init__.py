@@ -78,19 +78,22 @@ class Movies2HDD:
 		api.close()
 
 		series = []
-		seriesdom = parseString(apianswer).getElementsByTagName("Data")[0].getElementsByTagName("Series")
-		for x in seriesdom:
-			seriesid = x.getElementsByTagName("seriesid")[0].firstChild.data
-			seriesname = x.getElementsByTagName("SeriesName")[0].firstChild.data
-			try:
-				overview = x.getElementsByTagName("Overview")[0].firstChild.data
-			except IndexError:
-				overview = ""
-			series.append({
-				'seriesid': seriesid,
-				'SeriesName': seriesname,
-				'Overview': overview
-			})
+		try:
+			seriesdom = parseString(apianswer).getElementsByTagName("Data")[0].getElementsByTagName("Series")
+			for x in seriesdom:
+				seriesid = x.getElementsByTagName("seriesid")[0].firstChild.data
+				seriesname = x.getElementsByTagName("SeriesName")[0].firstChild.data
+				try:
+					overview = x.getElementsByTagName("Overview")[0].firstChild.data
+				except IndexError:
+					overview = ""
+				series.append({
+					'seriesid': seriesid,
+					'SeriesName': seriesname,
+					'Overview': overview
+				})
+		except IndexError:
+			pass
 		
 		return(series)
 	
