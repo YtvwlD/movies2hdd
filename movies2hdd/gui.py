@@ -189,7 +189,6 @@ class SeriesSelection(QDialog):
 
 		def searchForSeries(self):
 			series = Movies2HDD.getSeries(self.form.series.text())
-			print (series)
 			self.table.clear()
 			self.table.setRowCount(0)
 			self.table.setHorizontalHeaderLabels(["ID", "Series", "Overview"])
