@@ -31,6 +31,8 @@ sys.stdout.flush()
 from PySide.QtCore import *
 from PySide.QtGui import *
 app =  QApplication(sys.argv)
+msg = QMessageBox()
+msg.setWindowTitle("Movies2HDD")
 sys.stdout.write("	Movies2HDD")
 sys.stdout.flush()
 import movies2hdd
@@ -40,6 +42,7 @@ sys.stdout.flush()
 sys.stdout.write("\n")
 sys.stdout.flush()
 print ("")
+
 
 class Step1(QWizardPage):
 	def __init__(self, parent=None):
@@ -67,11 +70,26 @@ class Step1(QWizardPage):
 		seriesselection = SeriesSelection(self)
 		seriesselection.show()
 
-	def nextId(self):
+	def validatePage(self):
 		if self.folder_selection.text() != "Select" and self.series_selection != "Select":
-			return(1)
+			return(True)
 		else:
-			return(0)
+			msg.setText("You need to select a folder and a series first.")
+			msg.show()
+			return(False)
+
+class Step2(QWizardPage):
+	def __init__(self, parent=None):
+		super(Step2, self).__init__(parent)
+		self.setTitle("Connect to your Dreambox")
+		self.layout = QVBoxLayout()
+		self.introduction = QLabel("")
+		self.introduction.setWordWrap(True)
+		self.setLayout(self.layout)
+
+
+	def nextId(self):
+		return(1)
 
 class SeriesSelection(QDialog):
 		def __init__(self, parent):
@@ -131,7 +149,9 @@ class SeriesSelection(QDialog):
 mainwindow = QWizard()
 mainwindow.setWindowTitle("Movies2HDD")
 mainwindow.step1 = Step1()
+mainwindow.step2 = Step2()
 mainwindow.addPage(mainwindow.step1)
+mainwindow.addPage(mainwindow.step2)
 mainwindow.show()
 app.exec_()
 try:
