@@ -35,8 +35,8 @@ msg = QMessageBox()
 msg.setWindowTitle("Movies2HDD")
 sys.stdout.write("	Movies2HDD")
 sys.stdout.flush()
-import movies2hdd
-Movies2HDD = movies2hdd.Movies2HDD()
+from movies2hdd import Movies2HDD
+movies2hdd = Movies2HDD()
 sys.stdout.write("	...done.")
 sys.stdout.flush()
 sys.stdout.write("\n")
@@ -54,6 +54,7 @@ class Step1(QWizardPage):
 		self.layout.addWidget(self.introduction)
 		self.form = QFormLayout()
 		self.folder_selection = QPushButton("Select")
+		#self.registerField
 		self.folder_selection.clicked.connect(self.func_folder_selection)
 		self.form.addRow(self.tr("Select &folder:"), self.folder_selection)
 		self.series_selection = QPushButton("Select")
@@ -84,13 +85,47 @@ class Step2(QWizardPage):
 		super(Step2, self).__init__(parent)
 		self.setTitle("Connect to your Dreambox")
 		self.layout = QVBoxLayout()
-		self.introduction = QLabel("")
-		self.introduction.setWordWrap(True)
+		#self.introduction = QLabel("")
+		#self.introduction.setWordWrap(True)
+		#self.layout.addWidget(self.introduction)
+		self.check = QCheckBox("Do the movies need to be &downloaded?")
+		self.check.stateChanged.connect(self.func_check)
+		self.layout.addWidget(self.check)
+
+		self.group = QGroupBox("Connection information")
+		self.group.layout = QVBoxLayout()
+		self.group.form = QFormLayout()
+
+		self.host = QLineEdit()
+		self.group.form.addRow(self.tr("&Host:"), self.host)
+		self.user = QLineEdit()
+		self.group.form.addRow(self.tr("&User:"), self.user)
+		self.password = QLineEdit()
+		self.password.setEchoMode(QLineEdit.EchoMode.Password)
+		self.group.form.addRow(self.tr("&Password:"), self.password)
+
+		self.group.layout.addLayout(self.group.form)
+		self.group.setLayout (self.group.layout)
+		self.layout.addWidget(self.group)
+		self.group.setEnabled(False)
+		
 		self.setLayout(self.layout)
 
+	def func_check(self):
+		self.group.setEnabled(self.check.isChecked())
 
-	def nextId(self):
-		return(1)
+
+	def validatePage(self):
+		if self.check.isChecked() == False:
+			return(True)
+		else:
+			try:
+				movies2hdd.connect(self.host.text(), self.user.text(), self.password.text())
+				movies2hdd.disconnect()
+				return(True)
+			except:
+				msg.setText("Could not connect.\nPlease check your input and your connection.")
+				return(False)
 
 class SeriesSelection(QDialog):
 		def __init__(self, parent):
@@ -131,7 +166,7 @@ class SeriesSelection(QDialog):
 			#progress.show()
 			#progress.setValue(0)
 			try:
-				series = Movies2HDD.getSeries(self.form.series.text())
+				series = movies2hdd.getSeries(self.form.series.text())
 				#progress.setMaximum(series.__len__())
 				self.table.clear()
 				self.table.setRowCount(0)
