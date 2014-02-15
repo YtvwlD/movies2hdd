@@ -100,6 +100,9 @@ class Step2(QWizardPage):
 		self.group.form.addRow(self.tr("&Host:"), self.host)
 		self.user = QLineEdit()
 		self.group.form.addRow(self.tr("&User:"), self.user)
+		self.warning = QLabel("<strong color='red'>Warning:</strong> Your password will be sent unencryptedly!\nPlease do this only if you trust the network that you are currently connected to.\nOtherwise please tunnel your connection for example via SSH or VPN.")
+		self.warning.setWordWrap(True)
+		self.group.form.addRow(self.warning)
 		self.password = QLineEdit()
 		self.password.setEchoMode(QLineEdit.EchoMode.Password)
 		self.group.form.addRow(self.tr("&Password:"), self.password)
@@ -108,7 +111,7 @@ class Step2(QWizardPage):
 		self.group.setLayout (self.group.layout)
 		self.layout.addWidget(self.group)
 		self.group.setEnabled(False)
-		
+
 		self.setLayout(self.layout)
 
 	def func_check(self):
@@ -123,8 +126,10 @@ class Step2(QWizardPage):
 				movies2hdd.connect(self.host.text(), self.user.text(), self.password.text())
 				movies2hdd.disconnect()
 				return(True)
-			except:
-				msg.setText("Could not connect.\nPlease check your input and your connection.")
+			except Exception as e:
+				sys.stderr.write("ERROR: " + str(e) + "\n")
+				msg.setText("Could not connect.\nPlease check your input and your connection.\n\nThe detailed error message is:\n"+str(e))
+				msg.show()
 				return(False)
 
 class SeriesSelection(QDialog):
@@ -153,7 +158,7 @@ class SeriesSelection(QDialog):
 			self.button = QPushButton("Se&lect")
 			self.layout.addWidget(self.button)
 			self.button.clicked.connect(self.select)
-			
+
 			self.setLayout(self.layout)
 
 		def searchForSeries(self):
@@ -184,11 +189,12 @@ class SeriesSelection(QDialog):
 					OverviewItem = QTableWidgetItem(x['Overview'].replace("\n", "   "))
 					OverviewItem.setFlags(flags)
 					self.table.setItem(self.table.rowCount() - 1, 2, OverviewItem)
-			except:
-				msg.setText("An error occured.")
+			except Exception as e:
+				sys.stderr.write("ERROR: " + str(e)+ "\n")
+				msg.setText("An error occured.\n\nThe detailed error message is:\n"+str(e))
 				msg.show()
 				#progress.hide()
-			
+
 
 		def select(self):
 			item = self.table.item(self.table.currentRow(), 0)
@@ -196,7 +202,7 @@ class SeriesSelection(QDialog):
 			sid = int(item.text())
 			self.parent().series_selection.setText(str(sid))
 			self.close()
-			
+
 
 mainwindow = QWizard()
 mainwindow.setWindowTitle("Movies2HDD")
