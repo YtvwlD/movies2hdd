@@ -68,6 +68,7 @@ class Step1(QWizardPage):
 
 	def func_series_selection(self):
 		seriesselection = SeriesSelection(self)
+		seriesselection.setWindowModality(Qt.WindowModal)
 		seriesselection.show()
 
 	def validatePage(self):
@@ -121,22 +122,37 @@ class SeriesSelection(QDialog):
 			self.setLayout(self.layout)
 
 		def searchForSeries(self):
-			series = Movies2HDD.getSeries(self.form.series.text())
-			self.table.clear()
-			self.table.setRowCount(0)
-			self.table.setHorizontalHeaderLabels(["ID", "Series", "Overview"])
-			for x in series:
-				flags = int(Qt.ItemIsEnabled) #+ int(Qt.ItemIsSelectable)
-				self.table.setRowCount(self.table.rowCount() + 1)
-				sidItem = QTableWidgetItem(x['seriesid'])
-				sidItem.setFlags(flags)
-				self.table.setItem(self.table.rowCount() - 1, 0, sidItem)
-				SeriesNameItem = QTableWidgetItem(x['SeriesName'])
-				SeriesNameItem.setFlags(flags)
-				self.table.setItem(self.table.rowCount() - 1, 1, SeriesNameItem)
-				OverviewItem = QTableWidgetItem(x['Overview'].replace("\n", "   "))
-				OverviewItem.setFlags(flags)
-				self.table.setItem(self.table.rowCount() - 1, 2, OverviewItem)
+			#progress = QProgressDialog("Searching for the series...", "Close", 0, 1, self)
+			#progress.setWindowModality(Qt.WindowModal)
+			#progress.setWindowTitle("Movies2HDD")
+			#progress.setAutoClose(False)
+			#progress.setCancelButton(None)
+			#progress.setMinimumDuration(0)
+			#progress.show()
+			#progress.setValue(0)
+			try:
+				series = Movies2HDD.getSeries(self.form.series.text())
+				#progress.setMaximum(series.__len__())
+				self.table.clear()
+				self.table.setRowCount(0)
+				self.table.setHorizontalHeaderLabels(["ID", "Series", "Overview"])
+				for x in series:
+					#progress.setValue(progress.value() + 1)
+					flags = int(Qt.ItemIsEnabled) #+ int(Qt.ItemIsSelectable)
+					self.table.setRowCount(self.table.rowCount() + 1)
+					sidItem = QTableWidgetItem(x['seriesid'])
+					sidItem.setFlags(flags)
+					self.table.setItem(self.table.rowCount() - 1, 0, sidItem)
+					SeriesNameItem = QTableWidgetItem(x['SeriesName'])
+					SeriesNameItem.setFlags(flags)
+					self.table.setItem(self.table.rowCount() - 1, 1, SeriesNameItem)
+					OverviewItem = QTableWidgetItem(x['Overview'].replace("\n", "   "))
+					OverviewItem.setFlags(flags)
+					self.table.setItem(self.table.rowCount() - 1, 2, OverviewItem)
+			except:
+				msg.setText("An error occured.")
+				msg.show()
+				#progress.hide()
 
 		def select(self):
 			item = self.table.item(self.table.currentRow(), 0)
