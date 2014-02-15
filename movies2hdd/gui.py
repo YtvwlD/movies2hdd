@@ -132,6 +132,35 @@ class Step2(QWizardPage):
 				msg.show()
 				return(False)
 
+	def nextId(self):
+		if self.check.isChecked() == False:
+			return(4)
+		else:
+			return(3)
+
+class Step3(QWizardPage):
+	def __init__(self, parent=None):
+		super(Step3, self).__init__(parent)
+		self.setTitle("Search for and select movies")
+		self.layout = QVBoxLayout()
+		self.introduction = QLabel("Please enter a string to search for:")
+		self.introduction.setWordWrap(True)
+		self.layout.addWidget(self.introduction)
+		self.form = QFormLayout()
+		self.lineEdit = QLineEdit()
+		self.form.addRow(self.tr("&Search string:"), self.lineEdit)
+		self.layout.addLayout(self.form)
+		self.pushButton = QPushButton("S&earch")
+		self.pushButton.clicked.connect(self.func_search)
+		self.layout.addWidget(self.pushButton)
+		self.setLayout(self.layout)
+
+	def func_search(self):
+		pass
+
+	def validatePage(self):
+		return(False)
+
 class SeriesSelection(QDialog):
 		def __init__(self, parent):
 			super(SeriesSelection, self).__init__(parent)
@@ -208,8 +237,10 @@ mainwindow = QWizard()
 mainwindow.setWindowTitle("Movies2HDD")
 mainwindow.step1 = Step1()
 mainwindow.step2 = Step2()
+mainwindow.step3 = Step3()
 mainwindow.addPage(mainwindow.step1)
 mainwindow.addPage(mainwindow.step2)
+mainwindow.addPage(mainwindow.step3)
 mainwindow.show()
 app.exec_()
 try:
