@@ -72,7 +72,7 @@ class Step1(QWizardPage):
 		seriesselection.show()
 
 	def validatePage(self):
-		if self.folder_selection.text() != "Select" and self.series_selection != "Select":
+		if self.folder_selection.text() != "Select" and self.series_selection != "Select" and self.folder_selection.text() != "":
 			return(True)
 		else:
 			msg.setText("You need to select a folder and a series first.")
@@ -153,6 +153,7 @@ class SeriesSelection(QDialog):
 				msg.setText("An error occured.")
 				msg.show()
 				#progress.hide()
+			
 
 		def select(self):
 			item = self.table.item(self.table.currentRow(), 0)
