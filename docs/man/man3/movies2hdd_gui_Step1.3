@@ -1,0 +1,158 @@
+.TH "movies2hdd.gui.Step1" 3 "Mon Feb 17 2014" "Movies2HDD" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+movies2hdd.gui.Step1 \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits QWizardPage\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fB__init__\fP"
+.br
+.ti -1c
+.RI "def \fBfunc_folder_selection\fP"
+.br
+.ti -1c
+.RI "def \fBfunc_series_selection\fP"
+.br
+.ti -1c
+.RI "def \fBvalidatePage\fP"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBlayout\fP"
+.br
+.ti -1c
+.RI "\fBintroduction\fP"
+.br
+.ti -1c
+.RI "\fBform\fP"
+.br
+.ti -1c
+.RI "\fBfolder_selection\fP"
+.br
+.ti -1c
+.RI "\fBseries_selection\fP"
+.br
+.ti -1c
+.RI "\fBlang\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 47 of file gui\&.py\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "def movies2hdd\&.gui\&.Step1\&.__init__ (self, parent = \fCNone\fP)"
+
+.PP
+Definition at line 48 of file gui\&.py\&.
+.PP
+.nf
+48 
+49     def __init__(self, parent=None):
+50         super(Step1, self)\&.__init__(parent)
+51         self\&.setTitle("Select the folder and the series")
+52         self\&.layout = QVBoxLayout()
+53         self\&.introduction = QLabel("First, you need to select the folder where the movies are or should be placed\&. The name of the series is needed, too\&.")
+54         self\&.introduction\&.setWordWrap(True)
+55         self\&.layout\&.addWidget(self\&.introduction)
+56         self\&.form = QFormLayout()
+57         self\&.folder_selection = QPushButton("Select")
+58         self\&.registerField("folder_selection", self\&.folder_selection)
+59         self\&.folder_selection\&.clicked\&.connect(self\&.func_folder_selection)
+60         self\&.form\&.addRow(self\&.tr("Select &folder:"), self\&.folder_selection)
+61         self\&.series_selection = QPushButton("Select")
+62         self\&.registerField("seriesid", self\&.series_selection)
+63         self\&.series_selection\&.clicked\&.connect(self\&.func_series_selection)
+64         self\&.form\&.addRow(self\&.tr("Select &series:"), self\&.series_selection)
+65         self\&.layout\&.addLayout(self\&.form)
+66         self\&.setLayout(self\&.layout)
+67 
+68         self\&.lang = QLineEdit()
+69         self\&.registerField("lang", self\&.lang)
+70 
+
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "def movies2hdd\&.gui\&.Step1\&.func_folder_selection (self)"
+
+.PP
+Definition at line 71 of file gui\&.py\&.
+.PP
+.nf
+71 
+72     def func_folder_selection(self):
+73         folder = QFileDialog\&.getExistingDirectory()
+74         self\&.folder_selection\&.setText(folder)
+75         self\&.setField("folder_selection", folder)
+
+.fi
+.SS "def movies2hdd\&.gui\&.Step1\&.func_series_selection (self)"
+
+.PP
+Definition at line 76 of file gui\&.py\&.
+.PP
+.nf
+76 
+77     def func_series_selection(self):
+78         seriesselection = SeriesSelection(self)
+79         seriesselection\&.setWindowModality(Qt\&.WindowModal)
+80         seriesselection\&.show()
+
+.fi
+.SS "def movies2hdd\&.gui\&.Step1\&.validatePage (self)"
+
+.PP
+Definition at line 81 of file gui\&.py\&.
+.PP
+.nf
+81 
+82     def validatePage(self):
+83         if self\&.folder_selection\&.text() != "Select" and self\&.series_selection != "Select" and self\&.folder_selection\&.text() != "":
+84             return(True)
+85         else:
+86             msg\&.setText("You need to select a folder and a series first\&.")
+87             msg\&.show()
+88             return(False)
+
+.fi
+.SH "Member Data Documentation"
+.PP 
+.SS "movies2hdd\&.gui\&.Step1\&.folder_selection"
+
+.PP
+Definition at line 56 of file gui\&.py\&.
+.SS "movies2hdd\&.gui\&.Step1\&.form"
+
+.PP
+Definition at line 55 of file gui\&.py\&.
+.SS "movies2hdd\&.gui\&.Step1\&.introduction"
+
+.PP
+Definition at line 52 of file gui\&.py\&.
+.SS "movies2hdd\&.gui\&.Step1\&.lang"
+
+.PP
+Definition at line 67 of file gui\&.py\&.
+.SS "movies2hdd\&.gui\&.Step1\&.layout"
+
+.PP
+Definition at line 51 of file gui\&.py\&.
+.SS "movies2hdd\&.gui\&.Step1\&.series_selection"
+
+.PP
+Definition at line 60 of file gui\&.py\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Movies2HDD from the source code\&.

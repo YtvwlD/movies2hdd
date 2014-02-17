@@ -1,0 +1,146 @@
+.TH "movies2hdd.gui.Step3" 3 "Mon Feb 17 2014" "Movies2HDD" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+movies2hdd.gui.Step3 \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits QWizardPage\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fB__init__\fP"
+.br
+.ti -1c
+.RI "def \fBfunc_search\fP"
+.br
+.ti -1c
+.RI "def \fBvalidatePage\fP"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBlayout\fP"
+.br
+.ti -1c
+.RI "\fBintroduction\fP"
+.br
+.ti -1c
+.RI "\fBform\fP"
+.br
+.ti -1c
+.RI "\fBlineEdit\fP"
+.br
+.ti -1c
+.RI "\fBpushButton\fP"
+.br
+.ti -1c
+.RI "\fBlist\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 150 of file gui\&.py\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "def movies2hdd\&.gui\&.Step3\&.__init__ (self, parent = \fCNone\fP)"
+
+.PP
+Definition at line 151 of file gui\&.py\&.
+.PP
+.nf
+151 
+152     def __init__(self, parent=None):
+153         super(Step3, self)\&.__init__(parent)
+154         self\&.setTitle("Search for and select movies")
+155         self\&.layout = QVBoxLayout()
+156         self\&.introduction = QLabel("Please enter a string to search for:")
+157         self\&.introduction\&.setWordWrap(True)
+158         self\&.layout\&.addWidget(self\&.introduction)
+159         self\&.form = QFormLayout()
+160         self\&.lineEdit = QLineEdit()
+161         self\&.form\&.addRow(self\&.tr("&Search string:"), self\&.lineEdit)
+162         self\&.layout\&.addLayout(self\&.form)
+163         self\&.pushButton = QPushButton("S&earch")
+164         self\&.pushButton\&.clicked\&.connect(self\&.func_search)
+165         self\&.layout\&.addWidget(self\&.pushButton)
+166         self\&.list = QListWidget()
+167         self\&.layout\&.addWidget(self\&.list)
+168         self\&.setLayout(self\&.layout)
+
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "def movies2hdd\&.gui\&.Step3\&.func_search (self)"
+
+.PP
+Definition at line 169 of file gui\&.py\&.
+.PP
+.nf
+169 
+170     def func_search(self):
+171         self\&.list\&.clear()
+172         movies = []
+173         try:
+174             movies = movies2hdd\&.getAviableMovies(self\&.lineEdit\&.text())
+175         except:
+176             try:
+177                 movies2hdd\&.connect(self\&.field("host"), self\&.field("user"), self\&.field("password"))
+178                 movies = movies2hdd\&.getAviableMovies(str(""+self\&.lineEdit\&.text()))
+179             except Exception as e:
+180                 #sys\&.stderr\&.write("ERROR: " + str(e)+ "\n")
+181                 msg\&.setText("Something went wrong\&.\n\nThe detailed error message is:\n"+str(e))
+182                 msg\&.show()
+183                 raise
+184         finally:
+185             for x in movies:
+186                 self\&.list\&.addItem(QListWidgetItem(x))
+187             
+
+.fi
+.SS "def movies2hdd\&.gui\&.Step3\&.validatePage (self)"
+
+.PP
+Definition at line 188 of file gui\&.py\&.
+.PP
+.nf
+188 
+189     def validatePage(self):
+190         return(False)
+
+.fi
+.SH "Member Data Documentation"
+.PP 
+.SS "movies2hdd\&.gui\&.Step3\&.form"
+
+.PP
+Definition at line 158 of file gui\&.py\&.
+.SS "movies2hdd\&.gui\&.Step3\&.introduction"
+
+.PP
+Definition at line 155 of file gui\&.py\&.
+.SS "movies2hdd\&.gui\&.Step3\&.layout"
+
+.PP
+Definition at line 154 of file gui\&.py\&.
+.SS "movies2hdd\&.gui\&.Step3\&.lineEdit"
+
+.PP
+Definition at line 159 of file gui\&.py\&.
+.SS "movies2hdd\&.gui\&.Step3\&.list"
+
+.PP
+Definition at line 165 of file gui\&.py\&.
+.SS "movies2hdd\&.gui\&.Step3\&.pushButton"
+
+.PP
+Definition at line 162 of file gui\&.py\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Movies2HDD from the source code\&.

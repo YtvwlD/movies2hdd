@@ -119,63 +119,267 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;sys.stdout.flush()</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;sys.stdout.write(<span class="stringliteral">&quot;  PySide&quot;</span>)</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;sys.stdout.flush()</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">import</span> PySide</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">import</span> PySide.QtCore</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">import</span> PySide.QtGui</div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="code" href="namespacemovies2hdd_1_1gui.html#a5113ba41da39d51855bd15d8cf47d7be">   34</a></span>&#160;app = PySide.QtGui.QApplication(sys.argv)</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;sys.stdout.write(<span class="stringliteral">&quot;  Movies2HDD&quot;</span>)</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;sys.stdout.flush()</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">import</span> movies2hdd</div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="code" href="namespacemovies2hdd_1_1gui.html#a47850301e02e470855a027b38dd4b229">   38</a></span>&#160;Movies2HDD = <a class="code" href="classmovies2hdd_1_1_movies2_h_d_d.html">movies2hdd.Movies2HDD</a>()</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;sys.stdout.write(<span class="stringliteral">&quot;  ...done.&quot;</span>)</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;sys.stdout.flush()</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;sys.stdout.write(<span class="stringliteral">&quot;\n&quot;</span>)</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;sys.stdout.flush()</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keywordflow">print</span> (<span class="stringliteral">&quot;&quot;</span>)</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_main_window.html">   45</a></span>&#160;<span class="keyword">class </span><a class="code" href="classmovies2hdd_1_1gui_1_1_main_window.html">MainWindow</a>(PySide.QtGui.QDialog):</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">from</span> <a class="code" href="namespace_py_side_1_1_qt_core.html">PySide.QtCore</a> <span class="keyword">import</span> *</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">from</span> <a class="code" href="namespace_py_side_1_1_qt_gui.html">PySide.QtGui</a> <span class="keyword">import</span> *</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="code" href="namespacemovies2hdd_1_1gui.html#a5113ba41da39d51855bd15d8cf47d7be">   33</a></span>&#160;app =  QApplication(sys.argv)</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="code" href="namespacemovies2hdd_1_1gui.html#a04dfe049e2e7207b12600d74a0b13749">   34</a></span>&#160;msg = QMessageBox()</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;msg.setWindowTitle(<span class="stringliteral">&quot;Movies2HDD&quot;</span>)</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;sys.stdout.write(<span class="stringliteral">&quot;  Movies2HDD&quot;</span>)</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;sys.stdout.flush()</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">from</span> movies2hdd <span class="keyword">import</span> Movies2HDD</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="code" href="namespacemovies2hdd_1_1gui.html#a186ac0ab862ac5332f6dfc3e927126f0">   39</a></span>&#160;movies2hdd = <a class="code" href="classmovies2hdd_1_1_movies2_h_d_d.html">Movies2HDD</a>()</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;sys.stdout.write(<span class="stringliteral">&quot;  ...done.&quot;</span>)</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;sys.stdout.flush()</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;sys.stdout.write(<span class="stringliteral">&quot;\n&quot;</span>)</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;sys.stdout.flush()</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keywordflow">print</span> (<span class="stringliteral">&quot;&quot;</span>)</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">def </span>_hideLayout(self, layout):</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(layout.count()):</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            x = layout.itemAt(i)</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            <span class="keywordflow">if</span> x.widget() != <span class="keywordtype">None</span>:</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                x.widget().hide()</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keywordflow">else</span>:</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                self.<a class="code" href="classmovies2hdd_1_1gui_1_1_main_window.html#a2a4334e19b0e3da7926da6079d223fb7">_hideLayout</a>(x)</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keyword">def </span>_showLayout(self, layout):</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(layout.count()):</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            x = layout.itemAt(i)</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <span class="keywordflow">if</span> x.widget() != <span class="keywordtype">None</span>:</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                x.widget().show()</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            <span class="keywordflow">else</span>:</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                self.<a class="code" href="classmovies2hdd_1_1gui_1_1_main_window.html#a144123bb71e1f19360fbface44e64b6b">_showLayout</a>(x)</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_main_window.html#a2a26220b2cdbc5868ce39bbe5225d43e">   63</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classmovies2hdd_1_1gui_1_1_main_window.html#a2a26220b2cdbc5868ce39bbe5225d43e">__init__</a>(self, parent=None):</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        super(MainWindow, self).<a class="code" href="classmovies2hdd_1_1gui_1_1_main_window.html#a2a26220b2cdbc5868ce39bbe5225d43e">__init__</a>(parent)</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        self.setWindowTitle(<span class="stringliteral">&quot;Movies2HDD&quot;</span>)</div>
-<div class="line"><a name="l00066"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_main_window.html#a33aed6a40173ad6916d4c0682d204b3a">   66</a></span>&#160;        self.<a class="code" href="classmovies2hdd_1_1gui_1_1_main_window.html#a33aed6a40173ad6916d4c0682d204b3a">layout</a> = PySide.QtGui.QVBoxLayout()</div>
-<div class="line"><a name="l00067"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_main_window.html#a26535b6fc26552cfc8ca56beb4d4cce7">   67</a></span>&#160;        self.<a class="code" href="classmovies2hdd_1_1gui_1_1_main_window.html#a26535b6fc26552cfc8ca56beb4d4cce7">introduction</a> = PySide.QtGui.QLabel(<span class="stringliteral">&quot;There are a few common tasks. These are listed below.\nIf you think that something is missing feel free to create an issue or a pull request.\nYou may want to take a look at the existing tasks.&quot;</span>)</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        self.layout.addWidget(self.<a class="code" href="classmovies2hdd_1_1gui_1_1_main_window.html#a26535b6fc26552cfc8ca56beb4d4cce7">introduction</a>)</div>
-<div class="line"><a name="l00069"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_main_window.html#ae67a5547b931e5c38cfa7c0c24c9dbd8">   69</a></span>&#160;        self.<a class="code" href="classmovies2hdd_1_1gui_1_1_main_window.html#ae67a5547b931e5c38cfa7c0c24c9dbd8">commontasks</a> = PySide.QtGui.QHBoxLayout()</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        self.commontasks.downloadrenameconvert = PySide.QtGui.QPushButton(<span class="stringliteral">&quot;Download, rename and convert\n(You can choose which of them you want but the order is fixed.)&quot;</span>)</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        self.commontasks.addWidget(self.commontasks.downloadrenameconvert)</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        self.commontasks.renameexisting = PySide.QtGui.QPushButton(<span class="stringliteral">&quot;Rename existing movies (needs the *.meta files)&quot;</span>)</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        self.commontasks.addWidget(self.commontasks.renameexisting)</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        self.layout.addLayout(self.<a class="code" href="classmovies2hdd_1_1gui_1_1_main_window.html#ae67a5547b931e5c38cfa7c0c24c9dbd8">commontasks</a>)</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        self.setLayout(self.<a class="code" href="classmovies2hdd_1_1gui_1_1_main_window.html#a33aed6a40173ad6916d4c0682d204b3a">layout</a>)</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno"><a class="code" href="namespacemovies2hdd_1_1gui.html#ab66ae08952e6997fa86b05e376de756a">   77</a></span>&#160;mainwindow = <a class="code" href="classmovies2hdd_1_1gui_1_1_main_window.html">MainWindow</a>()</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;mainwindow.show()</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;app.exec_()</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keywordflow">try</span>:</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    Movies2HDD.disconnect()</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keywordflow">except</span>:</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">pass</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_step1.html">   47</a></span>&#160;<span class="keyword">class </span><a class="code" href="classmovies2hdd_1_1gui_1_1_step1.html">Step1</a>(QWizardPage):</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_step1.html#a7f77eb118cf3ec7debd009cdcedacb8f">   48</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classmovies2hdd_1_1gui_1_1_step1.html#a7f77eb118cf3ec7debd009cdcedacb8f">__init__</a>(self, parent=None):</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        super(Step1, self).<a class="code" href="classmovies2hdd_1_1gui_1_1_step1.html#a7f77eb118cf3ec7debd009cdcedacb8f">__init__</a>(parent)</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        self.setTitle(<span class="stringliteral">&quot;Select the folder and the series&quot;</span>)</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_step1.html#ac872defae6a2ec8fa87724017327180f">   51</a></span>&#160;        self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step1.html#ac872defae6a2ec8fa87724017327180f">layout</a> = QVBoxLayout()</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_step1.html#a682a18695266e8fecbd3df9151f76e4a">   52</a></span>&#160;        self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step1.html#a682a18695266e8fecbd3df9151f76e4a">introduction</a> = QLabel(<span class="stringliteral">&quot;First, you need to select the folder where the movies are or should be placed. The name of the series is needed, too.&quot;</span>)</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        self.introduction.setWordWrap(<span class="keyword">True</span>)</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        self.layout.addWidget(self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step1.html#a682a18695266e8fecbd3df9151f76e4a">introduction</a>)</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_step1.html#adef1bafe9ac90f458d6ef9597b3248b9">   55</a></span>&#160;        self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step1.html#adef1bafe9ac90f458d6ef9597b3248b9">form</a> = QFormLayout()</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_step1.html#a88c314f92883ddbe7c73ef89f7925929">   56</a></span>&#160;        self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step1.html#a88c314f92883ddbe7c73ef89f7925929">folder_selection</a> = QPushButton(<span class="stringliteral">&quot;Select&quot;</span>)</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        self.registerField(<span class="stringliteral">&quot;folder_selection&quot;</span>, self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step1.html#a88c314f92883ddbe7c73ef89f7925929">folder_selection</a>)</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        self.folder_selection.clicked.connect(self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step1.html#a3268d2a740327b03b1af10c02ae6e10e">func_folder_selection</a>)</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        self.form.addRow(self.tr(<span class="stringliteral">&quot;Select &amp;folder:&quot;</span>), self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step1.html#a88c314f92883ddbe7c73ef89f7925929">folder_selection</a>)</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_step1.html#a7de4eabf338df8f4e5ebad68f8235d78">   60</a></span>&#160;        self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step1.html#a7de4eabf338df8f4e5ebad68f8235d78">series_selection</a> = QPushButton(<span class="stringliteral">&quot;Select&quot;</span>)</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        self.registerField(<span class="stringliteral">&quot;seriesid&quot;</span>, self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step1.html#a7de4eabf338df8f4e5ebad68f8235d78">series_selection</a>)</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        self.series_selection.clicked.connect(self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step1.html#a93e5715186ec42ee18c1c5a0f75c54c4">func_series_selection</a>)</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        self.form.addRow(self.tr(<span class="stringliteral">&quot;Select &amp;series:&quot;</span>), self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step1.html#a7de4eabf338df8f4e5ebad68f8235d78">series_selection</a>)</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        self.layout.addLayout(self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step1.html#adef1bafe9ac90f458d6ef9597b3248b9">form</a>)</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        self.setLayout(self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step1.html#ac872defae6a2ec8fa87724017327180f">layout</a>)</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_step1.html#abd8a0c304da63971d4941db343634d11">   67</a></span>&#160;        self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step1.html#abd8a0c304da63971d4941db343634d11">lang</a> = QLineEdit()</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        self.registerField(<span class="stringliteral">&quot;lang&quot;</span>, self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step1.html#abd8a0c304da63971d4941db343634d11">lang</a>)</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_step1.html#a3268d2a740327b03b1af10c02ae6e10e">   71</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classmovies2hdd_1_1gui_1_1_step1.html#a3268d2a740327b03b1af10c02ae6e10e">func_folder_selection</a>(self):</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        folder = QFileDialog.getExistingDirectory()</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        self.folder_selection.setText(folder)</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        self.setField(<span class="stringliteral">&quot;folder_selection&quot;</span>, folder)</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_step1.html#a93e5715186ec42ee18c1c5a0f75c54c4">   76</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classmovies2hdd_1_1gui_1_1_step1.html#a93e5715186ec42ee18c1c5a0f75c54c4">func_series_selection</a>(self):</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        seriesselection = <a class="code" href="classmovies2hdd_1_1gui_1_1_series_selection.html">SeriesSelection</a>(self)</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        seriesselection.setWindowModality(Qt.WindowModal)</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        seriesselection.show()</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_step1.html#a4e623adf8d17a21563f58250e0fc4996">   81</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classmovies2hdd_1_1gui_1_1_step1.html#a4e623adf8d17a21563f58250e0fc4996">validatePage</a>(self):</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordflow">if</span> self.folder_selection.text() != <span class="stringliteral">&quot;Select&quot;</span> <span class="keywordflow">and</span> self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step1.html#a7de4eabf338df8f4e5ebad68f8235d78">series_selection</a> != <span class="stringliteral">&quot;Select&quot;</span> <span class="keywordflow">and</span> self.folder_selection.text() != <span class="stringliteral">&quot;&quot;</span>:</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            return(<span class="keyword">True</span>)</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            msg.setText(<span class="stringliteral">&quot;You need to select a folder and a series first.&quot;</span>)</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            msg.show()</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            return(<span class="keyword">False</span>)</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_step2.html">   89</a></span>&#160;<span class="keyword">class </span><a class="code" href="classmovies2hdd_1_1gui_1_1_step2.html">Step2</a>(QWizardPage):</div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_step2.html#adbcd30dbde1136bd162a892ee16f6584">   90</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classmovies2hdd_1_1gui_1_1_step2.html#adbcd30dbde1136bd162a892ee16f6584">__init__</a>(self, parent=None):</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        super(Step2, self).<a class="code" href="classmovies2hdd_1_1gui_1_1_step2.html#adbcd30dbde1136bd162a892ee16f6584">__init__</a>(parent)</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        self.setTitle(<span class="stringliteral">&quot;Connect to your Dreambox&quot;</span>)</div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_step2.html#a0a18ea7d6f2a66251b60d74b8af0696b">   93</a></span>&#160;        self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step2.html#a0a18ea7d6f2a66251b60d74b8af0696b">layout</a> = QVBoxLayout()</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="comment">#self.introduction = QLabel(&quot;&quot;)</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="comment">#self.introduction.setWordWrap(True)</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="comment">#self.layout.addWidget(self.introduction)</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_step2.html#af460b9a80cc6f30892480537debd47f9">   97</a></span>&#160;        self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step2.html#af460b9a80cc6f30892480537debd47f9">check</a> = QCheckBox(<span class="stringliteral">&quot;Do the movies need to be &amp;downloaded?&quot;</span>)</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        self.check.stateChanged.connect(self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step2.html#a9edb6b6d3a228791366c2003c7b17edf">func_check</a>)</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        self.layout.addWidget(self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step2.html#af460b9a80cc6f30892480537debd47f9">check</a>)</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_step2.html#ac4656ee08d1176420516f83a856b0799">  101</a></span>&#160;        self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step2.html#ac4656ee08d1176420516f83a856b0799">group</a> = QGroupBox(<span class="stringliteral">&quot;Connection information&quot;</span>)</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        self.group.layout = QVBoxLayout()</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        self.group.form = QFormLayout()</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_step2.html#a683a7687252c2018725e11630076d804">  105</a></span>&#160;        self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step2.html#a683a7687252c2018725e11630076d804">host</a> = QLineEdit()</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        self.registerField(<span class="stringliteral">&quot;host&quot;</span>, self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step2.html#a683a7687252c2018725e11630076d804">host</a>)</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        self.group.form.addRow(self.tr(<span class="stringliteral">&quot;&amp;Host:&quot;</span>), self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step2.html#a683a7687252c2018725e11630076d804">host</a>)</div>
+<div class="line"><a name="l00108"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_step2.html#a18455a364c4876707a596f250568abce">  108</a></span>&#160;        self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step2.html#a18455a364c4876707a596f250568abce">user</a> = QLineEdit()</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        self.registerField(<span class="stringliteral">&quot;user&quot;</span>, self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step2.html#a18455a364c4876707a596f250568abce">user</a>)</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        self.group.form.addRow(self.tr(<span class="stringliteral">&quot;&amp;User:&quot;</span>), self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step2.html#a18455a364c4876707a596f250568abce">user</a>)</div>
+<div class="line"><a name="l00111"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_step2.html#a87c68120beaf76279360a47159d5c7aa">  111</a></span>&#160;        self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step2.html#a87c68120beaf76279360a47159d5c7aa">warning</a> = QLabel(<span class="stringliteral">&quot;&lt;strong color=&#39;red&#39;&gt;Warning:&lt;/strong&gt; Your password will be sent unencryptedly!\nPlease do this only if you trust the network that you are currently connected to.\nOtherwise please tunnel your connection for example via SSH or VPN.&quot;</span>)</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        self.warning.setWordWrap(<span class="keyword">True</span>)</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        self.group.form.addRow(self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step2.html#a87c68120beaf76279360a47159d5c7aa">warning</a>)</div>
+<div class="line"><a name="l00114"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_step2.html#a3f46e0dc9e59cbc475fb08f1ab5c96e0">  114</a></span>&#160;        self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step2.html#a3f46e0dc9e59cbc475fb08f1ab5c96e0">password</a> = QLineEdit()</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        self.registerField(<span class="stringliteral">&quot;password&quot;</span>, self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step2.html#a3f46e0dc9e59cbc475fb08f1ab5c96e0">password</a>)</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        self.password.setEchoMode(QLineEdit.EchoMode.Password)</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        self.group.form.addRow(self.tr(<span class="stringliteral">&quot;&amp;Password:&quot;</span>), self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step2.html#a3f46e0dc9e59cbc475fb08f1ab5c96e0">password</a>)</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        self.group.layout.addLayout(self.group.form)</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        self.group.setLayout (self.group.layout)</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        self.layout.addWidget(self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step2.html#ac4656ee08d1176420516f83a856b0799">group</a>)</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        self.group.setEnabled(<span class="keyword">False</span>)</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        self.setLayout(self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step2.html#a0a18ea7d6f2a66251b60d74b8af0696b">layout</a>)</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
+<div class="line"><a name="l00126"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_step2.html#a9edb6b6d3a228791366c2003c7b17edf">  126</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classmovies2hdd_1_1gui_1_1_step2.html#a9edb6b6d3a228791366c2003c7b17edf">func_check</a>(self):</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        self.group.setEnabled(self.check.isChecked())</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_step2.html#a5c46ff531c08753f9dca56f3e15717c0">  130</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classmovies2hdd_1_1gui_1_1_step2.html#a5c46ff531c08753f9dca56f3e15717c0">validatePage</a>(self):</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <span class="keywordflow">if</span> self.check.isChecked() == <span class="keyword">False</span>:</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            return(<span class="keyword">True</span>)</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            <span class="keywordflow">try</span>:</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                movies2hdd.connect(self.host.text(), self.user.text(), self.password.text())</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                return(<span class="keyword">True</span>)</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            <span class="keywordflow">except</span> Exception <span class="keyword">as</span> e:</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                <span class="comment">#sys.stderr.write(&quot;ERROR: &quot; + str(e) + &quot;\n&quot;)</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                msg.setText(<span class="stringliteral">&quot;Could not connect.\nPlease check your input and your connection.\n\nThe detailed error message is:\n&quot;</span>+str(e))</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                msg.show()</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                <span class="keywordflow">raise</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                return(<span class="keyword">False</span>)</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
+<div class="line"><a name="l00144"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_step2.html#a9c39ae8418c352068f6248843eefe1f5">  144</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classmovies2hdd_1_1gui_1_1_step2.html#a9c39ae8418c352068f6248843eefe1f5">nextId</a>(self):</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        <span class="keywordflow">if</span> self.check.isChecked() == <span class="keyword">False</span>:</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            return(3)</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            return(2)</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;</div>
+<div class="line"><a name="l00150"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_step3.html">  150</a></span>&#160;<span class="keyword">class </span><a class="code" href="classmovies2hdd_1_1gui_1_1_step3.html">Step3</a>(QWizardPage):</div>
+<div class="line"><a name="l00151"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_step3.html#adced9712cc906ff656705527c0b5da48">  151</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classmovies2hdd_1_1gui_1_1_step3.html#adced9712cc906ff656705527c0b5da48">__init__</a>(self, parent=None):</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        super(Step3, self).<a class="code" href="classmovies2hdd_1_1gui_1_1_step3.html#adced9712cc906ff656705527c0b5da48">__init__</a>(parent)</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        self.setTitle(<span class="stringliteral">&quot;Search for and select movies&quot;</span>)</div>
+<div class="line"><a name="l00154"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_step3.html#a219925352b4ccaef913b4530039cefd3">  154</a></span>&#160;        self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step3.html#a219925352b4ccaef913b4530039cefd3">layout</a> = QVBoxLayout()</div>
+<div class="line"><a name="l00155"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_step3.html#acac006717bba2aa2f5834fecf3db359f">  155</a></span>&#160;        self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step3.html#acac006717bba2aa2f5834fecf3db359f">introduction</a> = QLabel(<span class="stringliteral">&quot;Please enter a string to search for:&quot;</span>)</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        self.introduction.setWordWrap(<span class="keyword">True</span>)</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        self.layout.addWidget(self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step3.html#acac006717bba2aa2f5834fecf3db359f">introduction</a>)</div>
+<div class="line"><a name="l00158"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_step3.html#affbacc9b3831417408811bd57aa7af76">  158</a></span>&#160;        self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step3.html#affbacc9b3831417408811bd57aa7af76">form</a> = QFormLayout()</div>
+<div class="line"><a name="l00159"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_step3.html#a7d8d7669f3636fb078fa022ebc1906bd">  159</a></span>&#160;        self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step3.html#a7d8d7669f3636fb078fa022ebc1906bd">lineEdit</a> = QLineEdit()</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        self.form.addRow(self.tr(<span class="stringliteral">&quot;&amp;Search string:&quot;</span>), self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step3.html#a7d8d7669f3636fb078fa022ebc1906bd">lineEdit</a>)</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        self.layout.addLayout(self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step3.html#affbacc9b3831417408811bd57aa7af76">form</a>)</div>
+<div class="line"><a name="l00162"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_step3.html#a3943ef1d0f93ffd6405996b301ec47d3">  162</a></span>&#160;        self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step3.html#a3943ef1d0f93ffd6405996b301ec47d3">pushButton</a> = QPushButton(<span class="stringliteral">&quot;S&amp;earch&quot;</span>)</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        self.pushButton.clicked.connect(self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step3.html#ae1ba8bc0179241cd53633c532f28dc25">func_search</a>)</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        self.layout.addWidget(self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step3.html#a3943ef1d0f93ffd6405996b301ec47d3">pushButton</a>)</div>
+<div class="line"><a name="l00165"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_step3.html#ab2215782905268ba4287fa1872f1618e">  165</a></span>&#160;        self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step3.html#ab2215782905268ba4287fa1872f1618e">list</a> = QListWidget()</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        self.layout.addWidget(self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step3.html#ab2215782905268ba4287fa1872f1618e">list</a>)</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        self.setLayout(self.<a class="code" href="classmovies2hdd_1_1gui_1_1_step3.html#a219925352b4ccaef913b4530039cefd3">layout</a>)</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div>
+<div class="line"><a name="l00169"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_step3.html#ae1ba8bc0179241cd53633c532f28dc25">  169</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classmovies2hdd_1_1gui_1_1_step3.html#ae1ba8bc0179241cd53633c532f28dc25">func_search</a>(self):</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        self.list.clear()</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        movies = []</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        <span class="keywordflow">try</span>:</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            movies = movies2hdd.getAviableMovies(self.lineEdit.text())</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        <span class="keywordflow">except</span>:</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            <span class="keywordflow">try</span>:</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                movies2hdd.connect(self.field(<span class="stringliteral">&quot;host&quot;</span>), self.field(<span class="stringliteral">&quot;user&quot;</span>), self.field(<span class="stringliteral">&quot;password&quot;</span>))</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                movies = movies2hdd.getAviableMovies(str(<span class="stringliteral">&quot;&quot;</span>+self.lineEdit.text()))</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            <span class="keywordflow">except</span> Exception <span class="keyword">as</span> e:</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                <span class="comment">#sys.stderr.write(&quot;ERROR: &quot; + str(e)+ &quot;\n&quot;)</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                msg.setText(<span class="stringliteral">&quot;Something went wrong.\n\nThe detailed error message is:\n&quot;</span>+str(e))</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                msg.show()</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                <span class="keywordflow">raise</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        <span class="keywordflow">finally</span>:</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            <span class="keywordflow">for</span> x <span class="keywordflow">in</span> movies:</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                self.list.addItem(QListWidgetItem(x))</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            </div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;</div>
+<div class="line"><a name="l00188"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_step3.html#abd850ebfb1a7b7bb76f70ffd178f9413">  188</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classmovies2hdd_1_1gui_1_1_step3.html#abd850ebfb1a7b7bb76f70ffd178f9413">validatePage</a>(self):</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        return(<span class="keyword">False</span>)</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;</div>
+<div class="line"><a name="l00191"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_series_selection.html">  191</a></span>&#160;<span class="keyword">class </span><a class="code" href="classmovies2hdd_1_1gui_1_1_series_selection.html">SeriesSelection</a>(QDialog):</div>
+<div class="line"><a name="l00192"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_series_selection.html#aa7aee53dd5df33e036a5bbffe99a903b">  192</a></span>&#160;        <span class="keyword">def </span><a class="code" href="classmovies2hdd_1_1gui_1_1_series_selection.html#aa7aee53dd5df33e036a5bbffe99a903b">__init__</a>(self, parent):</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            super(SeriesSelection, self).<a class="code" href="classmovies2hdd_1_1gui_1_1_series_selection.html#aa7aee53dd5df33e036a5bbffe99a903b">__init__</a>(parent)</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            self.setWindowTitle(<span class="stringliteral">&quot;Series Selection&quot;</span>)</div>
+<div class="line"><a name="l00195"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_series_selection.html#a1d4759f70508c7fbcbf5ce849d6cee76">  195</a></span>&#160;            self.<a class="code" href="classmovies2hdd_1_1gui_1_1_series_selection.html#a1d4759f70508c7fbcbf5ce849d6cee76">layout</a> = QVBoxLayout()</div>
+<div class="line"><a name="l00196"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_series_selection.html#ae741cee9fe3b6d64c1e62413c063d7b1">  196</a></span>&#160;            self.<a class="code" href="classmovies2hdd_1_1gui_1_1_series_selection.html#ae741cee9fe3b6d64c1e62413c063d7b1">introduction</a> = QLabel(<span class="stringliteral">&quot;Please enter the name of the series to search for and the language code.&quot;</span>)</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            self.introduction.setWordWrap(<span class="keyword">True</span>)</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            self.layout.addWidget(self.<a class="code" href="classmovies2hdd_1_1gui_1_1_series_selection.html#ae741cee9fe3b6d64c1e62413c063d7b1">introduction</a>)</div>
+<div class="line"><a name="l00199"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_series_selection.html#a514dd2b23706781594fe9d9886a28218">  199</a></span>&#160;            self.<a class="code" href="classmovies2hdd_1_1gui_1_1_series_selection.html#a514dd2b23706781594fe9d9886a28218">form</a> = QFormLayout()</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            self.form.series = QLineEdit()</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;            self.form.addRow(self.tr(<span class="stringliteral">&quot;&amp;Series:&quot;</span>), self.form.series)</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;            self.form.lang = QLineEdit()</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            self.form.addRow(self.tr(<span class="stringliteral">&quot;&amp;Language code:&quot;</span>), self.form.lang)</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            self.layout.addLayout(self.<a class="code" href="classmovies2hdd_1_1gui_1_1_series_selection.html#a514dd2b23706781594fe9d9886a28218">form</a>)</div>
+<div class="line"><a name="l00205"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_series_selection.html#a3ef4927decef147a124124515ab71114">  205</a></span>&#160;            self.<a class="code" href="classmovies2hdd_1_1gui_1_1_series_selection.html#a3ef4927decef147a124124515ab71114">searchButton</a> = QPushButton(<span class="stringliteral">&quot;Se&amp;arch&quot;</span>)</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            self.layout.addWidget(self.<a class="code" href="classmovies2hdd_1_1gui_1_1_series_selection.html#a3ef4927decef147a124124515ab71114">searchButton</a>)</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            self.searchButton.clicked.connect(self.<a class="code" href="classmovies2hdd_1_1gui_1_1_series_selection.html#a59d9d53410754b1a797e2ec645c57591">searchForSeries</a>)</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;</div>
+<div class="line"><a name="l00209"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_series_selection.html#ac297f3ae5b7cbba9f01a3ebf7fa2fbb5">  209</a></span>&#160;            self.<a class="code" href="classmovies2hdd_1_1gui_1_1_series_selection.html#ac297f3ae5b7cbba9f01a3ebf7fa2fbb5">table</a> = QTableWidget()</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            self.table.setColumnCount(3)</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            self.table.setHorizontalHeaderLabels([<span class="stringliteral">&quot;ID&quot;</span>, <span class="stringliteral">&quot;Series&quot;</span>, <span class="stringliteral">&quot;Overview&quot;</span>])</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            self.layout.addWidget(self.<a class="code" href="classmovies2hdd_1_1gui_1_1_series_selection.html#ac297f3ae5b7cbba9f01a3ebf7fa2fbb5">table</a>)</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;</div>
+<div class="line"><a name="l00214"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_series_selection.html#ac43a1fd2985b12d7d42e5d3af24a5309">  214</a></span>&#160;            self.<a class="code" href="classmovies2hdd_1_1gui_1_1_series_selection.html#ac43a1fd2985b12d7d42e5d3af24a5309">button</a> = QPushButton(<span class="stringliteral">&quot;Se&amp;lect&quot;</span>)</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;            self.layout.addWidget(self.<a class="code" href="classmovies2hdd_1_1gui_1_1_series_selection.html#ac43a1fd2985b12d7d42e5d3af24a5309">button</a>)</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            self.button.clicked.connect(self.<a class="code" href="classmovies2hdd_1_1gui_1_1_series_selection.html#a97b0edb40452ba405e776132cae34997">select</a>)</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            self.setLayout(self.<a class="code" href="classmovies2hdd_1_1gui_1_1_series_selection.html#a1d4759f70508c7fbcbf5ce849d6cee76">layout</a>)</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;</div>
+<div class="line"><a name="l00220"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_series_selection.html#a59d9d53410754b1a797e2ec645c57591">  220</a></span>&#160;        <span class="keyword">def </span><a class="code" href="classmovies2hdd_1_1gui_1_1_series_selection.html#a59d9d53410754b1a797e2ec645c57591">searchForSeries</a>(self):</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            <span class="comment">#progress = QProgressDialog(&quot;Searching for the series...&quot;, &quot;Close&quot;, 0, 1, self)</span></div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            <span class="comment">#progress.setWindowModality(Qt.WindowModal)</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            <span class="comment">#progress.setWindowTitle(&quot;Movies2HDD&quot;)</span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;            <span class="comment">#progress.setAutoClose(False)</span></div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;            <span class="comment">#progress.setCancelButton(None)</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;            <span class="comment">#progress.setMinimumDuration(0)</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;            <span class="comment">#progress.show()</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;            <span class="comment">#progress.setValue(0)</span></div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;            <span class="keywordflow">try</span>:</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                series = movies2hdd.getSeries(self.form.series.text())</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                <span class="comment">#progress.setMaximum(series.__len__())</span></div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                self.table.clear()</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                self.table.setRowCount(0)</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                self.table.setHorizontalHeaderLabels([<span class="stringliteral">&quot;ID&quot;</span>, <span class="stringliteral">&quot;Series&quot;</span>, <span class="stringliteral">&quot;Overview&quot;</span>])</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                <span class="keywordflow">for</span> x <span class="keywordflow">in</span> series:</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                    <span class="comment">#progress.setValue(progress.value() + 1)</span></div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                    flags = int(Qt.ItemIsEnabled) <span class="comment">#+ int(Qt.ItemIsSelectable)</span></div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                    self.table.setRowCount(self.table.rowCount() + 1)</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                    sidItem = QTableWidgetItem(x[<span class="stringliteral">&#39;seriesid&#39;</span>])</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                    sidItem.setFlags(flags)</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                    self.table.setItem(self.table.rowCount() - 1, 0, sidItem)</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                    SeriesNameItem = QTableWidgetItem(x[<span class="stringliteral">&#39;SeriesName&#39;</span>])</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                    SeriesNameItem.setFlags(flags)</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                    self.table.setItem(self.table.rowCount() - 1, 1, SeriesNameItem)</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                    OverviewItem = QTableWidgetItem(x[<span class="stringliteral">&#39;Overview&#39;</span>].replace(<span class="stringliteral">&quot;\n&quot;</span>, <span class="stringliteral">&quot;   &quot;</span>))</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                    OverviewItem.setFlags(flags)</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                    self.table.setItem(self.table.rowCount() - 1, 2, OverviewItem)</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            <span class="keywordflow">except</span> Exception <span class="keyword">as</span> e:</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                <span class="comment">#sys.stderr.write(&quot;ERROR: &quot; + str(e)+ &quot;\n&quot;)</span></div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                msg.setText(<span class="stringliteral">&quot;An error occured.\n\nThe detailed error message is:\n&quot;</span>+str(e))</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                msg.show()</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                <span class="comment">#progress.hide()</span></div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                <span class="keywordflow">raise</span></div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;</div>
+<div class="line"><a name="l00256"></a><span class="lineno"><a class="code" href="classmovies2hdd_1_1gui_1_1_series_selection.html#a97b0edb40452ba405e776132cae34997">  256</a></span>&#160;        <span class="keyword">def </span><a class="code" href="classmovies2hdd_1_1gui_1_1_series_selection.html#a97b0edb40452ba405e776132cae34997">select</a>(self):</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            if(self.form.lang.text()!= <span class="stringliteral">&quot;&quot;</span>):</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                <span class="keywordflow">try</span>:</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                    item = self.table.item(self.table.currentRow(), 0)</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                    <span class="comment">#The conversion str-&gt;int-&gt;str is not really needed. And it is nothing that the user can change. But it could prevent future issues.</span></div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                    sid = str(int(item.text()))</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                    self.parent().series_selection.setText(sid)</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                    self.parent().setField(<span class="stringliteral">&quot;seriesid&quot;</span>, sid)</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                    self.parent().setField(<span class="stringliteral">&quot;lang&quot;</span>, self.form.lang.text())</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                    self.close()</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                <span class="keywordflow">except</span>:</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                    msg.setText(<span class="stringliteral">&quot;You need to select one series by clicking on it.&quot;</span>)</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                    msg.show()</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;            <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                msg.setText(<span class="stringliteral">&quot;You need to enter your language code.&quot;</span>)</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                msg.show()</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;</div>
+<div class="line"><a name="l00274"></a><span class="lineno"><a class="code" href="namespacemovies2hdd_1_1gui.html#ab66ae08952e6997fa86b05e376de756a">  274</a></span>&#160;mainwindow = QWizard()</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;mainwindow.setWindowTitle(<span class="stringliteral">&quot;Movies2HDD&quot;</span>)</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;mainwindow.step1 = <a class="code" href="classmovies2hdd_1_1gui_1_1_step1.html">Step1</a>()</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;mainwindow.step2 = <a class="code" href="classmovies2hdd_1_1gui_1_1_step2.html">Step2</a>()</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;mainwindow.step3 = <a class="code" href="classmovies2hdd_1_1gui_1_1_step3.html">Step3</a>()</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;mainwindow.addPage(mainwindow.step1)</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;mainwindow.addPage(mainwindow.step2)</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;mainwindow.addPage(mainwindow.step3)</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;mainwindow.show()</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;app.exec_()</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;<span class="keywordflow">try</span>:</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    movies2hdd.disconnect()</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;<span class="keywordflow">except</span>:</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    <span class="keywordflow">pass</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Feb 1 2014 15:08:54 for Movies2HDD by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Feb 17 2014 18:48:20 for Movies2HDD by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

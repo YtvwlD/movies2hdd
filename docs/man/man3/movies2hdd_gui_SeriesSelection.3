@@ -1,0 +1,188 @@
+.TH "movies2hdd.gui.SeriesSelection" 3 "Mon Feb 17 2014" "Movies2HDD" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+movies2hdd.gui.SeriesSelection \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits QDialog\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fB__init__\fP"
+.br
+.ti -1c
+.RI "def \fBsearchForSeries\fP"
+.br
+.ti -1c
+.RI "def \fBselect\fP"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBlayout\fP"
+.br
+.ti -1c
+.RI "\fBintroduction\fP"
+.br
+.ti -1c
+.RI "\fBform\fP"
+.br
+.ti -1c
+.RI "\fBsearchButton\fP"
+.br
+.ti -1c
+.RI "\fBtable\fP"
+.br
+.ti -1c
+.RI "\fBbutton\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 191 of file gui\&.py\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "def movies2hdd\&.gui\&.SeriesSelection\&.__init__ (self, parent)"
+
+.PP
+Definition at line 192 of file gui\&.py\&.
+.PP
+.nf
+192 
+193         def __init__(self, parent):
+194             super(SeriesSelection, self)\&.__init__(parent)
+195             self\&.setWindowTitle("Series Selection")
+196             self\&.layout = QVBoxLayout()
+197             self\&.introduction = QLabel("Please enter the name of the series to search for and the language code\&.")
+198             self\&.introduction\&.setWordWrap(True)
+199             self\&.layout\&.addWidget(self\&.introduction)
+200             self\&.form = QFormLayout()
+201             self\&.form\&.series = QLineEdit()
+202             self\&.form\&.addRow(self\&.tr("&Series:"), self\&.form\&.series)
+203             self\&.form\&.lang = QLineEdit()
+204             self\&.form\&.addRow(self\&.tr("&Language code:"), self\&.form\&.lang)
+205             self\&.layout\&.addLayout(self\&.form)
+206             self\&.searchButton = QPushButton("Se&arch")
+207             self\&.layout\&.addWidget(self\&.searchButton)
+208             self\&.searchButton\&.clicked\&.connect(self\&.searchForSeries)
+209 
+210             self\&.table = QTableWidget()
+211             self\&.table\&.setColumnCount(3)
+212             self\&.table\&.setHorizontalHeaderLabels(["ID", "Series", "Overview"])
+213             self\&.layout\&.addWidget(self\&.table)
+214 
+215             self\&.button = QPushButton("Se&lect")
+216             self\&.layout\&.addWidget(self\&.button)
+217             self\&.button\&.clicked\&.connect(self\&.select)
+218 
+219             self\&.setLayout(self\&.layout)
+
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "def movies2hdd\&.gui\&.SeriesSelection\&.searchForSeries (self)"
+
+.PP
+Definition at line 220 of file gui\&.py\&.
+.PP
+.nf
+220 
+221         def searchForSeries(self):
+222             #progress = QProgressDialog("Searching for the series\&.\&.\&.", "Close", 0, 1, self)
+223             #progress\&.setWindowModality(Qt\&.WindowModal)
+224             #progress\&.setWindowTitle("Movies2HDD")
+225             #progress\&.setAutoClose(False)
+226             #progress\&.setCancelButton(None)
+227             #progress\&.setMinimumDuration(0)
+228             #progress\&.show()
+229             #progress\&.setValue(0)
+230             try:
+231                 series = movies2hdd\&.getSeries(self\&.form\&.series\&.text())
+232                 #progress\&.setMaximum(series\&.__len__())
+233                 self\&.table\&.clear()
+234                 self\&.table\&.setRowCount(0)
+235                 self\&.table\&.setHorizontalHeaderLabels(["ID", "Series", "Overview"])
+236                 for x in series:
+237                     #progress\&.setValue(progress\&.value() + 1)
+238                     flags = int(Qt\&.ItemIsEnabled) #+ int(Qt\&.ItemIsSelectable)
+239                     self\&.table\&.setRowCount(self\&.table\&.rowCount() + 1)
+240                     sidItem = QTableWidgetItem(x['seriesid'])
+241                     sidItem\&.setFlags(flags)
+242                     self\&.table\&.setItem(self\&.table\&.rowCount() - 1, 0, sidItem)
+243                     SeriesNameItem = QTableWidgetItem(x['SeriesName'])
+244                     SeriesNameItem\&.setFlags(flags)
+245                     self\&.table\&.setItem(self\&.table\&.rowCount() - 1, 1, SeriesNameItem)
+246                     OverviewItem = QTableWidgetItem(x['Overview']\&.replace("\n", "   "))
+247                     OverviewItem\&.setFlags(flags)
+248                     self\&.table\&.setItem(self\&.table\&.rowCount() - 1, 2, OverviewItem)
+249             except Exception as e:
+250                 #sys\&.stderr\&.write("ERROR: " + str(e)+ "\n")
+251                 msg\&.setText("An error occured\&.\n\nThe detailed error message is:\n"+str(e))
+252                 msg\&.show()
+253                 #progress\&.hide()
+254                 raise
+255 
+
+.fi
+.SS "def movies2hdd\&.gui\&.SeriesSelection\&.select (self)"
+
+.PP
+Definition at line 256 of file gui\&.py\&.
+.PP
+.nf
+256 
+257         def select(self):
+258             if(self\&.form\&.lang\&.text()!= ""):
+259                 try:
+260                     item = self\&.table\&.item(self\&.table\&.currentRow(), 0)
+261                     #The conversion str->int->str is not really needed\&. And it is nothing that the user can change\&. But it could prevent future issues\&.
+262                     sid = str(int(item\&.text()))
+263                     self\&.parent()\&.series_selection\&.setText(sid)
+264                     self\&.parent()\&.setField("seriesid", sid)
+265                     self\&.parent()\&.setField("lang", self\&.form\&.lang\&.text())
+266                     self\&.close()
+267                 except:
+268                     msg\&.setText("You need to select one series by clicking on it\&.")
+269                     msg\&.show()
+270             else:
+271                 msg\&.setText("You need to enter your language code\&.")
+272                 msg\&.show()
+273 
+
+.fi
+.SH "Member Data Documentation"
+.PP 
+.SS "movies2hdd\&.gui\&.SeriesSelection\&.button"
+
+.PP
+Definition at line 214 of file gui\&.py\&.
+.SS "movies2hdd\&.gui\&.SeriesSelection\&.form"
+
+.PP
+Definition at line 199 of file gui\&.py\&.
+.SS "movies2hdd\&.gui\&.SeriesSelection\&.introduction"
+
+.PP
+Definition at line 196 of file gui\&.py\&.
+.SS "movies2hdd\&.gui\&.SeriesSelection\&.layout"
+
+.PP
+Definition at line 195 of file gui\&.py\&.
+.SS "movies2hdd\&.gui\&.SeriesSelection\&.searchButton"
+
+.PP
+Definition at line 205 of file gui\&.py\&.
+.SS "movies2hdd\&.gui\&.SeriesSelection\&.table"
+
+.PP
+Definition at line 209 of file gui\&.py\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Movies2HDD from the source code\&.

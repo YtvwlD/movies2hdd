@@ -1,4 +1,4 @@
-.TH "movies2hdd/gui.py" 3 "Sat Feb 1 2014" "Movies2HDD" \" -*- nroff -*-
+.TH "movies2hdd/gui.py" 3 "Mon Feb 17 2014" "Movies2HDD" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -10,7 +10,16 @@ movies2hdd/gui.py \-
 
 .in +1c
 .ti -1c
-.RI "class \fBmovies2hdd\&.gui\&.MainWindow\fP"
+.RI "class \fBmovies2hdd\&.gui\&.Step1\fP"
+.br
+.ti -1c
+.RI "class \fBmovies2hdd\&.gui\&.Step2\fP"
+.br
+.ti -1c
+.RI "class \fBmovies2hdd\&.gui\&.Step3\fP"
+.br
+.ti -1c
+.RI "class \fBmovies2hdd\&.gui\&.SeriesSelection\fP"
 .br
 .in -1c
 .SS "Namespaces"
@@ -31,13 +40,16 @@ movies2hdd/gui.py \-
 
 .in +1c
 .ti -1c
-.RI "tuple \fBmovies2hdd\&.gui\&.app\fP = PySide\&.QtGui\&.QApplication(sys\&.argv)"
+.RI "tuple \fBmovies2hdd\&.gui\&.app\fP = QApplication(sys\&.argv)"
 .br
 .ti -1c
-.RI "tuple \fBmovies2hdd\&.gui\&.Movies2HDD\fP = \fBmovies2hdd\&.Movies2HDD\fP()"
+.RI "tuple \fBmovies2hdd\&.gui\&.msg\fP = QMessageBox()"
 .br
 .ti -1c
-.RI "tuple \fBmovies2hdd\&.gui\&.mainwindow\fP = MainWindow()"
+.RI "tuple \fBmovies2hdd\&.gui\&.movies2hdd\fP = Movies2HDD()"
+.br
+.ti -1c
+.RI "tuple \fBmovies2hdd\&.gui\&.mainwindow\fP = QWizard()"
 .br
 .in -1c
 .SH "Author"

@@ -1,0 +1,184 @@
+.TH "movies2hdd.gui.Step2" 3 "Mon Feb 17 2014" "Movies2HDD" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+movies2hdd.gui.Step2 \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits QWizardPage\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fB__init__\fP"
+.br
+.ti -1c
+.RI "def \fBfunc_check\fP"
+.br
+.ti -1c
+.RI "def \fBvalidatePage\fP"
+.br
+.ti -1c
+.RI "def \fBnextId\fP"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBlayout\fP"
+.br
+.ti -1c
+.RI "\fBcheck\fP"
+.br
+.ti -1c
+.RI "\fBgroup\fP"
+.br
+.ti -1c
+.RI "\fBhost\fP"
+.br
+.ti -1c
+.RI "\fBuser\fP"
+.br
+.ti -1c
+.RI "\fBwarning\fP"
+.br
+.ti -1c
+.RI "\fBpassword\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 89 of file gui\&.py\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "def movies2hdd\&.gui\&.Step2\&.__init__ (self, parent = \fCNone\fP)"
+
+.PP
+Definition at line 90 of file gui\&.py\&.
+.PP
+.nf
+90 
+91     def __init__(self, parent=None):
+92         super(Step2, self)\&.__init__(parent)
+93         self\&.setTitle("Connect to your Dreambox")
+94         self\&.layout = QVBoxLayout()
+95         #self\&.introduction = QLabel("")
+96         #self\&.introduction\&.setWordWrap(True)
+97         #self\&.layout\&.addWidget(self\&.introduction)
+98         self\&.check = QCheckBox("Do the movies need to be &downloaded?")
+99         self\&.check\&.stateChanged\&.connect(self\&.func_check)
+100         self\&.layout\&.addWidget(self\&.check)
+101 
+102         self\&.group = QGroupBox("Connection information")
+103         self\&.group\&.layout = QVBoxLayout()
+104         self\&.group\&.form = QFormLayout()
+105 
+106         self\&.host = QLineEdit()
+107         self\&.registerField("host", self\&.host)
+108         self\&.group\&.form\&.addRow(self\&.tr("&Host:"), self\&.host)
+109         self\&.user = QLineEdit()
+110         self\&.registerField("user", self\&.user)
+111         self\&.group\&.form\&.addRow(self\&.tr("&User:"), self\&.user)
+112         self\&.warning = QLabel("<strong color='red'>Warning:</strong> Your password will be sent unencryptedly!\nPlease do this only if you trust the network that you are currently connected to\&.\nOtherwise please tunnel your connection for example via SSH or VPN\&.")
+113         self\&.warning\&.setWordWrap(True)
+114         self\&.group\&.form\&.addRow(self\&.warning)
+115         self\&.password = QLineEdit()
+116         self\&.registerField("password", self\&.password)
+117         self\&.password\&.setEchoMode(QLineEdit\&.EchoMode\&.Password)
+118         self\&.group\&.form\&.addRow(self\&.tr("&Password:"), self\&.password)
+119 
+120         self\&.group\&.layout\&.addLayout(self\&.group\&.form)
+121         self\&.group\&.setLayout (self\&.group\&.layout)
+122         self\&.layout\&.addWidget(self\&.group)
+123         self\&.group\&.setEnabled(False)
+124 
+125         self\&.setLayout(self\&.layout)
+
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "def movies2hdd\&.gui\&.Step2\&.func_check (self)"
+
+.PP
+Definition at line 126 of file gui\&.py\&.
+.PP
+.nf
+126 
+127     def func_check(self):
+128         self\&.group\&.setEnabled(self\&.check\&.isChecked())
+129 
+
+.fi
+.SS "def movies2hdd\&.gui\&.Step2\&.nextId (self)"
+
+.PP
+Definition at line 144 of file gui\&.py\&.
+.PP
+.nf
+144 
+145     def nextId(self):
+146         if self\&.check\&.isChecked() == False:
+147             return(3)
+148         else:
+149             return(2)
+
+.fi
+.SS "def movies2hdd\&.gui\&.Step2\&.validatePage (self)"
+
+.PP
+Definition at line 130 of file gui\&.py\&.
+.PP
+.nf
+130 
+131     def validatePage(self):
+132         if self\&.check\&.isChecked() == False:
+133             return(True)
+134         else:
+135             try:
+136                 movies2hdd\&.connect(self\&.host\&.text(), self\&.user\&.text(), self\&.password\&.text())
+137                 return(True)
+138             except Exception as e:
+139                 #sys\&.stderr\&.write("ERROR: " + str(e) + "\n")
+140                 msg\&.setText("Could not connect\&.\nPlease check your input and your connection\&.\n\nThe detailed error message is:\n"+str(e))
+141                 msg\&.show()
+142                 raise
+143                 return(False)
+
+.fi
+.SH "Member Data Documentation"
+.PP 
+.SS "movies2hdd\&.gui\&.Step2\&.check"
+
+.PP
+Definition at line 97 of file gui\&.py\&.
+.SS "movies2hdd\&.gui\&.Step2\&.group"
+
+.PP
+Definition at line 101 of file gui\&.py\&.
+.SS "movies2hdd\&.gui\&.Step2\&.host"
+
+.PP
+Definition at line 105 of file gui\&.py\&.
+.SS "movies2hdd\&.gui\&.Step2\&.layout"
+
+.PP
+Definition at line 93 of file gui\&.py\&.
+.SS "movies2hdd\&.gui\&.Step2\&.password"
+
+.PP
+Definition at line 114 of file gui\&.py\&.
+.SS "movies2hdd\&.gui\&.Step2\&.user"
+
+.PP
+Definition at line 108 of file gui\&.py\&.
+.SS "movies2hdd\&.gui\&.Step2\&.warning"
+
+.PP
+Definition at line 111 of file gui\&.py\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Movies2HDD from the source code\&.

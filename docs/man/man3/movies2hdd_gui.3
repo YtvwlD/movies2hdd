@@ -1,4 +1,4 @@
-.TH "movies2hdd.gui" 3 "Sat Feb 1 2014" "Movies2HDD" \" -*- nroff -*-
+.TH "movies2hdd.gui" 3 "Mon Feb 17 2014" "Movies2HDD" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -10,36 +10,52 @@ movies2hdd.gui \-
 
 .in +1c
 .ti -1c
-.RI "class \fBMainWindow\fP"
+.RI "class \fBStep1\fP"
+.br
+.ti -1c
+.RI "class \fBStep2\fP"
+.br
+.ti -1c
+.RI "class \fBStep3\fP"
+.br
+.ti -1c
+.RI "class \fBSeriesSelection\fP"
 .br
 .in -1c
 .SS "Variables"
 
 .in +1c
 .ti -1c
-.RI "tuple \fBapp\fP = PySide\&.QtGui\&.QApplication(sys\&.argv)"
+.RI "tuple \fBapp\fP = QApplication(sys\&.argv)"
 .br
 .ti -1c
-.RI "tuple \fBMovies2HDD\fP = \fBmovies2hdd\&.Movies2HDD\fP()"
+.RI "tuple \fBmsg\fP = QMessageBox()"
 .br
 .ti -1c
-.RI "tuple \fBmainwindow\fP = \fBMainWindow\fP()"
+.RI "tuple \fBmovies2hdd\fP = \fBMovies2HDD\fP()"
+.br
+.ti -1c
+.RI "tuple \fBmainwindow\fP = QWizard()"
 .br
 .in -1c
 .SH "Variable Documentation"
 .PP 
-.SS "tuple movies2hdd\&.gui\&.app = PySide\&.QtGui\&.QApplication(sys\&.argv)"
+.SS "tuple movies2hdd\&.gui\&.app = QApplication(sys\&.argv)"
+
+.PP
+Definition at line 33 of file gui\&.py\&.
+.SS "tuple movies2hdd\&.gui\&.mainwindow = QWizard()"
+
+.PP
+Definition at line 274 of file gui\&.py\&.
+.SS "tuple movies2hdd\&.gui\&.movies2hdd = \fBMovies2HDD\fP()"
+
+.PP
+Definition at line 39 of file gui\&.py\&.
+.SS "tuple movies2hdd\&.gui\&.msg = QMessageBox()"
 
 .PP
 Definition at line 34 of file gui\&.py\&.
-.SS "tuple movies2hdd\&.gui\&.mainwindow = \fBMainWindow\fP()"
-
-.PP
-Definition at line 77 of file gui\&.py\&.
-.SS "tuple movies2hdd\&.gui\&.Movies2HDD = \fBmovies2hdd\&.Movies2HDD\fP()"
-
-.PP
-Definition at line 38 of file gui\&.py\&.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Movies2HDD from the source code\&.

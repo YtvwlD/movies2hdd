@@ -1,0 +1,226 @@
+\hypertarget{classmovies2hdd_1_1gui_1_1_series_selection}{\section{movies2hdd.\-gui.\-Series\-Selection Class Reference}
+\label{classmovies2hdd_1_1gui_1_1_series_selection}\index{movies2hdd.\-gui.\-Series\-Selection@{movies2hdd.\-gui.\-Series\-Selection}}
+}
+Inheritance diagram for movies2hdd.\-gui.\-Series\-Selection\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classmovies2hdd_1_1gui_1_1_series_selection}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classmovies2hdd_1_1gui_1_1_series_selection_aa7aee53dd5df33e036a5bbffe99a903b}{\-\_\-\-\_\-init\-\_\-\-\_\-}
+\item 
+def \hyperlink{classmovies2hdd_1_1gui_1_1_series_selection_a59d9d53410754b1a797e2ec645c57591}{search\-For\-Series}
+\item 
+def \hyperlink{classmovies2hdd_1_1gui_1_1_series_selection_a97b0edb40452ba405e776132cae34997}{select}
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmovies2hdd_1_1gui_1_1_series_selection_a1d4759f70508c7fbcbf5ce849d6cee76}{layout}
+\item 
+\hyperlink{classmovies2hdd_1_1gui_1_1_series_selection_ae741cee9fe3b6d64c1e62413c063d7b1}{introduction}
+\item 
+\hyperlink{classmovies2hdd_1_1gui_1_1_series_selection_a514dd2b23706781594fe9d9886a28218}{form}
+\item 
+\hyperlink{classmovies2hdd_1_1gui_1_1_series_selection_a3ef4927decef147a124124515ab71114}{search\-Button}
+\item 
+\hyperlink{classmovies2hdd_1_1gui_1_1_series_selection_ac297f3ae5b7cbba9f01a3ebf7fa2fbb5}{table}
+\item 
+\hyperlink{classmovies2hdd_1_1gui_1_1_series_selection_ac43a1fd2985b12d7d42e5d3af24a5309}{button}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 191 of file gui.\-py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classmovies2hdd_1_1gui_1_1_series_selection_aa7aee53dd5df33e036a5bbffe99a903b}{\index{movies2hdd\-::gui\-::\-Series\-Selection@{movies2hdd\-::gui\-::\-Series\-Selection}!\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}}
+\index{\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}!movies2hdd::gui::SeriesSelection@{movies2hdd\-::gui\-::\-Series\-Selection}}
+\subsubsection[{\-\_\-\-\_\-init\-\_\-\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def movies2hdd.\-gui.\-Series\-Selection.\-\_\-\-\_\-init\-\_\-\-\_\- (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{parent}
+\end{DoxyParamCaption}
+)}}\label{classmovies2hdd_1_1gui_1_1_series_selection_aa7aee53dd5df33e036a5bbffe99a903b}
+
+
+Definition at line 192 of file gui.\-py.
+
+
+\begin{DoxyCode}
+192 
+193         \textcolor{keyword}{def }\hyperlink{classmovies2hdd_1_1gui_1_1_series_selection_aa7aee53dd5df33e036a5bbffe99a903b}{\_\_init\_\_}(self, parent):
+194             super(SeriesSelection, self).\hyperlink{classmovies2hdd_1_1gui_1_1_series_selection_aa7aee53dd5df33e036a5bbffe99a903b}{\_\_init\_\_}(parent)
+195             self.setWindowTitle(\textcolor{stringliteral}{"Series Selection"})
+196             self.\hyperlink{classmovies2hdd_1_1gui_1_1_series_selection_a1d4759f70508c7fbcbf5ce849d6cee76}{layout} = QVBoxLayout()
+197             self.\hyperlink{classmovies2hdd_1_1gui_1_1_series_selection_ae741cee9fe3b6d64c1e62413c063d7b1}{introduction} = QLabel(\textcolor{stringliteral}{"Please enter the name of the series to search for and
+       the language code."})
+198             self.introduction.setWordWrap(\textcolor{keyword}{True})
+199             self.layout.addWidget(self.\hyperlink{classmovies2hdd_1_1gui_1_1_series_selection_ae741cee9fe3b6d64c1e62413c063d7b1}{introduction})
+200             self.\hyperlink{classmovies2hdd_1_1gui_1_1_series_selection_a514dd2b23706781594fe9d9886a28218}{form} = QFormLayout()
+201             self.form.series = QLineEdit()
+202             self.form.addRow(self.tr(\textcolor{stringliteral}{"&Series:"}), self.form.series)
+203             self.form.lang = QLineEdit()
+204             self.form.addRow(self.tr(\textcolor{stringliteral}{"&Language code:"}), self.form.lang)
+205             self.layout.addLayout(self.\hyperlink{classmovies2hdd_1_1gui_1_1_series_selection_a514dd2b23706781594fe9d9886a28218}{form})
+206             self.\hyperlink{classmovies2hdd_1_1gui_1_1_series_selection_a3ef4927decef147a124124515ab71114}{searchButton} = QPushButton(\textcolor{stringliteral}{"Se&arch"})
+207             self.layout.addWidget(self.\hyperlink{classmovies2hdd_1_1gui_1_1_series_selection_a3ef4927decef147a124124515ab71114}{searchButton})
+208             self.searchButton.clicked.connect(self.\hyperlink{classmovies2hdd_1_1gui_1_1_series_selection_a59d9d53410754b1a797e2ec645c57591}{searchForSeries})
+209 
+210             self.\hyperlink{classmovies2hdd_1_1gui_1_1_series_selection_ac297f3ae5b7cbba9f01a3ebf7fa2fbb5}{table} = QTableWidget()
+211             self.table.setColumnCount(3)
+212             self.table.setHorizontalHeaderLabels([\textcolor{stringliteral}{"ID"}, \textcolor{stringliteral}{"Series"}, \textcolor{stringliteral}{"Overview"}])
+213             self.layout.addWidget(self.\hyperlink{classmovies2hdd_1_1gui_1_1_series_selection_ac297f3ae5b7cbba9f01a3ebf7fa2fbb5}{table})
+214 
+215             self.\hyperlink{classmovies2hdd_1_1gui_1_1_series_selection_ac43a1fd2985b12d7d42e5d3af24a5309}{button} = QPushButton(\textcolor{stringliteral}{"Se&lect"})
+216             self.layout.addWidget(self.\hyperlink{classmovies2hdd_1_1gui_1_1_series_selection_ac43a1fd2985b12d7d42e5d3af24a5309}{button})
+217             self.button.clicked.connect(self.\hyperlink{classmovies2hdd_1_1gui_1_1_series_selection_a97b0edb40452ba405e776132cae34997}{select})
+218 
+219             self.setLayout(self.\hyperlink{classmovies2hdd_1_1gui_1_1_series_selection_a1d4759f70508c7fbcbf5ce849d6cee76}{layout})
+
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classmovies2hdd_1_1gui_1_1_series_selection_a59d9d53410754b1a797e2ec645c57591}{\index{movies2hdd\-::gui\-::\-Series\-Selection@{movies2hdd\-::gui\-::\-Series\-Selection}!search\-For\-Series@{search\-For\-Series}}
+\index{search\-For\-Series@{search\-For\-Series}!movies2hdd::gui::SeriesSelection@{movies2hdd\-::gui\-::\-Series\-Selection}}
+\subsubsection[{search\-For\-Series}]{\setlength{\rightskip}{0pt plus 5cm}def movies2hdd.\-gui.\-Series\-Selection.\-search\-For\-Series (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}\label{classmovies2hdd_1_1gui_1_1_series_selection_a59d9d53410754b1a797e2ec645c57591}
+
+
+Definition at line 220 of file gui.\-py.
+
+
+\begin{DoxyCode}
+220 
+221         \textcolor{keyword}{def }\hyperlink{classmovies2hdd_1_1gui_1_1_series_selection_a59d9d53410754b1a797e2ec645c57591}{searchForSeries}(self):
+222             \textcolor{comment}{#progress = QProgressDialog("Searching for the series...", "Close", 0, 1, self)}
+223             \textcolor{comment}{#progress.setWindowModality(Qt.WindowModal)}
+224             \textcolor{comment}{#progress.setWindowTitle("Movies2HDD")}
+225             \textcolor{comment}{#progress.setAutoClose(False)}
+226             \textcolor{comment}{#progress.setCancelButton(None)}
+227             \textcolor{comment}{#progress.setMinimumDuration(0)}
+228             \textcolor{comment}{#progress.show()}
+229             \textcolor{comment}{#progress.setValue(0)}
+230             \textcolor{keywordflow}{try}:
+231                 series = movies2hdd.getSeries(self.form.series.text())
+232                 \textcolor{comment}{#progress.setMaximum(series.\_\_len\_\_())}
+233                 self.table.clear()
+234                 self.table.setRowCount(0)
+235                 self.table.setHorizontalHeaderLabels([\textcolor{stringliteral}{"ID"}, \textcolor{stringliteral}{"Series"}, \textcolor{stringliteral}{"Overview"}])
+236                 \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} series:
+237                     \textcolor{comment}{#progress.setValue(progress.value() + 1)}
+238                     flags = int(Qt.ItemIsEnabled) \textcolor{comment}{#+ int(Qt.ItemIsSelectable)}
+239                     self.table.setRowCount(self.table.rowCount() + 1)
+240                     sidItem = QTableWidgetItem(x[\textcolor{stringliteral}{'seriesid'}])
+241                     sidItem.setFlags(flags)
+242                     self.table.setItem(self.table.rowCount() - 1, 0, sidItem)
+243                     SeriesNameItem = QTableWidgetItem(x[\textcolor{stringliteral}{'SeriesName'}])
+244                     SeriesNameItem.setFlags(flags)
+245                     self.table.setItem(self.table.rowCount() - 1, 1, SeriesNameItem)
+246                     OverviewItem = QTableWidgetItem(x[\textcolor{stringliteral}{'Overview'}].replace(\textcolor{stringliteral}{"\(\backslash\)n"}, \textcolor{stringliteral}{"   "}))
+247                     OverviewItem.setFlags(flags)
+248                     self.table.setItem(self.table.rowCount() - 1, 2, OverviewItem)
+249             \textcolor{keywordflow}{except} Exception \textcolor{keyword}{as} e:
+250                 \textcolor{comment}{#sys.stderr.write("ERROR: " + str(e)+ "\(\backslash\)n")}
+251                 msg.setText(\textcolor{stringliteral}{"An error occured.\(\backslash\)n\(\backslash\)nThe detailed error message is:\(\backslash\)n"}+str(e))
+252                 msg.show()
+253                 \textcolor{comment}{#progress.hide()}
+254                 \textcolor{keywordflow}{raise}
+255 
+
+\end{DoxyCode}
+\hypertarget{classmovies2hdd_1_1gui_1_1_series_selection_a97b0edb40452ba405e776132cae34997}{\index{movies2hdd\-::gui\-::\-Series\-Selection@{movies2hdd\-::gui\-::\-Series\-Selection}!select@{select}}
+\index{select@{select}!movies2hdd::gui::SeriesSelection@{movies2hdd\-::gui\-::\-Series\-Selection}}
+\subsubsection[{select}]{\setlength{\rightskip}{0pt plus 5cm}def movies2hdd.\-gui.\-Series\-Selection.\-select (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}\label{classmovies2hdd_1_1gui_1_1_series_selection_a97b0edb40452ba405e776132cae34997}
+
+
+Definition at line 256 of file gui.\-py.
+
+
+\begin{DoxyCode}
+256 
+257         \textcolor{keyword}{def }\hyperlink{classmovies2hdd_1_1gui_1_1_series_selection_a97b0edb40452ba405e776132cae34997}{select}(self):
+258             if(self.form.lang.text()!= \textcolor{stringliteral}{""}):
+259                 \textcolor{keywordflow}{try}:
+260                     item = self.table.item(self.table.currentRow(), 0)
+261                     \textcolor{comment}{#The conversion str->int->str is not really needed. And it is nothing that the user can
+       change. But it could prevent future issues.}
+262                     sid = str(int(item.text()))
+263                     self.parent().series\_selection.setText(sid)
+264                     self.parent().setField(\textcolor{stringliteral}{"seriesid"}, sid)
+265                     self.parent().setField(\textcolor{stringliteral}{"lang"}, self.form.lang.text())
+266                     self.close()
+267                 \textcolor{keywordflow}{except}:
+268                     msg.setText(\textcolor{stringliteral}{"You need to select one series by clicking on it."})
+269                     msg.show()
+270             \textcolor{keywordflow}{else}:
+271                 msg.setText(\textcolor{stringliteral}{"You need to enter your language code."})
+272                 msg.show()
+273 
+
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classmovies2hdd_1_1gui_1_1_series_selection_ac43a1fd2985b12d7d42e5d3af24a5309}{\index{movies2hdd\-::gui\-::\-Series\-Selection@{movies2hdd\-::gui\-::\-Series\-Selection}!button@{button}}
+\index{button@{button}!movies2hdd::gui::SeriesSelection@{movies2hdd\-::gui\-::\-Series\-Selection}}
+\subsubsection[{button}]{\setlength{\rightskip}{0pt plus 5cm}movies2hdd.\-gui.\-Series\-Selection.\-button}}\label{classmovies2hdd_1_1gui_1_1_series_selection_ac43a1fd2985b12d7d42e5d3af24a5309}
+
+
+Definition at line 214 of file gui.\-py.
+
+\hypertarget{classmovies2hdd_1_1gui_1_1_series_selection_a514dd2b23706781594fe9d9886a28218}{\index{movies2hdd\-::gui\-::\-Series\-Selection@{movies2hdd\-::gui\-::\-Series\-Selection}!form@{form}}
+\index{form@{form}!movies2hdd::gui::SeriesSelection@{movies2hdd\-::gui\-::\-Series\-Selection}}
+\subsubsection[{form}]{\setlength{\rightskip}{0pt plus 5cm}movies2hdd.\-gui.\-Series\-Selection.\-form}}\label{classmovies2hdd_1_1gui_1_1_series_selection_a514dd2b23706781594fe9d9886a28218}
+
+
+Definition at line 199 of file gui.\-py.
+
+\hypertarget{classmovies2hdd_1_1gui_1_1_series_selection_ae741cee9fe3b6d64c1e62413c063d7b1}{\index{movies2hdd\-::gui\-::\-Series\-Selection@{movies2hdd\-::gui\-::\-Series\-Selection}!introduction@{introduction}}
+\index{introduction@{introduction}!movies2hdd::gui::SeriesSelection@{movies2hdd\-::gui\-::\-Series\-Selection}}
+\subsubsection[{introduction}]{\setlength{\rightskip}{0pt plus 5cm}movies2hdd.\-gui.\-Series\-Selection.\-introduction}}\label{classmovies2hdd_1_1gui_1_1_series_selection_ae741cee9fe3b6d64c1e62413c063d7b1}
+
+
+Definition at line 196 of file gui.\-py.
+
+\hypertarget{classmovies2hdd_1_1gui_1_1_series_selection_a1d4759f70508c7fbcbf5ce849d6cee76}{\index{movies2hdd\-::gui\-::\-Series\-Selection@{movies2hdd\-::gui\-::\-Series\-Selection}!layout@{layout}}
+\index{layout@{layout}!movies2hdd::gui::SeriesSelection@{movies2hdd\-::gui\-::\-Series\-Selection}}
+\subsubsection[{layout}]{\setlength{\rightskip}{0pt plus 5cm}movies2hdd.\-gui.\-Series\-Selection.\-layout}}\label{classmovies2hdd_1_1gui_1_1_series_selection_a1d4759f70508c7fbcbf5ce849d6cee76}
+
+
+Definition at line 195 of file gui.\-py.
+
+\hypertarget{classmovies2hdd_1_1gui_1_1_series_selection_a3ef4927decef147a124124515ab71114}{\index{movies2hdd\-::gui\-::\-Series\-Selection@{movies2hdd\-::gui\-::\-Series\-Selection}!search\-Button@{search\-Button}}
+\index{search\-Button@{search\-Button}!movies2hdd::gui::SeriesSelection@{movies2hdd\-::gui\-::\-Series\-Selection}}
+\subsubsection[{search\-Button}]{\setlength{\rightskip}{0pt plus 5cm}movies2hdd.\-gui.\-Series\-Selection.\-search\-Button}}\label{classmovies2hdd_1_1gui_1_1_series_selection_a3ef4927decef147a124124515ab71114}
+
+
+Definition at line 205 of file gui.\-py.
+
+\hypertarget{classmovies2hdd_1_1gui_1_1_series_selection_ac297f3ae5b7cbba9f01a3ebf7fa2fbb5}{\index{movies2hdd\-::gui\-::\-Series\-Selection@{movies2hdd\-::gui\-::\-Series\-Selection}!table@{table}}
+\index{table@{table}!movies2hdd::gui::SeriesSelection@{movies2hdd\-::gui\-::\-Series\-Selection}}
+\subsubsection[{table}]{\setlength{\rightskip}{0pt plus 5cm}movies2hdd.\-gui.\-Series\-Selection.\-table}}\label{classmovies2hdd_1_1gui_1_1_series_selection_ac297f3ae5b7cbba9f01a3ebf7fa2fbb5}
+
+
+Definition at line 209 of file gui.\-py.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+movies2hdd/\hyperlink{gui_8py}{gui.\-py}\end{DoxyCompactItemize}

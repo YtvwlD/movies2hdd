@@ -1,0 +1,182 @@
+\hypertarget{classmovies2hdd_1_1gui_1_1_step3}{\section{movies2hdd.\-gui.\-Step3 Class Reference}
+\label{classmovies2hdd_1_1gui_1_1_step3}\index{movies2hdd.\-gui.\-Step3@{movies2hdd.\-gui.\-Step3}}
+}
+Inheritance diagram for movies2hdd.\-gui.\-Step3\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classmovies2hdd_1_1gui_1_1_step3}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classmovies2hdd_1_1gui_1_1_step3_adced9712cc906ff656705527c0b5da48}{\-\_\-\-\_\-init\-\_\-\-\_\-}
+\item 
+def \hyperlink{classmovies2hdd_1_1gui_1_1_step3_ae1ba8bc0179241cd53633c532f28dc25}{func\-\_\-search}
+\item 
+def \hyperlink{classmovies2hdd_1_1gui_1_1_step3_abd850ebfb1a7b7bb76f70ffd178f9413}{validate\-Page}
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmovies2hdd_1_1gui_1_1_step3_a219925352b4ccaef913b4530039cefd3}{layout}
+\item 
+\hyperlink{classmovies2hdd_1_1gui_1_1_step3_acac006717bba2aa2f5834fecf3db359f}{introduction}
+\item 
+\hyperlink{classmovies2hdd_1_1gui_1_1_step3_affbacc9b3831417408811bd57aa7af76}{form}
+\item 
+\hyperlink{classmovies2hdd_1_1gui_1_1_step3_a7d8d7669f3636fb078fa022ebc1906bd}{line\-Edit}
+\item 
+\hyperlink{classmovies2hdd_1_1gui_1_1_step3_a3943ef1d0f93ffd6405996b301ec47d3}{push\-Button}
+\item 
+\hyperlink{classmovies2hdd_1_1gui_1_1_step3_ab2215782905268ba4287fa1872f1618e}{list}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 150 of file gui.\-py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classmovies2hdd_1_1gui_1_1_step3_adced9712cc906ff656705527c0b5da48}{\index{movies2hdd\-::gui\-::\-Step3@{movies2hdd\-::gui\-::\-Step3}!\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}}
+\index{\-\_\-\-\_\-init\-\_\-\-\_\-@{\-\_\-\-\_\-init\-\_\-\-\_\-}!movies2hdd::gui::Step3@{movies2hdd\-::gui\-::\-Step3}}
+\subsubsection[{\-\_\-\-\_\-init\-\_\-\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def movies2hdd.\-gui.\-Step3.\-\_\-\-\_\-init\-\_\-\-\_\- (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{parent = {\ttfamily None}}
+\end{DoxyParamCaption}
+)}}\label{classmovies2hdd_1_1gui_1_1_step3_adced9712cc906ff656705527c0b5da48}
+
+
+Definition at line 151 of file gui.\-py.
+
+
+\begin{DoxyCode}
+151 
+152     \textcolor{keyword}{def }\hyperlink{classmovies2hdd_1_1gui_1_1_step3_adced9712cc906ff656705527c0b5da48}{\_\_init\_\_}(self, parent=None):
+153         super(Step3, self).\hyperlink{classmovies2hdd_1_1gui_1_1_step3_adced9712cc906ff656705527c0b5da48}{\_\_init\_\_}(parent)
+154         self.setTitle(\textcolor{stringliteral}{"Search for and select movies"})
+155         self.\hyperlink{classmovies2hdd_1_1gui_1_1_step3_a219925352b4ccaef913b4530039cefd3}{layout} = QVBoxLayout()
+156         self.\hyperlink{classmovies2hdd_1_1gui_1_1_step3_acac006717bba2aa2f5834fecf3db359f}{introduction} = QLabel(\textcolor{stringliteral}{"Please enter a string to search for:"})
+157         self.introduction.setWordWrap(\textcolor{keyword}{True})
+158         self.layout.addWidget(self.\hyperlink{classmovies2hdd_1_1gui_1_1_step3_acac006717bba2aa2f5834fecf3db359f}{introduction})
+159         self.\hyperlink{classmovies2hdd_1_1gui_1_1_step3_affbacc9b3831417408811bd57aa7af76}{form} = QFormLayout()
+160         self.\hyperlink{classmovies2hdd_1_1gui_1_1_step3_a7d8d7669f3636fb078fa022ebc1906bd}{lineEdit} = QLineEdit()
+161         self.form.addRow(self.tr(\textcolor{stringliteral}{"&Search string:"}), self.\hyperlink{classmovies2hdd_1_1gui_1_1_step3_a7d8d7669f3636fb078fa022ebc1906bd}{lineEdit})
+162         self.layout.addLayout(self.\hyperlink{classmovies2hdd_1_1gui_1_1_step3_affbacc9b3831417408811bd57aa7af76}{form})
+163         self.\hyperlink{classmovies2hdd_1_1gui_1_1_step3_a3943ef1d0f93ffd6405996b301ec47d3}{pushButton} = QPushButton(\textcolor{stringliteral}{"S&earch"})
+164         self.pushButton.clicked.connect(self.\hyperlink{classmovies2hdd_1_1gui_1_1_step3_ae1ba8bc0179241cd53633c532f28dc25}{func\_search})
+165         self.layout.addWidget(self.\hyperlink{classmovies2hdd_1_1gui_1_1_step3_a3943ef1d0f93ffd6405996b301ec47d3}{pushButton})
+166         self.\hyperlink{classmovies2hdd_1_1gui_1_1_step3_ab2215782905268ba4287fa1872f1618e}{list} = QListWidget()
+167         self.layout.addWidget(self.\hyperlink{classmovies2hdd_1_1gui_1_1_step3_ab2215782905268ba4287fa1872f1618e}{list})
+168         self.setLayout(self.\hyperlink{classmovies2hdd_1_1gui_1_1_step3_a219925352b4ccaef913b4530039cefd3}{layout})
+
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classmovies2hdd_1_1gui_1_1_step3_ae1ba8bc0179241cd53633c532f28dc25}{\index{movies2hdd\-::gui\-::\-Step3@{movies2hdd\-::gui\-::\-Step3}!func\-\_\-search@{func\-\_\-search}}
+\index{func\-\_\-search@{func\-\_\-search}!movies2hdd::gui::Step3@{movies2hdd\-::gui\-::\-Step3}}
+\subsubsection[{func\-\_\-search}]{\setlength{\rightskip}{0pt plus 5cm}def movies2hdd.\-gui.\-Step3.\-func\-\_\-search (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}\label{classmovies2hdd_1_1gui_1_1_step3_ae1ba8bc0179241cd53633c532f28dc25}
+
+
+Definition at line 169 of file gui.\-py.
+
+
+\begin{DoxyCode}
+169 
+170     \textcolor{keyword}{def }\hyperlink{classmovies2hdd_1_1gui_1_1_step3_ae1ba8bc0179241cd53633c532f28dc25}{func\_search}(self):
+171         self.list.clear()
+172         movies = []
+173         \textcolor{keywordflow}{try}:
+174             movies = movies2hdd.getAviableMovies(self.lineEdit.text())
+175         \textcolor{keywordflow}{except}:
+176             \textcolor{keywordflow}{try}:
+177                 movies2hdd.connect(self.field(\textcolor{stringliteral}{"host"}), self.field(\textcolor{stringliteral}{"user"}), self.field(\textcolor{stringliteral}{"password"}))
+178                 movies = movies2hdd.getAviableMovies(str(\textcolor{stringliteral}{""}+self.lineEdit.text()))
+179             \textcolor{keywordflow}{except} Exception \textcolor{keyword}{as} e:
+180                 \textcolor{comment}{#sys.stderr.write("ERROR: " + str(e)+ "\(\backslash\)n")}
+181                 msg.setText(\textcolor{stringliteral}{"Something went wrong.\(\backslash\)n\(\backslash\)nThe detailed error message is:\(\backslash\)n"}+str(e))
+182                 msg.show()
+183                 \textcolor{keywordflow}{raise}
+184         \textcolor{keywordflow}{finally}:
+185             \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} movies:
+186                 self.list.addItem(QListWidgetItem(x))
+187             
+
+\end{DoxyCode}
+\hypertarget{classmovies2hdd_1_1gui_1_1_step3_abd850ebfb1a7b7bb76f70ffd178f9413}{\index{movies2hdd\-::gui\-::\-Step3@{movies2hdd\-::gui\-::\-Step3}!validate\-Page@{validate\-Page}}
+\index{validate\-Page@{validate\-Page}!movies2hdd::gui::Step3@{movies2hdd\-::gui\-::\-Step3}}
+\subsubsection[{validate\-Page}]{\setlength{\rightskip}{0pt plus 5cm}def movies2hdd.\-gui.\-Step3.\-validate\-Page (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}\label{classmovies2hdd_1_1gui_1_1_step3_abd850ebfb1a7b7bb76f70ffd178f9413}
+
+
+Definition at line 188 of file gui.\-py.
+
+
+\begin{DoxyCode}
+188 
+189     \textcolor{keyword}{def }\hyperlink{classmovies2hdd_1_1gui_1_1_step3_abd850ebfb1a7b7bb76f70ffd178f9413}{validatePage}(self):
+190         return(\textcolor{keyword}{False})
+
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classmovies2hdd_1_1gui_1_1_step3_affbacc9b3831417408811bd57aa7af76}{\index{movies2hdd\-::gui\-::\-Step3@{movies2hdd\-::gui\-::\-Step3}!form@{form}}
+\index{form@{form}!movies2hdd::gui::Step3@{movies2hdd\-::gui\-::\-Step3}}
+\subsubsection[{form}]{\setlength{\rightskip}{0pt plus 5cm}movies2hdd.\-gui.\-Step3.\-form}}\label{classmovies2hdd_1_1gui_1_1_step3_affbacc9b3831417408811bd57aa7af76}
+
+
+Definition at line 158 of file gui.\-py.
+
+\hypertarget{classmovies2hdd_1_1gui_1_1_step3_acac006717bba2aa2f5834fecf3db359f}{\index{movies2hdd\-::gui\-::\-Step3@{movies2hdd\-::gui\-::\-Step3}!introduction@{introduction}}
+\index{introduction@{introduction}!movies2hdd::gui::Step3@{movies2hdd\-::gui\-::\-Step3}}
+\subsubsection[{introduction}]{\setlength{\rightskip}{0pt plus 5cm}movies2hdd.\-gui.\-Step3.\-introduction}}\label{classmovies2hdd_1_1gui_1_1_step3_acac006717bba2aa2f5834fecf3db359f}
+
+
+Definition at line 155 of file gui.\-py.
+
+\hypertarget{classmovies2hdd_1_1gui_1_1_step3_a219925352b4ccaef913b4530039cefd3}{\index{movies2hdd\-::gui\-::\-Step3@{movies2hdd\-::gui\-::\-Step3}!layout@{layout}}
+\index{layout@{layout}!movies2hdd::gui::Step3@{movies2hdd\-::gui\-::\-Step3}}
+\subsubsection[{layout}]{\setlength{\rightskip}{0pt plus 5cm}movies2hdd.\-gui.\-Step3.\-layout}}\label{classmovies2hdd_1_1gui_1_1_step3_a219925352b4ccaef913b4530039cefd3}
+
+
+Definition at line 154 of file gui.\-py.
+
+\hypertarget{classmovies2hdd_1_1gui_1_1_step3_a7d8d7669f3636fb078fa022ebc1906bd}{\index{movies2hdd\-::gui\-::\-Step3@{movies2hdd\-::gui\-::\-Step3}!line\-Edit@{line\-Edit}}
+\index{line\-Edit@{line\-Edit}!movies2hdd::gui::Step3@{movies2hdd\-::gui\-::\-Step3}}
+\subsubsection[{line\-Edit}]{\setlength{\rightskip}{0pt plus 5cm}movies2hdd.\-gui.\-Step3.\-line\-Edit}}\label{classmovies2hdd_1_1gui_1_1_step3_a7d8d7669f3636fb078fa022ebc1906bd}
+
+
+Definition at line 159 of file gui.\-py.
+
+\hypertarget{classmovies2hdd_1_1gui_1_1_step3_ab2215782905268ba4287fa1872f1618e}{\index{movies2hdd\-::gui\-::\-Step3@{movies2hdd\-::gui\-::\-Step3}!list@{list}}
+\index{list@{list}!movies2hdd::gui::Step3@{movies2hdd\-::gui\-::\-Step3}}
+\subsubsection[{list}]{\setlength{\rightskip}{0pt plus 5cm}movies2hdd.\-gui.\-Step3.\-list}}\label{classmovies2hdd_1_1gui_1_1_step3_ab2215782905268ba4287fa1872f1618e}
+
+
+Definition at line 165 of file gui.\-py.
+
+\hypertarget{classmovies2hdd_1_1gui_1_1_step3_a3943ef1d0f93ffd6405996b301ec47d3}{\index{movies2hdd\-::gui\-::\-Step3@{movies2hdd\-::gui\-::\-Step3}!push\-Button@{push\-Button}}
+\index{push\-Button@{push\-Button}!movies2hdd::gui::Step3@{movies2hdd\-::gui\-::\-Step3}}
+\subsubsection[{push\-Button}]{\setlength{\rightskip}{0pt plus 5cm}movies2hdd.\-gui.\-Step3.\-push\-Button}}\label{classmovies2hdd_1_1gui_1_1_step3_a3943ef1d0f93ffd6405996b301ec47d3}
+
+
+Definition at line 162 of file gui.\-py.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+movies2hdd/\hyperlink{gui_8py}{gui.\-py}\end{DoxyCompactItemize}
