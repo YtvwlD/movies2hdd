@@ -97,22 +97,12 @@ class Movies2HDD:
 		
 		return(series)
 	
-	def getPositionOfEpisode(self, series, episode):
+	def getPositionOfEpisode(self, lang, seriesid, episode):
 		"""Get the season and episode number of an episode."""
-		lang = "de" #german #or perhaps as a parameter
-		#search doesn't always work
 		try:
-			apianswer = urllib.urlopen("http://thetvdb.com/api/GetSeries.php?seriesname="+series).read()
+			apianswer = urllib.urlopen("http://thetvdb.com/api/FE84E205C6E3D916/series/"+str(seriesid)+"/all/"+lang+".xml").read()
 		except AttributeError:
-			apianswer = urllib.request.urlopen("http://thetvdb.com/api/GetSeries.php?seriesname="+series).read()
-
-		sid = parseString(apianswer).getElementsByTagName("Data")[0].getElementsByTagName("Series")[0].getElementsByTagName("seriesid")[0].firstChild.data #seriesid
-		if series == "Castle":
-			sid = 83462
-		try:
-			apianswer = urllib.urlopen("http://thetvdb.com/api/FE84E205C6E3D916/series/"+str(sid)+"/all/"+lang+".xml").read()
-		except AttributeError:
-			apianswer = urllib.request.urlopen("http://thetvdb.com/api/FE84E205C6E3D916/series/"+str(sid)+"/all/"+lang+".xml").read()
+			apianswer = urllib.request.urlopen("http://thetvdb.com/api/FE84E205C6E3D916/series/"+str(seriesid)+"/all/"+lang+".xml").read()
 	#	dom = parseString(txt)
 	#	dom = dom.getElementsByTagName("Data")[0]
 		dom = parseString(apianswer).getElementsByTagName("Data")[0]
