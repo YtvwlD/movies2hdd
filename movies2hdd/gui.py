@@ -134,9 +134,9 @@ class Step2(QWizardPage):
 
 	def nextId(self):
 		if self.check.isChecked() == False:
-			return(4)
-		else:
 			return(3)
+		else:
+			return(2)
 
 class Step3(QWizardPage):
 	def __init__(self, parent=None):
