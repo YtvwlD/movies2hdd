@@ -163,6 +163,7 @@ class Step3(QWizardPage):
 		self.pushButton.clicked.connect(self.func_search)
 		self.layout.addWidget(self.pushButton)
 		self.list = QListWidget()
+		self.list.setSelectionMode(QAbstractItemView.MultiSelection)
 		self.layout.addWidget(self.list)
 		self.setLayout(self.layout)
 
