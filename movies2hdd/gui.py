@@ -54,18 +54,24 @@ class Step1(QWizardPage):
 		self.layout.addWidget(self.introduction)
 		self.form = QFormLayout()
 		self.folder_selection = QPushButton("Select")
-		#self.registerField
+		self.registerField("folder_selection", self.folder_selection)
 		self.folder_selection.clicked.connect(self.func_folder_selection)
 		self.form.addRow(self.tr("Select &folder:"), self.folder_selection)
 		self.series_selection = QPushButton("Select")
+		self.registerField("seriesid", self.series_selection)
 		self.series_selection.clicked.connect(self.func_series_selection)
 		self.form.addRow(self.tr("Select &series:"), self.series_selection)
 		self.layout.addLayout(self.form)
 		self.setLayout(self.layout)
 
+		self.lang = QLineEdit()
+		self.registerField("lang", self.lang)
+
+
 	def func_folder_selection(self):
 		folder = QFileDialog.getExistingDirectory()
 		self.folder_selection.setText(folder)
+		self.setField("folder_selection", folder)
 
 	def func_series_selection(self):
 		seriesselection = SeriesSelection(self)
@@ -97,13 +103,16 @@ class Step2(QWizardPage):
 		self.group.form = QFormLayout()
 
 		self.host = QLineEdit()
+		self.registerField("host", self.host)
 		self.group.form.addRow(self.tr("&Host:"), self.host)
 		self.user = QLineEdit()
+		self.registerField("user", self.user)
 		self.group.form.addRow(self.tr("&User:"), self.user)
 		self.warning = QLabel("<strong color='red'>Warning:</strong> Your password will be sent unencryptedly!\nPlease do this only if you trust the network that you are currently connected to.\nOtherwise please tunnel your connection for example via SSH or VPN.")
 		self.warning.setWordWrap(True)
 		self.group.form.addRow(self.warning)
 		self.password = QLineEdit()
+		self.registerField("password", self.password)
 		self.password.setEchoMode(QLineEdit.EchoMode.Password)
 		self.group.form.addRow(self.tr("&Password:"), self.password)
 
@@ -124,12 +133,12 @@ class Step2(QWizardPage):
 		else:
 			try:
 				movies2hdd.connect(self.host.text(), self.user.text(), self.password.text())
-				movies2hdd.disconnect()
 				return(True)
 			except Exception as e:
-				sys.stderr.write("ERROR: " + str(e) + "\n")
+				#sys.stderr.write("ERROR: " + str(e) + "\n")
 				msg.setText("Could not connect.\nPlease check your input and your connection.\n\nThe detailed error message is:\n"+str(e))
 				msg.show()
+				raise
 				return(False)
 
 	def nextId(self):
@@ -153,10 +162,28 @@ class Step3(QWizardPage):
 		self.pushButton = QPushButton("S&earch")
 		self.pushButton.clicked.connect(self.func_search)
 		self.layout.addWidget(self.pushButton)
+		self.list = QListWidget()
+		self.layout.addWidget(self.list)
 		self.setLayout(self.layout)
 
 	def func_search(self):
-		pass
+		self.list.clear()
+		movies = []
+		try:
+			movies = movies2hdd.getAviableMovies(self.lineEdit.text())
+		except:
+			try:
+				movies2hdd.connect(self.field("host"), self.field("user"), self.field("password"))
+				movies = movies2hdd.getAviableMovies(str(""+self.lineEdit.text()))
+			except Exception as e:
+				#sys.stderr.write("ERROR: " + str(e)+ "\n")
+				msg.setText("Something went wrong.\n\nThe detailed error message is:\n"+str(e))
+				msg.show()
+				raise
+		finally:
+			for x in movies:
+				self.list.addItem(QListWidgetItem(x))
+			
 
 	def validatePage(self):
 		return(False)
@@ -219,18 +246,29 @@ class SeriesSelection(QDialog):
 					OverviewItem.setFlags(flags)
 					self.table.setItem(self.table.rowCount() - 1, 2, OverviewItem)
 			except Exception as e:
-				sys.stderr.write("ERROR: " + str(e)+ "\n")
+				#sys.stderr.write("ERROR: " + str(e)+ "\n")
 				msg.setText("An error occured.\n\nThe detailed error message is:\n"+str(e))
 				msg.show()
 				#progress.hide()
+				raise
 
 
 		def select(self):
-			item = self.table.item(self.table.currentRow(), 0)
-			#The conversion str->int->str is not really needed. And it is nothing that the user can change. But it could prevent future issues.
-			sid = int(item.text())
-			self.parent().series_selection.setText(str(sid))
-			self.close()
+			if(self.form.lang.text()!= ""):
+				try:
+					item = self.table.item(self.table.currentRow(), 0)
+					#The conversion str->int->str is not really needed. And it is nothing that the user can change. But it could prevent future issues.
+					sid = str(int(item.text()))
+					self.parent().series_selection.setText(sid)
+					self.parent().setField("seriesid", sid)
+					self.parent().setField("lang", self.form.lang.text())
+					self.close()
+				except:
+					msg.setText("You need to select one series by clicking on it.")
+					msg.show()
+			else:
+				msg.setText("You need to enter your language code.")
+				msg.show()
 
 
 mainwindow = QWizard()
@@ -244,6 +282,6 @@ mainwindow.addPage(mainwindow.step3)
 mainwindow.show()
 app.exec_()
 try:
-	Movies2HDD.disconnect()
+	movies2hdd.disconnect()
 except:
 	pass
