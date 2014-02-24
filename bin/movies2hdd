@@ -28,28 +28,27 @@ print ("")
 #import movies2hdd
 #Movies2HDD = movies2hdd.Movies2HDD()
 #implement a command line parser
-import argparse
 
+import sys
 
-parser = argparse.ArgumentParser(description="A command line interface to Movies2HDD.")
-parser.add_argument("command", metavar="command", type=str, help="The command to execute.\nYou could try 'help'.")
-parser.add_argument("arguments", metavar="args", nargs="+")
-args = parser.parse_args()
-#print (args.command)
+try:
+	arg1 = sys.argv[1]
+except:
+	arg1 = ""
 
-if args.command == "help":
+if arg1 == "lbi":
+	import movies2hdd.lbi
+
+elif arg1 == "gui":
+	import movies2hdd.gui
+
+elif arg1 == "convert":
+	import movies2hdd.convert
+
+else:
 	print ("The aviable commands are:")
 	print (" * lbi	Starts movies2hdd's line-based interface.")
 	print (" * gui	Starts movies2hdd's graphical user interface.")
 	print ("")
 	print (" * convert [path to movie]	Converts the movie from .ts to .mpg. It removes additional audio tracks!")
-	print (" * ")
-
-if args.command == "lbi":
-	import movies2hdd.lbi
-
-if args.command == "gui":
-	import movies2hdd.gui
-
-if args.command == "convert":
-	import movies2hdd.convert
+	#print (" * ")
