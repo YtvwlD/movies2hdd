@@ -16,7 +16,7 @@ print("Loading libraries...")
 from movies2hdd import Movies2HDD
 import sys
 import shutil
-movie = sys.argv[1]
+movie = sys.argv[2]
 print("Moving "+movie+" to /tmp ...")
 shutil.move(movie, "/tmp/")
 print("Converting it...")
