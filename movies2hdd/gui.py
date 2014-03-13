@@ -171,11 +171,11 @@ class Step3(QWizardPage):
 		self.list.clear()
 		movies = []
 		try:
-			movies = movies2hdd.getAviableMovies(self.lineEdit.text())
+			movies = movies2hdd.getAviableMovies(str(self.lineEdit.text()))
 		except:
 			try:
 				movies2hdd.connect(self.field("host"), self.field("user"), self.field("password"))
-				movies = movies2hdd.getAviableMovies(str(""+self.lineEdit.text()))
+				movies = movies2hdd.getAviableMovies(str(self.lineEdit.text()))
 			except Exception as e:
 				#sys.stderr.write("ERROR: " + str(e)+ "\n")
 				msg.setText("Something went wrong.\n\nThe detailed error message is:\n"+str(e))
@@ -187,7 +187,17 @@ class Step3(QWizardPage):
 			
 
 	def validatePage(self):
-		return(False)
+		if self.list.count() == 0:
+			msg.setText("Didn't you want to search for movies?")
+			msg.show()
+			return(False)
+		selectedMovies = self.list.selectedItems()
+		if selectedMovies.__len__() == 0:
+			msg.setText("Don't you want to select any items?")
+			msg.show()
+			return(False)
+		self.parent().moviesSelectedForDownload = selectedMovies
+		return(True)
 
 class SeriesSelection(QDialog):
 		def __init__(self, parent):
