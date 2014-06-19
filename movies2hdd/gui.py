@@ -28,8 +28,8 @@ sys.stdout.write("Loading...")
 sys.stdout.flush()
 sys.stdout.write("	PySide")
 sys.stdout.flush()
-from PySide.QtCore import *
-from PySide.QtGui import *
+from PySide.QtCore import Qt
+from PySide.QtGui import QDialog, QApplication, QMessageBox, QWizardPage, QWizard, QVBoxLayout, QLabel, QFormLayout, QPushButton, QLineEdit, QCheckBox, QGroupBox, QListWidget, QAbstractItemView, QFileDialog, QTableWidget, QTableWidgetItem, QListWidget
 app =  QApplication(sys.argv)
 msg = QMessageBox()
 msg.setWindowTitle("Movies2HDD")
