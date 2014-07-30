@@ -3,8 +3,8 @@ movies2hdd
 
 A simple set of python scripts and libraries to work with movies. I use it with my DreamBox.
 
-* Homepage: http://elchi.github.io/movies2hdd (It is empty.)
-* Documentation of the API: http://elchi.github.io/movies2hdd/docs/html/ (generated using doxygen)
+* Homepage: http://ytvwld.github.io/movies2hdd (It is empty.)
+* Documentation of the API: http://ytvwld.github.io/movies2hdd/docs/html/ (generated using doxygen)
 
 ----------------------------------------------------------------------------
 
