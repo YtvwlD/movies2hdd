@@ -1,6 +1,8 @@
 movies2hdd
 ==========
 
+[![Build Status](https://travis-ci.org/YtvwlD/movies2hdd.svg?branch=master)](https://travis-ci.org/YtvwlD/movies2hdd)
+
 A simple set of python scripts and libraries to work with movies. I use it with my DreamBox.
 
 * Homepage: http://ytvwld.github.io/movies2hdd (It is empty.)
