@@ -2,6 +2,7 @@ movies2hdd
 ==========
 
 [![Build Status](https://travis-ci.org/YtvwlD/movies2hdd.svg?branch=master)](https://travis-ci.org/YtvwlD/movies2hdd)
+[![Code Health](https://landscape.io/github/YtvwlD/movies2hdd/master/landscape.png)](https://landscape.io/github/YtvwlD/movies2hdd/master)
 
 A simple set of python scripts and libraries to work with movies. I use it with my DreamBox.
 
