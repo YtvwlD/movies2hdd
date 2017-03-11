@@ -17,11 +17,7 @@
 #	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import ftplib
-import urllib
-try:
-	import urllib.request #Python 3
-except ImportError:
-	pass
+import requests
 from xml.dom.minidom import parseString
 import subprocess
 import os
@@ -70,12 +66,7 @@ class Movies2HDD:
 
 	def getSeries(self, series):
 		"""Get the id of the series."""
-		try:
-			api = urllib.urlopen("http://thetvdb.com/api/GetSeries.php?seriesname="+series)
-		except AttributeError:
-			api = urllib.request.urlopen("http://thetvdb.com/api/GetSeries.php?seriesname="+series)
-		apianswer = api.read()
-		api.close()
+		apianswer = requests.get("http://thetvdb.com/api/GetSeries.php?seriesname="+series).text
 
 		series = []
 		try:
@@ -99,10 +90,7 @@ class Movies2HDD:
 	
 	def getPositionOfEpisode(self, lang, seriesid, episode):
 		"""Get the season and episode number of an episode."""
-		try:
-			apianswer = urllib.urlopen("http://thetvdb.com/api/FE84E205C6E3D916/series/"+str(seriesid)+"/all/"+lang+".xml").read()
-		except AttributeError:
-			apianswer = urllib.request.urlopen("http://thetvdb.com/api/FE84E205C6E3D916/series/"+str(seriesid)+"/all/"+lang+".xml").read()
+		apianswer = requests.get("http://thetvdb.com/api/FE84E205C6E3D916/series/"+str(seriesid)+"/all/"+lang+".xml").text
 		dom = parseString(apianswer).getElementsByTagName("Data")[0]
 		episodes = dom.getElementsByTagName("Episode")
 		season = 0
