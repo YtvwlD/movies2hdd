@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 '''A GUI to Movies2HDD.'''
 
-#	Copyright (C) 2013 Niklas Sombert
+#	Copyright (C) 2013-2017 Niklas Sombert
 #
 #	This program is free software: you can redistribute it and/or modify
 #	it under the terms of the GNU General Public License as published by
@@ -16,7 +16,7 @@
 #	You should have received a copy of the GNU General Public License
 #	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-print ("Movies2HDD's graphical user interface Copyright (C) 2013 Niklas Sombert")
+print ("Movies2HDD's graphical user interface Copyright (C) 2013-2017 Niklas Sombert")
 print ("This program comes with ABSOLUTELY NO WARRANTY.")
 print ("This is free software, and you are welcome to redistribute it")
 print ("under certain conditions.")

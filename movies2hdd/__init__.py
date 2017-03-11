@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """A library to work with movies on a DreamBox."""
 
-#	Copyright (C) 2013 Niklas Sombert
+#	Copyright (C) 2013-2017 Niklas Sombert
 
 #	This program is free software: you can redistribute it and/or modify
 #	it under the terms of the GNU Lesser General Public License as published by
