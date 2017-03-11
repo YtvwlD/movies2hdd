@@ -24,17 +24,12 @@ print ("under certain conditions.")
 
 print ("")
 
-#print("Loading libraries...")
-#import movies2hdd
-#Movies2HDD = movies2hdd.Movies2HDD()
-#implement a command line parser
 import argparse
 
 
 parser = argparse.ArgumentParser(description="A command line interface to Movies2HDD.")
 parser.add_argument("command", metavar="command", type=str, help="The command to execute.\nYou could try 'help'.")
 args = parser.parse_args()
-#print (args.command)
 
 if args.command == "help":
 	print ("The available commands are:")

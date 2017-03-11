@@ -91,9 +91,6 @@ class Step2(QWizardPage):
 		super(Step2, self).__init__(parent)
 		self.setTitle("Connect to your Dreambox")
 		self.layout = QVBoxLayout()
-		#self.introduction = QLabel("")
-		#self.introduction.setWordWrap(True)
-		#self.layout.addWidget(self.introduction)
 		self.check = QCheckBox("Do the movies need to be &downloaded?")
 		self.check.stateChanged.connect(self.func_check)
 		self.layout.addWidget(self.check)
@@ -135,7 +132,6 @@ class Step2(QWizardPage):
 				movies2hdd.connect(self.host.text(), self.user.text(), self.password.text())
 				return(True)
 			except Exception as e:
-				#sys.stderr.write("ERROR: " + str(e) + "\n")
 				msg.setText("Could not connect.\nPlease check your input and your connection.\n\nThe detailed error message is:\n"+str(e))
 				msg.show()
 				raise
@@ -177,7 +173,6 @@ class Step3(QWizardPage):
 				movies2hdd.connect(self.field("host"), self.field("user"), self.field("password"))
 				movies = movies2hdd.getAviableMovies(str(self.lineEdit.text()))
 			except Exception as e:
-				#sys.stderr.write("ERROR: " + str(e)+ "\n")
 				msg.setText("Something went wrong.\n\nThe detailed error message is:\n"+str(e))
 				msg.show()
 				raise
@@ -257,7 +252,6 @@ class SeriesSelection(QDialog):
 					OverviewItem.setFlags(flags)
 					self.table.setItem(self.table.rowCount() - 1, 2, OverviewItem)
 			except Exception as e:
-				#sys.stderr.write("ERROR: " + str(e)+ "\n")
 				msg.setText("An error occured.\n\nThe detailed error message is:\n"+str(e))
 				msg.show()
 				#progress.hide()

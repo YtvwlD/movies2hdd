@@ -103,8 +103,6 @@ class Movies2HDD:
 			apianswer = urllib.urlopen("http://thetvdb.com/api/FE84E205C6E3D916/series/"+str(seriesid)+"/all/"+lang+".xml").read()
 		except AttributeError:
 			apianswer = urllib.request.urlopen("http://thetvdb.com/api/FE84E205C6E3D916/series/"+str(seriesid)+"/all/"+lang+".xml").read()
-	#	dom = parseString(txt)
-	#	dom = dom.getElementsByTagName("Data")[0]
 		dom = parseString(apianswer).getElementsByTagName("Data")[0]
 		episodes = dom.getElementsByTagName("Episode")
 		season = 0
