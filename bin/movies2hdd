@@ -26,23 +26,27 @@ print ("")
 
 import argparse
 
-
-parser = argparse.ArgumentParser(description="A command line interface to Movies2HDD.")
-parser.add_argument("command", metavar="command", type=str, help="The command to execute.\nYou could try 'help'.")
-args = parser.parse_args()
-
-if args.command == "help":
-	print ("The available commands are:")
-	print (" * lbi	Starts movies2hdd's line-based interface.")
-	print (" * gui	Starts movies2hdd's graphical user interface.")
-	print ("")
-	print (" * convert [path to movie]	Converts the movie from .ts to .mpg. It removes additional audio tracks!")
-
-if args.command == "lbi":
+def lbi(args):
 	import movies2hdd.lbi
 
-if args.command == "gui":
+def gui(args):
 	import movies2hdd.gui
 
-if args.command == "convert":
+def convert(args):
 	import movies2hdd.convert
+
+parser = argparse.ArgumentParser(description="A command line interface to Movies2HDD.")
+subparsers = parser.add_subparsers(help="commands")
+parser_lbi = subparsers.add_parser("lbi", help="start movies2hdd's line-based interface")
+parser_lbi.set_defaults(func=lbi)
+parser_gui = subparsers.add_parser("gui", help="start movies2hdd's graphical user interface")
+parser_gui.set_defaults(func=gui)
+parser_convert = subparsers.add_parser("convert", help="convert a movie ftom .ts to .mpg removing additional audio tracks")
+parser_convert.set_defaults(func=convert)
+parser_convert.add_argument("movie", type=str, help="the movie to convert")
+args = parser.parse_args()
+try:
+	args.func(args)
+except AttributeError:
+	print("You didn't specify a command.")
+	print("You might want to take a look at `--help`.")
