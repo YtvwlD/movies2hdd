@@ -27,13 +27,16 @@ print ("")
 import argparse
 
 def lbi(args):
-	import movies2hdd.lbi
+	from movies2hdd import lbi
+	lbi.run(args)
 
 def gui(args):
-	import movies2hdd.gui
+	from movies2hdd import gui
+	gui.run(args)
 
 def convert(args):
-	import movies2hdd.convert
+	from movies2hdd import convert
+	convert.run(args)
 
 parser = argparse.ArgumentParser(description="A command line interface to Movies2HDD.")
 subparsers = parser.add_subparsers(help="commands")

@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 '''A GUI to Movies2HDD.'''
 
 #	Copyright (C) 2013-2017 Niklas Sombert
@@ -275,18 +274,18 @@ class SeriesSelection(QDialog):
 				msg.setText("You need to enter your language code.")
 				msg.show()
 
-
-mainwindow = QWizard()
-mainwindow.setWindowTitle("Movies2HDD")
-mainwindow.step1 = Step1()
-mainwindow.step2 = Step2()
-mainwindow.step3 = Step3()
-mainwindow.addPage(mainwindow.step1)
-mainwindow.addPage(mainwindow.step2)
-mainwindow.addPage(mainwindow.step3)
-mainwindow.show()
-app.exec_()
-try:
-	movies2hdd.disconnect()
-except:
-	pass
+def run(args):
+	mainwindow = QWizard()
+	mainwindow.setWindowTitle("Movies2HDD")
+	mainwindow.step1 = Step1()
+	mainwindow.step2 = Step2()
+	mainwindow.step3 = Step3()
+	mainwindow.addPage(mainwindow.step1)
+	mainwindow.addPage(mainwindow.step2)
+	mainwindow.addPage(mainwindow.step3)
+	mainwindow.show()
+	app.exec_()
+	try:
+		movies2hdd.disconnect()
+	except:
+		pass

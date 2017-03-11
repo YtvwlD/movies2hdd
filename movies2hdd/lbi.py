@@ -93,36 +93,38 @@ def quit():
 	print ("Exiting...")
 	sys.exit()
 #
-while True:
-	print ("")
-	print ("What do you want to do next?")
-	print ("	[1] Connect to your DreamBox")
-	print ("	[2] Disconnect from your DreamBox")
-	print ("	[3] Search for movies (needs a connection)")
-	print ("	[4] Select movies from your disk (not implemented yet!)")
-	print ("	[5] Save movies to your disk (needs a list of movies)")
-	print ("	[6] Download movies (needs a connection and a list of movies)")
-	print ("	[7] Rename movies (needs a list of movies)")
-	print ("	[8] Convert movies (needs a list of movies)")
-	print ("	[9] Quit (disconnect first!)")
-	print ("")
-	answer = int(ask("> "))
-	print ("")
-	if answer == 1:
-		connect()
-	if answer == 2:
-		disconnect()
-	if answer == 3:
-		search()
-	if answer == 4:
-		select()
-	if answer == 5:
-		save()
-	if answer == 6:
-		download()
-	if answer == 7:
-		rename()
-	if answer == 8:
-		convert()
-	if answer == 9:
-		quit()
+
+def run(args):
+	while True:
+		print ("")
+		print ("What do you want to do next?")
+		print ("	[1] Connect to your DreamBox")
+		print ("	[2] Disconnect from your DreamBox")
+		print ("	[3] Search for movies (needs a connection)")
+		print ("	[4] Select movies from your disk (not implemented yet!)")
+		print ("	[5] Save movies to your disk (needs a list of movies)")
+		print ("	[6] Download movies (needs a connection and a list of movies)")
+		print ("	[7] Rename movies (needs a list of movies)")
+		print ("	[8] Convert movies (needs a list of movies)")
+		print ("	[9] Quit (disconnect first!)")
+		print ("")
+		answer = int(ask("> "))
+		print ("")
+		if answer == 1:
+			connect()
+		if answer == 2:
+			disconnect()
+		if answer == 3:
+			search()
+		if answer == 4:
+			select()
+		if answer == 5:
+			save()
+		if answer == 6:
+			download()
+		if answer == 7:
+			rename()
+		if answer == 8:
+			convert()
+		if answer == 9:
+			quit()
